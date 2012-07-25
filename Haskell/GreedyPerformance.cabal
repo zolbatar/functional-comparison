@@ -1,0 +1,12 @@
+name:                GreedyPerformance
+version:             0.1.0.0
+synopsis:            Greedy algorithm performance tester
+author:              Daryl Dudey
+maintainer:          daryljdudey@googlemail.com
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable GreedyPerformance
+  main-is:           Main.hs
+  build-depends:     base ==4.5.*, MissingH ==1.1.1.0, parsec, containers, criterion
+  ghc-options:       -Wall -O2 -with-rtsopts=-N -with-rtsopts=-A4M -with-rtsopts=-H512M

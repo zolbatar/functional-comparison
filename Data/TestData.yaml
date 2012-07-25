@@ -1,0 +1,66 @@
+parameters:
+  seed: 16264400
+
+script:
+- step: generate_data
+  id: ds1
+- step: save_scheduling 
+  filename: Data.xml
+
+ds1:
+  dataset: Demo
+  date: 2012-01-01
+  duration: 1
+  load: true
+
+  geographies:
+  - id: Derbyshire
+    country: UK-Derbyshire
+    radius: 0.0
+
+  namegenerators:
+  - id: English
+    use_random_names: true
+    names_language: English
+
+  shifts:
+  - id: Normal
+    ignore_weekends: false
+    shift_start: 09:00:00
+    shift_length: 09:00:00
+    overtime: 01:00:00
+    snaptime: 00:00:00
+    lunch_duration: 00:00:00
+    lunch_start: 03:30:00
+    lunch_end: 05:30:00
+
+  resources:
+  - prefix: R
+    number: 10
+    shift: Normal
+    geography: Derbyshire
+    namegenerator: English
+
+  activities:
+  - prefix: A
+    type: Standard
+    number: 500
+    geography: Derbyshire
+
+# This s
+  types:
+  - id: Standard
+    base_value: 1000.0
+
+  slas:
+  - id: Priority
+    freq: 1.0
+    durations: 30,45,60
+    range: Whole
+    end: 0.95
+    out_end: 0.4
+    sla_length: 4.0
+    out_of_sla_length: 336.0
+    backlog_days: 5
+    backlog_freq: 0.0
+    shift: Normal

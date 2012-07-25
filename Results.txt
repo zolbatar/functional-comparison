@@ -1,0 +1,53 @@
+wc -l `find Program -type f`
+find Program -type f -exec wc -l {} \; | awk '{total += $1} END{print total}'
+
+Haskell
+-------
+Lines: 83 (3.6M)
+
+1 - 0m0.025s
+10 - 0m0.090s
+100 - 0m0.773s
+1000 - 0m7.677s (6.571 with tweaks using SMP)
+10000 - 1m17.865s
+
+F#
+--
+Lines: 83
+
+1 - 0m0.155s
+10 - 0m0.378s
+100 - 0m2.641s
+1000 - 0m25.487s (SGen - 0m19.399s) (.NET in VM - 0m8.678)
+10000 - 4m9.381s (.NET in VM 1m28.366)
+
+Scala
+-----
+Lines: 82
+
+1 - 0m1.028s
+10 - 0m1.375s
+100 - 0m2.253s
+1000 - 0m11.959s
+10000 - 1m44.669s
+
+Clojure
+-------
+Lines: 88
+
+1 - 0m1.511s
+10 - 0m2.317s
+100 - 0m7.022s
+1000 - 0m51.575s
+10000 - 8m50.565s
+
+OCaml
+-----
+Lines: 88
+
+1 - 0m0.015s
+10 - 0m0.118s
+100 - 0m1.162s
+1000 - 0m11.162s
+10000 - 1m51.518s
+

@@ -1,0 +1,12 @@
+.DS_Store
+*.cmi
+*.cmo
+*.cmx
+*.o
+*.suo
+*.sln
+Haskell/dist
+F#/bin
+F#/obj
+OCaml/main
+Scala/Project
