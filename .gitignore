@@ -6,6 +6,8 @@
 *.suo
 *.sln
 Haskell/dist
+C#/bin
+C#/obj
 F#/bin
 F#/obj
 OCaml/main
