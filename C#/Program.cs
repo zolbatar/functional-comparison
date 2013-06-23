@@ -49,8 +49,8 @@ namespace CSharp
 	[Serializable]
 	class SchemaData
 	{
-		public List<Activity> activity; 
-		public List<Resource> resource; 
+		public Dictionary<string, Activity> activity; 
+		public Dictionary<string, Resource> resource; 
 		public List<Allocation> allocation; 
 	}
 
@@ -76,30 +76,32 @@ namespace CSharp
 			return (earthRadius * (c + c));
 		}
 
-		static SchemaData scheduleResource(Resource r, int c, SchemaData sd) 
+		static void scheduleResource(Resource r, int c, SchemaData sd) 
 		{
 			switch (c) {
 			case 0:
 				if (sd.resource.Count == 0) {
-					return sd;
+					return;
 				} else {
-					Resource i = sd.resource [0];
-					sd.resource.RemoveAt (0);
-					return scheduleResource (i, 5, sd);
+					var i = sd.resource.First ();
+					sd.resource.Remove(i.Key);
+					scheduleResource (i.Value, 5, sd);
 				}
+				break;
 			default:
-				var l = new SortedDictionary<double, Activity> ();
-				foreach (var x in sd.activity) {
+				var l = new Dictionary<double, Activity> ();
+				foreach (var x in sd.activity.Values) {
 					l.Add (distanceBetweenPointsLatLong (r.lat, r.lon, x.lat, x.lon), x);
 				}
-				var f = l.FirstOrDefault ();
-				sd.activity.Where (x => x.id != f.Value.id);
+				var f = l.OrderByDescending (x => x.Key).First ();
 				var all = new Allocation ();
 				all.activityId = f.Value.id;
 				all.distance = f.Key;
 				all.resourceId = r.id;
 				sd.allocation.Add (all);
-				return scheduleResource (r, c - 1, sd);
+				sd.activity.Remove (f.Value.id);
+				scheduleResource (r, c - 1, sd);
+				break;
 			}
 		}
 
@@ -111,13 +113,13 @@ namespace CSharp
 				r.id = x [0];
 				r.lat = Convert.ToDouble (x[1]);
 				r.lon = Convert.ToDouble (x[2]);
-				sd.resource.Add (r);
+				sd.resource.Add (r.id, r);
 			} else if (x.Length == 4) {
 				var a = new Activity ();
 				a.id = x [0];
 				a.lat = Convert.ToDouble (x[1]);
 				a.lon = Convert.ToDouble (x[2]);
-				sd.activity.Add (a);
+				sd.activity.Add (a.id, a);
 			}		
 		}
 
@@ -133,18 +135,18 @@ namespace CSharp
 		{
 			var lines = System.IO.File.ReadAllLines(@"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
 			var sd = new SchemaData (); 
-			sd.activity = new List<Activity> ();
-			sd.resource = new List<Resource> ();
+			sd.activity = new Dictionary<string, Activity> ();
+			sd.resource = new Dictionary<string, Resource> ();
 			sd.allocation = new List<Allocation> ();
 			importCSV (lines, sd);
 			for (var i = 1; i < 1000; i++) 
 			{
 				var sd2 = sd.DeepClone ();
-				var r = sd.resource [0];
-				sd2.resource.RemoveAt(0);
-				var res = scheduleResource (r, 5, sd2);
-				var total = res.allocation.Sum (x => x.distance);
-				Console.WriteLine (total);
+				var r = sd2.resource.First();
+				sd2.resource.Remove (r.Key);
+				scheduleResource (r.Value, 5, sd2);
+				var total = sd2.allocation.Sum (x => x.distance);
+				Console.WriteLine (i.ToString() + ":" + total);
 			}
 		}
 	}
