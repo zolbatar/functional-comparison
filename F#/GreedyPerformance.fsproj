@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{540604c0-35be-4c81-afc1-ef28ed6ed9a6}</ProjectGuid>
+    <ProjectGuid>{540604C0-35BE-4C81-AFC1-EF28ED6ED9A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>GreedyPerformance</RootNamespace>
     <AssemblyName>GreedyPerformance</AssemblyName>
