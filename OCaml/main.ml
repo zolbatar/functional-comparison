@@ -81,8 +81,8 @@ let loadFile path =
       List.rev !lines;;
 
 let () = 
-    let lines = loadFile "/Users/daryl/Source/SkylinedSoftware/Prototypes/PerformanceComparison/Data/DataSPIF.csv" in
+    let lines = loadFile "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv" in
     print_endline "Done";
     let linesSplit = List.map (fun x -> Array.of_list (Str.split (Str.regexp ",") x)) lines in
     let sd = loadCSV linesSplit { activity = []; resource = []; allocation = [] } in
-    runMultiple 1000 sd
+    runMultiple 10000 sd

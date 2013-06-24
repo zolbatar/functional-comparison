@@ -1,7 +1,19 @@
 All for a 1000 iterations:
 
-C# (MONO) -> 24.177s
-F# (MONO) -> 21.954s
+Lenovo
+------
+C# (MONO)   -> 24.177s
+F# (MONO)   -> 21.954s
 
-C# (.NET) -> 9..533s
-F# (.NET) -> 8.206s
+C# (.NET)   -> 9.533s
+F# (.NET)   -> 8.206s
+
+Macbook
+-------
+
+C# (MONO)   -> 21.600s
+F# (MONO)   -> 30.208s
+Clojure     -> 2m4.782s
+Haskell     -> 7.557s
+O'Caml      -> 10.079s
+Scala       -> 10.433s 1m25.969s

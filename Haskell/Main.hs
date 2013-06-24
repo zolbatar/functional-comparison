@@ -45,7 +45,7 @@ processCSV (x : xs) entities = processCSV xs $ processRow x entities
 importCSV :: IO (Maybe SchemaData)
 importCSV = 
   do 
-    result <- parseFromFile csvFile "/Users/daryl/Source/SkylinedSoftware/Prototypes/PerformanceComparison/Data/DataSPIF.csv"
+    result <- parseFromFile csvFile "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
     let entities = case result of
                     (Left _) -> Nothing
                     (Right x) -> Just $ processCSV x $ SchemaData [] [] []

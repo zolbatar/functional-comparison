@@ -1,5 +1,3 @@
-package skylinedsoftware.performancecomparison
-
 import java.lang.Math._
 
 object Start {
@@ -70,13 +68,13 @@ object Start {
   }
 
   def main(args: Array[String]) {
-    val path = "/Users/daryl/Source/SkylinedSoftware/Prototypes/PerformanceComparison/Data/DataSPIF.csv"
+    val path = "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
     val lines = (for (line <- scala.io.Source.fromFile(path).getLines()) yield line.split(",")).toSeq
     val sd = importCSV(lines, new SchemaData())
     for (i <- 1 to 1000) {
       val res = scheduleResource(sd.resources.head, 5, sd.copy(resources = sd.resources.tail))
       val total = res.allocations.map(x => x.distance).fold(0.0)(_+_)
-      println(total)
+      println(i.toString() + ":" + total)
     }
   }
 }

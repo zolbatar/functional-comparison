@@ -107,8 +107,8 @@ namespace CSharp
 
 		static void Main(string[] args)
 		{
-//            var lines = System.IO.File.ReadAllLines(@"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
-            var lines = System.IO.File.ReadAllLines(@"D:/Development/FunctionalComparison/Data/DataSPIF.csv");
+            var lines = System.IO.File.ReadAllLines(@"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
+//            var lines = System.IO.File.ReadAllLines(@"D:/Development/FunctionalComparison/Data/DataSPIF.csv");
             var al = new List<Activity>();
 			var rl = new List<Resource> ();
 			importCSV (lines, al, rl);

@@ -76,8 +76,8 @@ module Start =
 
     [<EntryPoint>]
     let main args =
-//        let path = @"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
-        let path = @"D:/Development/FunctionalComparison/Data/DataSPIF.csv"
+        let path = @"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
+//        let path = @"D:/Development/FunctionalComparison/Data/DataSPIF.csv"
         let lines = readLines path
         let sd = loadCSV lines { activity = []; resource = []; allocation = [] }
         runMultiple 1000 sd
