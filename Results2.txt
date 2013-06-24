@@ -1,0 +1,7 @@
+All for a 1000 iterations:
+
+C# (MONO) -> 24.177s
+F# (MONO) -> 21.954s
+
+C# (.NET) -> 9..533s
+F# (.NET) -> 8.206s

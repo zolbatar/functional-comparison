@@ -71,13 +71,13 @@ module Start =
         | c ->
             let result = scheduleResource sd.resource.Head 5 { sd with resource = sd.resource.Tail }
             let total = result.allocation |> List.map (fun x -> x.distance) |> List.fold (+) 0.0           
-            printfn "%f" total
+            printfn "%d:%f" c total
             runMultiple (c - 1) sd
 
     [<EntryPoint>]
     let main args =
-        let path = @"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
-//        let path = @"F:/Source/SkylinedSoftware/PerformanceComparison/Data/DataSPIF.csv"
+//        let path = @"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
+        let path = @"D:/Development/FunctionalComparison/Data/DataSPIF.csv"
         let lines = readLines path
         let sd = loadCSV lines { activity = []; resource = []; allocation = [] }
         runMultiple 1000 sd
