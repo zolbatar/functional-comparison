@@ -13,7 +13,7 @@ Macbook
 
 C# (MONO)   -> 21.600s
 F# (MONO)   -> 30.208s
-Clojure     -> 2m4.782s
-Haskell     -> 7.557s
-O'Caml      -> 10.079s
-Scala       -> 10.433s 1m25.969s
+Clojure     -> 1m58.070s
+Haskell     -> 7.557s   1m16.052s
+O'Caml      -> 10.079s  1m38.373s
+Scala       -> 10.433s  1m25.969s

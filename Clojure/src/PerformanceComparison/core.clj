@@ -1,7 +1,7 @@
 (ns PerformanceComparison.core
   (:gen-class)
   (:use [clojure.java.io]
-        [clojure.contrib.generic.math-functions])
+        [clojure.algo.generic.math-functions])
   (:require [clojure.string :as string]))
 
 (set! *warn-on-reflection* true)
@@ -62,7 +62,7 @@
             (recur (rest data) sd-updated)))))))
 
 (defn -main []
-  (with-open [rdr (reader "/Users/daryl/Source/SkylinedSoftware/Prototypes/PerformanceComparison/Data/DataSPIF.csv")]
+  (with-open [rdr (reader "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv")]
     (let [csv (for [line (line-seq rdr)]
                 (string/split line #","))]
       (let [sd (import-csv csv)]

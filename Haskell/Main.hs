@@ -80,4 +80,4 @@ start count = do
       runMultiple count s
 
 main :: IO ()
-main = start 1000
+main = start 10000

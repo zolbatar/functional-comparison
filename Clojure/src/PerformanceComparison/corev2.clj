@@ -1,7 +1,7 @@
 (ns PerformanceComparison.corev2
   (:gen-class)
   (:use [clojure.java.io]
-        [clojure.contrib.generic.math-functions])
+        [clojure.algo.generic.math-functions])
   (:require [clojure.string :as string]))
 
 (set! *warn-on-reflection* true)
