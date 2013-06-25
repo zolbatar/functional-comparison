@@ -11,12 +11,17 @@ F# (.NET)   -> 8.206s
 Macbook
 -------
 
-C# (MONO)   -> 21.600s
-F# (MONO)   -> 30.208s
-Clojure     -> 1m58.070s
+Functional Style ->
 Haskell     -> 7.557s   1m16.052s
 O'Caml      -> 10.079s  1m38.373s
 Scala       -> 10.433s  1m25.969s
+F# (MONO)   -> 30.208s
+Clojure     -> 1m58.070s
+
+Imperative Style ->
+Go          -> 5.625s (Simplified logic)
+C# (MONO)   -> 21.600s
+Pypy		-> 46.489s
+Python      -> 1m33.422s (Simplified logic)
 Python      -> 1m48.758s
-Pypy		-> 0m46.489s
 Cython		-> 1m19.184s

@@ -61,10 +61,18 @@ class Greedy:
 	def scheduleResources(self, sd):
 		for res in sd.resource:
 			for c in range(0, 5):
-				dist = map((lambda x: (self.distanceBetweenPointsLatLong(res.lat, res.lon, x.lat, x.lon), x)), sd.activity)
-				first = sorted(dist)[0]
-				sd.allocation.append(Allocation(res.id, first[1].id, first[0]))
-				sd.activity.remove(first[1])
+				lowest = sys.float_info.max
+				for act in sd.activity:
+					dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
+					if dist < lowest:
+						lowest = dist
+						lowestact = act 
+				sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
+				sd.activity.remove(lowestact)
+#				dist = map((lambda x: (self.distanceBetweenPointsLatLong(res.lat, res.lon, x.lat, x.lon), x)), sd.activity)
+#				first = sorted(dist)[0]
+#				sd.allocation.append(Allocation(res.id, first[1].id, first[0]))
+#				sd.activity.remove(first[1])
 
 a = []
 r = []
