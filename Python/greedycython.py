@@ -49,7 +49,8 @@ def scheduleResources(sd):
 
 a = []
 r = []
-f = open('D:/Development/FunctionalComparison/Data/DataSPIF.csv', 'r')
+#f = open('D:/Development/FunctionalComparison/Data/DataSPIF.csv', 'r')
+f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
 for line in f:
 	items = line.split(',')
 	if len(items) == 3:

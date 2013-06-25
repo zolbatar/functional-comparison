@@ -1,14 +1,11 @@
-import copy
 import math 
-import string
-import sys
 
-earthRadiusM = 6367450
-convert2Rad = math.pi / 180.0
-convert2Deg = 180.0 / math.pi
-seconds_per_metre = 0.0559234073
+cdef double earthRadiusM = 6367450
+cdef double convert2Rad = math.pi / 180.0
+cdef double convert2Deg = 180.0 / math.pi
+cdef double seconds_per_metre = 0.0559234073
 
-def distanceBetweenPointsLatLong(lat1, lon1, lat2, lon2):
+def distanceBetweenPointsLatLong(double lat1, double lon1, double lat2, double lon2):
 	dStartLatInRad = lat1 * convert2Rad
 	dStartLongInRad = lon1 * convert2Rad
 	dEndLatInRad = lat2 * convert2Rad

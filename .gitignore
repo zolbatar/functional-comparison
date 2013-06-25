@@ -3,6 +3,7 @@
 *.cmo
 *.cmx
 *.o
+*.so
 *.suo
 Haskell/dist
 C#/bin
