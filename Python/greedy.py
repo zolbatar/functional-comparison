@@ -41,9 +41,9 @@ class SchemaData:
 class Greedy:
 
 	earthRadiusM = 6367450
-  	convert2Rad = math.pi / 180.0
-  	convert2Deg = 180.0 / math.pi
-  	seconds_per_metre = 0.0559234073
+	convert2Rad = math.pi / 180.0
+	convert2Deg = 180.0 / math.pi
+	seconds_per_metre = 0.0559234073
 
 	def distanceBetweenPointsLatLong(self, lat1, lon1, lat2, lon2):
 		dStartLatInRad = lat1 * self.convert2Rad
