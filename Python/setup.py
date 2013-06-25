@@ -2,7 +2,7 @@ from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
 
-ext_modules = [Extension("greedycythoncalc", ["distanceBetweenPointsLatLong.pyx"])]
+ext_modules = [Extension("greedycythoncalc", ["greedycythoncalc.pyx"])]
 
 setup(
   name = 'Greedy Performance Test',
