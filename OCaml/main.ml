@@ -48,7 +48,7 @@ let rec scheduleResource (r: resource) (c: int) (sd: schemaData) =
     if c = 0 then
         match List.length sd.resource with
         | 0 -> sd
-        | _ -> scheduleResource (List.hd sd.resource) 5 { sd with resource = List.tl sd.resource }
+        | _ -> scheduleResource (List.hd sd.resource) 50 { sd with resource = List.tl sd.resource }
     else
         let aid, dist = 
           List.hd 
@@ -63,7 +63,7 @@ let rec runMultiple (c: int) (sd: schemaData) =
     match c with
     | 0 -> ()
     | c ->
-        let result = scheduleResource (List.hd sd.resource) 5 { sd with resource = List.tl sd.resource } in
+        let result = scheduleResource (List.hd sd.resource) 50 { sd with resource = List.tl sd.resource } in
         let distances = List.map (fun x -> x.distance) result.allocation in
         let total = List.fold_left (+.) 0.0 distances in
         print_endline (string_of_float total);
@@ -85,4 +85,4 @@ let () =
     print_endline "Done";
     let linesSplit = List.map (fun x -> Array.of_list (Str.split (Str.regexp ",") x)) lines in
     let sd = loadCSV linesSplit { activity = []; resource = []; allocation = [] } in
-    runMultiple 10000 sd
+    runMultiple 100 sd

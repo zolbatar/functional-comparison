@@ -33,7 +33,7 @@ module Start =
         | 0 ->
             match sd.resource.Length with
             | 0 -> sd
-            | _ -> scheduleResource sd.resource.Head 5 { sd with resource = sd.resource.Tail }
+            | _ -> scheduleResource sd.resource.Head 50 { sd with resource = sd.resource.Tail }
         | c ->
             let aid,dist = 
                 sd.activity 
@@ -69,7 +69,7 @@ module Start =
         match c with
         | 0 -> ()
         | c ->
-            let result = scheduleResource sd.resource.Head 5 { sd with resource = sd.resource.Tail }
+            let result = scheduleResource sd.resource.Head 50 { sd with resource = sd.resource.Tail }
             let total = result.allocation |> List.map (fun x -> x.distance) |> List.fold (+) 0.0           
             printfn "%d:%f" c total
             runMultiple (c - 1) sd
@@ -80,5 +80,5 @@ module Start =
 //        let path = @"D:/Development/FunctionalComparison/Data/DataSPIF.csv"
         let lines = readLines path
         let sd = loadCSV lines { activity = []; resource = []; allocation = [] }
-        runMultiple 1000 sd
+        runMultiple 100 sd
         0

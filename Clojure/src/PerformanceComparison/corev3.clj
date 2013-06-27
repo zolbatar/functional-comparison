@@ -41,7 +41,7 @@
   (if (zero? c)
     (if (zero? (count resources)) 
       allocations
-      (recur (first resources) 5 activities (rest resources) allocations))
+      (recur (first resources) 50 activities (rest resources) allocations))
     (do
       (let [aid-dist (p :aid-dist (first (sort-by second (map #(list (:id %) (distance-between-points-lat-long (:lat %) (:lng %) (:lat r) (:lng r))) (vals activities)))))]
         (let [new-allocation (p :new-allocation (Allocation. (:id r) (first aid-dist) (second aid-dist)))
@@ -70,11 +70,11 @@
       (let [sd (p :import (import-csv csv))
             activities (:activities sd)
             resources (rest (:resources sd))]
-        (loop [countloop 1000]
+        (loop [countloop 100]
           (if (zero? countloop)
             0
             (let [allocations []
-                  alloc (p :alloc (map #(:distance %) (schedule (first (:resources sd)) 5 activities resources allocations)))
+                  alloc (p :alloc (map #(:distance %) (schedule (first (:resources sd)) 50 activities resources allocations)))
                   total (p :reduce (reduce + alloc))]
               (p :print (println countloop ":" total))
             (recur (dec countloop)))))))))

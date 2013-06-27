@@ -8,5 +8,5 @@ cabal-version:       >=1.8
 
 executable GreedyPerformance
   main-is:           Main.hs
-  build-depends:     base >=4.5, MissingH >=1.1, parsec, containers, criterion
+  build-depends:     base >=4.5, MissingH >=1.1, parsec, containers, criterion, parallel
   ghc-options:       -Wall -O2 -with-rtsopts=-N -with-rtsopts=-A4M -with-rtsopts=-H512M

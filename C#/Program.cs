@@ -112,14 +112,17 @@ namespace CSharp
             var al = new List<Activity>();
 			var rl = new List<Resource> ();
 			importCSV (lines, al, rl);
-			for (var i = 1; i < 1000; i++) 
+			for (var i = 1; i < 100; i++) 
 			{
                 var sd2 = new SchemaData();
                 sd2.resource = rl.ToList();
                 sd2.activity = al.ToList();
                 sd2.allocation = new List<Allocation>();
-				scheduleResources (5, sd2);
-				var total = sd2.allocation.Sum (x => x.distance);
+				scheduleResources (50, sd2);
+				var total = 0.0;
+				foreach (var a in sd2.allocation) {
+					total += a.distance;
+				}
 				Console.WriteLine (i.ToString() + ":" + total);
 			}
 		}

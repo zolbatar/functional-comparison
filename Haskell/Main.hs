@@ -4,6 +4,8 @@ import Prelude
 import Text.ParserCombinators.Parsec
 import Data.CSV
 import Data.List
+import Control.Parallel
+import Control.Parallel.Strategies
 
 data Activity = Activity String Double Double deriving Show
 data Resource = Resource String Double Double deriving Show
@@ -55,7 +57,7 @@ scheduleResource :: Resource -> Int -> SchemaData -> IO SchemaData
 scheduleResource _ 0 (SchemaData a r al) = 
   case length r of
     0 -> return (SchemaData a r al)
-    _ -> scheduleResource (head r) 5 (SchemaData a (tail r) al)
+    _ -> scheduleResource (head r) 50 (SchemaData a (tail r) al)
 scheduleResource resource count (SchemaData a r al) = do
   let (Resource rid lat lng) = resource
       dists = map (\ (Activity aid alat alng) -> (aid, distanceBetweenPointsLatLong lat lng alat alng)) a
@@ -65,7 +67,7 @@ scheduleResource resource count (SchemaData a r al) = do
 runMultiple :: Int -> SchemaData -> IO ()
 runMultiple 0 _ = return ()
 runMultiple count (SchemaData a r al) = do
-  (SchemaData _ _ res_al) <- scheduleResource (head r) 5 (SchemaData a (tail r) al)
+  (SchemaData _ _ res_al) <- scheduleResource (head r) 50 (SchemaData a (tail r) al)
   let distances = map (\ (Allocation _ _ dist) -> dist) res_al
   let tot = foldl (+) 0.0 distances
   putStrLn $ show tot
@@ -80,4 +82,4 @@ start count = do
       runMultiple count s
 
 main :: IO ()
-main = start 10000
+main = start 100
