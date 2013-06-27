@@ -60,7 +60,7 @@ class Greedy:
 
 	def scheduleResources(self, sd):
 		for res in sd.resource:
-			for c in range(0, 5):
+			for c in range(0, 50):
 				lowest = sys.float_info.max
 				for act in sd.activity:
 					dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
@@ -69,10 +69,6 @@ class Greedy:
 						lowestact = act 
 				sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
 				sd.activity.remove(lowestact)
-#				dist = map((lambda x: (self.distanceBetweenPointsLatLong(res.lat, res.lon, x.lat, x.lon), x)), sd.activity)
-#				first = sorted(dist)[0]
-#				sd.allocation.append(Allocation(res.id, first[1].id, first[0]))
-#				sd.activity.remove(first[1])
 
 a = []
 r = []
@@ -85,10 +81,10 @@ for line in f:
 		a.append(Resource(items[0], float(items[1]), float(items[2])))
 
 gp = Greedy()
-for i in range(0, 1000):
+for i in range(0, 100):
 	sdi = SchemaData()
 	sdi.resource = copy.deepcopy(r)
 	sdi.activity = copy.deepcopy(a)
 	sdi.allocation = []
 	gp.scheduleResources(sdi)
-	print str(i) + ":" + str(sum(i.dist for i in sdi.allocation))
+	print(str(i) + ":" + str(sum(i.dist for i in sdi.allocation)))

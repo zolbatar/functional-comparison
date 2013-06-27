@@ -21,7 +21,18 @@ Clojure     -> 1m58.070s
 Imperative Style ->
 Go          -> 5.625s (Simplified logic)
 C# (MONO)   -> 21.600s
+Ruby 2.0    -> 31.526s (Simplified logic)
 Pypy		-> 46.489s
+Cython		-> 1m19.184s
 Python      -> 1m33.422s (Simplified logic)
 Python      -> 1m48.758s
-Cython		-> 1m19.184s
+
+Simplified (Macbook) -> New Style
+---------------------------------
+
+Go			-> 2.966s
+PyPy        -> 6.987s
+Ruby 2.0    -> 16.563s
+Python 3.3  -> 25.274s
+Cython      -> 32.745s
+Python 2.7  -> 43.798s

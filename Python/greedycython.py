@@ -41,11 +41,15 @@ class SchemaData:
 
 def scheduleResources(sd):
 	for res in sd.resource:
-		for c in range(0, 5):
-			dist = map((lambda x: (greedycythoncalc.distanceBetweenPointsLatLong(res.lat, res.lon, x.lat, x.lon), x)), sd.activity)
-			first = sorted(dist)[0]
-			sd.allocation.append(Allocation(res.id, first[1].id, first[0]))
-			sd.activity.remove(first[1])
+		for c in range(0, 50):
+			lowest = sys.float_info.max
+			for act in sd.activity:
+				dist = greedycythoncalc.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)					
+				if dist < lowest:
+					lowest = dist
+					lowestact = act 
+			sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
+			sd.activity.remove(lowestact)
 
 a = []
 r = []
@@ -58,7 +62,7 @@ for line in f:
 	else:
 		a.append(Resource(items[0], float(items[1]), float(items[2])))
 
-for i in range(0, 1000):
+for i in range(0, 100):
 	sdi = SchemaData()
 	sdi.resource = copy.deepcopy(r)
 	sdi.activity = copy.deepcopy(a)
