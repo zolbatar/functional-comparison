@@ -30,6 +30,7 @@ Python      -> 1m48.758s
 Simplified (Macbook) -> New Style
 ---------------------------------
 
+C++				 -> 1.473s
 Go			     -> 2.966s
 Haskell          -> 3.955s
 O'Caml           -> 4.892s
