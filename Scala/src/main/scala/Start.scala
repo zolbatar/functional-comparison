@@ -48,20 +48,27 @@ object Start {
     }
   }
 
-  def scheduleResourceSimple(sd: SchemaData) = {
-    for (r <- sd.resources) {
+  def scheduleResourceSimple(sd: SchemaData): SchemaData = {
+    var lsd = sd.copy()
+//    var allocations: List[Allocation] = List()
+    for (r <- lsd.resources) {
       for (i <- 1 to 50) {
 
         var lowest = Double.MaxValue
-//        Activity a
-        for (a <- sd.activities) {
+        var aid = ""
+        for (a <- lsd.activities) {
           val dist = distanceBetweenPointsLatLong(r.lat, r.lng, a.lat, a.lng)
           if (dist < lowest) {
-
+            lowest = dist
+            aid = a.id
           }
         }
+        lsd = lsd.copy(
+          activities = lsd.activities.filter(x => x.id != aid),
+          allocations = new Allocation(activityId = aid, resourceId = r.id, distance = lowest) :: lsd.allocations)
       }
     }
+    return lsd
 /*    c match {
       case 0 => 
         sd.resources.length match {
@@ -82,10 +89,10 @@ object Start {
     x.length match {
       case 3 => 
         val r = new Resource(id = x(0), lat = x(1).toDouble, lng = x(2).toDouble)
-        sd.copy(resources = r :: sd.resources)
+        sd.copy(resources = sd.resources :+ r)
       case 4 =>
         val a = new Activity(id = x(0), lat = x(1).toDouble, lng = x(2).toDouble)
-        sd.copy(activities = a :: sd.activities)
+        sd.copy(activities = sd.activities :+ a)
     }
   }
 
@@ -113,9 +120,9 @@ object Start {
     val lines = (for (line <- scala.io.Source.fromFile(path).getLines()) yield line.split(",")).toSeq
     val sd = importCSV(lines, new SchemaData())
     for (i <- 1 to 100) {
-      scheduleResourceSimple(sd)
-//      val total = res.allocations.map(x => x.distance).fold(0.0)(_+_)
-//      println(i.toString() + ":" + total)
+      val res = scheduleResourceSimple(sd)
+      val total = res.allocations.map(x => x.distance).fold(0.0)(_+_)
+      println(i.toString() + ":" + total)
     }
   }
 

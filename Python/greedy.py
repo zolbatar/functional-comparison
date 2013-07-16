@@ -60,6 +60,7 @@ class Greedy:
 
 	def scheduleResources(self, sd):
 		for res in sd.resource:
+			print(res.id)
 			for c in range(0, 50):
 				lowest = sys.float_info.max
 				for act in sd.activity:
