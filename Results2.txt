@@ -30,22 +30,25 @@ Python      -> 1m48.758s
 Simplified (Macbook) -> New Style
 ---------------------------------
 
-C++				 -> 1.473s
-Go			     -> 2.966s
-Scala (Imper.)   -> 3.283s
-Haskell          -> 3.955s
-C# (Adjusted)    -> 3.997s
-O'Caml           -> 4.892s
-F# (Adjusted)    -> 5.442s
-Scala (Func/Imm) -> 6.836s
-PyPy             -> 6.987s
-C# (Mono 3.0)    -> 10.137s
-C# (Mono 2.10)   -> 10.554s
-F# (Mono 3.0)    -> 13.802s
-F# (Mono 2.10)   -> 16.031s
-Ruby 2.0         -> 16.563s
-Python 3.3       -> 25.274s
-Cython           -> 32.745s
-Ruby 1.9         -> 37.843s
-Python 2.7       -> 43.798s
-Clojure          -> 2m25.605s
+C++				  -> 1.473s
+Go			      -> 2.966s
+PyPy (Maps)       -> 3.180s
+Scala (Imper.)    -> 3.283s
+Haskell           -> 3.955s
+C# (Adjusted)     -> 3.997s
+O'Caml            -> 4.892s
+F# (Adjusted)     -> 5.442s
+Scala (Func/Imm)  -> 6.836s
+PyPy              -> 6.987s
+C# (Mono 3.0)     -> 10.137s
+C# (Mono 2.10)    -> 10.554s
+F# (Mono 3.0)     -> 13.802s
+F# (Mono 2.10)    -> 16.031s
+Ruby 2.0          -> 16.563s
+Python 3.3        -> 25.274s
+Python 3.3 (Maps) -> 27.642s
+Python 2.7 (Maps) -> 31.736s
+Cython            -> 32.745s
+Ruby 1.9          -> 37.843s
+Python 2.7        -> 43.798s
+Clojure           -> 2m25.605s

@@ -34,13 +34,13 @@ class Allocation:
 		self.dist = dist
 
 class SchemaData:
-	activity = [] 
+	activity = {}
 	resource = [] 
 	allocation = [] 
 
 class Greedy:
 
-	earthRadiusM = 6367450.0
+	earthRadiusM = 6367450
 	convert2Rad = math.pi / 180.0
 	convert2Deg = 180.0 / math.pi
 	seconds_per_metre = 0.0559234073
@@ -62,15 +62,16 @@ class Greedy:
 		for res in sd.resource:
 			for c in range(0, 50):
 				lowest = sys.float_info.max
-				for act in sd.activity:
+				for actid in sd.activity:
+					act = sd.activity[actid]
 					dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
 					if dist < lowest:
 						lowest = dist
-						lowestact = act 
-				sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
-				sd.activity.remove(lowestact)
+						lowestactid = actid 
+				sd.allocation.append(Allocation(res.id, lowestactid, lowest))
+				del sd.activity[lowestactid]
 
-a = []
+a = {}
 r = []
 f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
 for line in f:
@@ -78,7 +79,7 @@ for line in f:
 	if len(items) == 3:
 		r.append(Resource(items[0], float(items[1]), float(items[2])))
 	else:
-		a.append(Resource(items[0], float(items[1]), float(items[2])))
+		a[items[0]] = Resource(items[0], float(items[1]), float(items[2]))
 
 gp = Greedy()
 for i in range(0, 100):

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"act",
+				"actid"
+			],
+			[
 				"pri",
 				"Println	n int, err error ƒ"
 			],
@@ -83,11 +87,35 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "Python/greedy.py",
+			"settings":
+			{
+				"buffer_size": 2246,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Python/greedymaps.py",
+			"settings":
+			{
+				"buffer_size": 2281,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Results2.txt",
+			"settings":
+			{
+				"buffer_size": 1239,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 47.0,
+		"height": 49.0,
 		"selected_items":
 		[
 			[
@@ -119,7 +147,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 435.0
 	},
 	"console":
 	{
@@ -136,8 +164,9 @@
 	},
 	"file_history":
 	[
-		"/Users/daryl/Development/Projects/FunctionalComparison/Results2.txt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedy.py",
+		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycython.py",
+		"/Users/daryl/Development/Projects/FunctionalComparison/Results2.txt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/src/main/scala/Start.scala",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/build.sbt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/project/plugins.sbt",
@@ -151,7 +180,6 @@
 		"/Users/daryl/Development/Projects/FunctionalComparison/Clojure/src/PerformanceComparison/corev3.clj",
 		"/Users/daryl/Development/Projects/FunctionalComparison/F#/Start.fs",
 		"/Users/daryl/Development/Projects/FunctionalComparison/OCaml/main.ml",
-		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycython.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycython.c",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycythoncalc.pyx",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycythonclass.pyx",
@@ -232,8 +260,89 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Python/greedy.py",
+					"settings":
+					{
+						"buffer_size": 2246,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								656,
+								656
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 602.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Python/greedymaps.py",
+					"settings":
+					{
+						"buffer_size": 2281,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2281,
+								2281
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 680.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Results2.txt",
+					"settings":
+					{
+						"buffer_size": 1239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1120,
+								1120
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 125.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
