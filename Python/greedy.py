@@ -93,4 +93,5 @@ def main():
 		gp.scheduleResources(sdi)
 		print(str(i) + ":" + str(sum(i.dist for i in sdi.allocation)))
 
-print(timeit.timeit("main()", number=1))
+#print(timeit.timeit("main()", number=1))
+main()
