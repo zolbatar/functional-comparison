@@ -42,7 +42,6 @@ class SchemaData:
 	resource = [] 
 	allocation = [] 
 
-@jit
 class Greedy(object):
 
 	earthRadiusM = 6367450.0
@@ -50,6 +49,7 @@ class Greedy(object):
 	convert2Deg = 180.0 / math.pi
 	seconds_per_metre = 0.0559234073
 
+	@autojit()
 	def distanceBetweenPointsLatLong(self, lat1, lon1, lat2, lon2):
 		dStartLatInRad = lat1 * self.convert2Rad
 		dStartLongInRad = lon1 * self.convert2Rad
@@ -67,6 +67,7 @@ class Greedy(object):
 		for res in sd.resource:
 			for c in range(0, 50):
 				lowest = sys.float_info.max
+				lowestact = None
 				for act in sd.activity:
 					dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
 					if dist < lowest:
