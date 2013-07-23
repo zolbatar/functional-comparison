@@ -2,8 +2,9 @@ import copy
 import math 
 import string
 import sys
+import timeit
 
-class Activity:
+class Activity(object):
 	id = ""
 	lat = 0.0
 	lon = 0.0
@@ -13,7 +14,7 @@ class Activity:
 		self.lat = lat
 		self.lon = lon
 
-class Resource:
+class Resource(object):
 	id = ""
 	lat = 0.0
 	lon = 0.0
@@ -23,7 +24,7 @@ class Resource:
 		self.lat = lat
 		self.lon = lon
 
-class Allocation:
+class Allocation(object):
 	rid = ""
 	aid = ""
 	dist = 0.0
@@ -33,12 +34,12 @@ class Allocation:
 		self.aid = aid
 		self.dist = dist
 
-class SchemaData:
+class SchemaData(object):
 	activity = [] 
 	resource = [] 
 	allocation = [] 
 
-class Greedy:
+class Greedy(object):
 
 	earthRadiusM = 6367450.0
 	convert2Rad = math.pi / 180.0
@@ -70,21 +71,26 @@ class Greedy:
 				sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
 				sd.activity.remove(lowestact)
 
-a = []
-r = []
-f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
-for line in f:
-	items = line.split(',')
-	if len(items) == 3:
-		r.append(Resource(items[0], float(items[1]), float(items[2])))
-	else:
-		a.append(Resource(items[0], float(items[1]), float(items[2])))
 
-gp = Greedy()
-for i in range(0, 100):
-	sdi = SchemaData()
-	sdi.resource = copy.deepcopy(r)
-	sdi.activity = copy.deepcopy(a)
-	sdi.allocation = []
-	gp.scheduleResources(sdi)
-	print(str(i) + ":" + str(sum(i.dist for i in sdi.allocation)))
+def main():
+	a = []
+	r = []
+	#f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
+	f = open('D:/Development/FunctionalComparison/Data/DataSPIF.csv', 'r')
+	for line in f:
+		items = line.split(',')
+		if len(items) == 3:
+			r.append(Resource(items[0], float(items[1]), float(items[2])))
+		else:
+			a.append(Resource(items[0], float(items[1]), float(items[2])))
+
+		gp = Greedy()
+	for i in range(0, 100):
+		sdi = SchemaData()
+		sdi.resource = copy.deepcopy(r)
+		sdi.activity = copy.deepcopy(a)
+		sdi.allocation = []
+		gp.scheduleResources(sdi)
+		print(str(i) + ":" + str(sum(i.dist for i in sdi.allocation)))
+
+print(timeit.timeit("main()", number=1))
