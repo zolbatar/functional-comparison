@@ -13,3 +13,5 @@ F#/obj
 OCaml/main
 Scala/Project/target
 Clojure/target
+C++/greedy
+C++/greedymap

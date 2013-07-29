@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"low",
+				"lowestactid"
+			],
+			[
 				"act",
 				"actid"
 			],
@@ -64,10 +68,6 @@
 				"allocation"
 			],
 			[
-				"low",
-				"lowestact"
-			],
-			[
 				"res",
 				"resource"
 			],
@@ -88,26 +88,10 @@
 	"buffers":
 	[
 		{
-			"file": "Python/greedy.py",
-			"settings":
-			{
-				"buffer_size": 2246,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "Python/greedymaps.py",
 			"settings":
 			{
-				"buffer_size": 2281,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Results2.txt",
-			"settings":
-			{
-				"buffer_size": 1239,
+				"buffer_size": 2909,
 				"line_ending": "Unix"
 			}
 		}
@@ -165,8 +149,9 @@
 	"file_history":
 	[
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedy.py",
-		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycython.py",
+		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedymaps.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Results2.txt",
+		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycython.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/src/main/scala/Start.scala",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/build.sbt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/project/plugins.sbt",
@@ -260,50 +245,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Python/greedy.py",
-					"settings":
-					{
-						"buffer_size": 2246,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								656,
-								656
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 602.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "Python/greedymaps.py",
 					"settings":
 					{
-						"buffer_size": 2281,
+						"buffer_size": 2909,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2281,
-								2281
+								1765,
+								1765
 							]
 						],
 						"settings":
@@ -312,33 +270,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 680.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Results2.txt",
-					"settings":
-					{
-						"buffer_size": 1239,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1120,
-								1120
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 125.0,
+						"translation.y": 716.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -400,11 +332,15 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/Users/daryl/Library/Application Support/Sublime Text 2/Packages/GoSublime/Obpysidian.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"show_minimap": true,
 	"show_open_files": false,

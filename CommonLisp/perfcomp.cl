@@ -1,3 +1,5 @@
+; (load "perfcomp.cl")
+
 (defstruct activity id lat lng)
 (defstruct resource id lat lng)
 (defstruct allocation resource-id activity-id distance)
@@ -20,9 +22,10 @@
         (c (atan (sqrt a) (sqrt (- 1.0 a)))))
     (* earth-radius (+ c c))))
 
-;(format t "~D" (distance-between-points-lat-long 52.895461 -1.702781 53.157758 -1.760560))
-(format t "~S" (split-sequence #\Space "a ndd ss"))
-(with-open-file (stream "/Users/daryl/Source/SkylinedSoftware/Prototypes/PerformanceComparison/Data/DataSPIF.csv" :direction :input)
-  (let ((line (read-line stream)))
+(format t "~D" (distance-between-points-lat-long 52.895461 -1.702781 53.157758 -1.760560))
+;(format t "~S" (split-sequence #\Space "a ndd ss"))
+(with-open-file (stream "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv" :direction :input)
+  (loop for line = (read-line stream nil) while line do 
+;  (let ((line (read-line stream)))
     (format t "~S" line)
   ))
