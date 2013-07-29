@@ -3,8 +3,11 @@ import math
 import string
 import sys
 import timeit
+from numba import double
+from numba.decorators import jit, autojit
 
-class Activity(object):
+
+class Activity:
 	id = ""
 	lat = 0.0
 	lon = 0.0
@@ -14,7 +17,7 @@ class Activity(object):
 		self.lat = lat
 		self.lon = lon
 
-class Resource(object):
+class Resource:
 	id = ""
 	lat = 0.0
 	lon = 0.0
@@ -24,7 +27,7 @@ class Resource(object):
 		self.lat = lat
 		self.lon = lon
 
-class Allocation(object):
+class Allocation:
 	rid = ""
 	aid = ""
 	dist = 0.0
@@ -34,7 +37,7 @@ class Allocation(object):
 		self.aid = aid
 		self.dist = dist
 
-class SchemaData(object):
+class SchemaData:
 	activity = [] 
 	resource = [] 
 	allocation = [] 
@@ -46,6 +49,7 @@ class Greedy(object):
 	convert2Deg = 180.0 / math.pi
 	seconds_per_metre = 0.0559234073
 
+	@autojit()
 	def distanceBetweenPointsLatLong(self, lat1, lon1, lat2, lon2):
 		dStartLatInRad = lat1 * self.convert2Rad
 		dStartLongInRad = lon1 * self.convert2Rad
@@ -63,6 +67,7 @@ class Greedy(object):
 		for res in sd.resource:
 			for c in range(0, 50):
 				lowest = sys.float_info.max
+				lowestact = None
 				for act in sd.activity:
 					dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
 					if dist < lowest:
@@ -71,27 +76,28 @@ class Greedy(object):
 				sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
 				sd.activity.remove(lowestact)
 
+a = []
+r = []
+#f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
+f = open('D:/Development/FunctionalComparison/Data/DataSPIF.csv', 'r')
+for line in f:
+	items = line.split(',')
+	if len(items) == 3:
+		r.append(Resource(items[0], float(items[1]), float(items[2])))
+	else:
+		a.append(Resource(items[0], float(items[1]), float(items[2])))
 
-def main():
-	a = []
-	r = []
-	#f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
-	f = open('D:/Development/FunctionalComparison/Data/DataSPIF.csv', 'r')
-	for line in f:
-		items = line.split(',')
-		if len(items) == 3:
-			r.append(Resource(items[0], float(items[1]), float(items[2])))
-		else:
-			a.append(Resource(items[0], float(items[1]), float(items[2])))
-
-		gp = Greedy()
+def go():
+	gp = Greedy()
 	for i in range(0, 100):
 		sdi = SchemaData()
 		sdi.resource = copy.deepcopy(r)
 		sdi.activity = copy.deepcopy(a)
 		sdi.allocation = []
 		gp.scheduleResources(sdi)
-		print(str(i) + ":" + str(sum(i.dist for i in sdi.allocation)))
+		total = 0.0
+		for j in sdi.allocation:
+			total += j.dist 
+		print "%d:%f" % (i, total)
 
-#print(timeit.timeit("main()", number=1))
-main()
+timeit(go())

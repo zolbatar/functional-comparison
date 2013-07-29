@@ -87,6 +87,7 @@
 	},
 	"buffers":
 	[
+<<<<<<< HEAD
 		{
 			"file": "Python/greedymaps.py",
 			"settings":
@@ -95,6 +96,8 @@
 				"line_ending": "Unix"
 			}
 		}
+=======
+>>>>>>> 310306480ca4159454673792a8e1a66290fdd346
 	],
 	"build_system": "",
 	"command_palette":
@@ -148,6 +151,12 @@
 	},
 	"file_history":
 	[
+		"/D/Development/FunctionalComparison/Python/greedycython.py",
+		"/D/Development/FunctionalComparison/Python/setup.py",
+		"/C/Users/dadugb/AppData/Roaming/Sublime Text 2/Packages/GoSublime/CHANGELOG.md",
+		"/D/Development/FunctionalComparison/Python/greedy.py",
+		"/D/Development/FunctionalComparison/Python/greedymaps.py",
+		"/D/Development/FunctionalComparison/Results2.txt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedy.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedymaps.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Results2.txt",
@@ -245,6 +254,7 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"selected": 0,
 			"sheets":
 			[
@@ -275,6 +285,10 @@
 					},
 					"type": "text"
 				}
+=======
+			"sheets":
+			[
+>>>>>>> 310306480ca4159454673792a8e1a66290fdd346
 			]
 		}
 	],
