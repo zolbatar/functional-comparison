@@ -1,11 +1,10 @@
 module Main where
 
 import Prelude
+import System
 import Text.ParserCombinators.Parsec
 import Data.CSV
 import Data.List
-import Control.Parallel
-import Control.Parallel.Strategies
 
 data Activity = Activity String Double Double deriving Show
 data Resource = Resource String Double Double deriving Show
@@ -58,28 +57,28 @@ scheduleResource _ 0 (SchemaData a r al) =
   case length r of
     0 -> return (SchemaData a r al)
     _ -> scheduleResource (head r) 50 (SchemaData a (tail r) al)
-scheduleResource resource count (SchemaData a r al) = do
+scheduleResource resource c (SchemaData a r al) = do
   let (Resource rid lat lng) = resource
-      dists = map (\ (Activity aid alat alng) -> (aid, distanceBetweenPointsLatLong lat lng alat alng)) a
-      (caid, dist) = head $ sortBy (\ x y -> compare (snd x) (snd y)) dists
-  scheduleResource resource (count - 1) (SchemaData (filter (\ (Activity aid _ _) -> aid /= caid) a) r ((Allocation rid caid dist) : al))
+  let dists = map (\ (Activity aid alat alng) -> (aid, distanceBetweenPointsLatLong lat lng alat alng)) a
+  let (caid, dist) = head $ sortBy (\ x y -> compare (snd x) (snd y)) dists
+  scheduleResource resource (c - 1) (SchemaData (filter (\ (Activity aid _ _) -> aid /= caid) a) r ((Allocation rid caid dist) : al))
 
 runMultiple :: Int -> SchemaData -> IO ()
 runMultiple 0 _ = return ()
-runMultiple count (SchemaData a r al) = do
+runMultiple c (SchemaData a r al) = do
   (SchemaData _ _ res_al) <- scheduleResource (head r) 50 (SchemaData a (tail r) al)
   let distances = map (\ (Allocation _ _ dist) -> dist) res_al
   let tot = foldl (+) 0.0 distances
   putStrLn $ show tot
-  runMultiple (count - 1) (SchemaData a r al)
+  runMultiple (c - 1) (SchemaData a r al)
 
 start :: Int -> IO ()
-start count = do 
+start c = do 
   entities <- importCSV
   case entities of
     Nothing -> putStrLn "Nothing"
     Just s -> do
-      runMultiple count s
+      runMultiple c s
 
 main :: IO ()
 main = start 100

@@ -24,8 +24,12 @@ Ruby 1.9          -> 37.843s
 Python 2.7        -> 43.798s
 Clojure           -> 2m25.605s
 
+1000
+----
 
-
+C++               -> 14.206s
+Go                -> 27.189s
+PyPy              -> 28.478s
 
 All for a 1000 iterations:
 

@@ -87,17 +87,30 @@
 	},
 	"buffers":
 	[
-<<<<<<< HEAD
 		{
-			"file": "Python/greedymaps.py",
+			"file": "Results2.txt",
 			"settings":
 			{
-				"buffer_size": 2909,
+				"buffer_size": 1260,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "C++/greedy.cpp",
+			"settings":
+			{
+				"buffer_size": 4171,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 155,
 				"line_ending": "Unix"
 			}
 		}
-=======
->>>>>>> 310306480ca4159454673792a8e1a66290fdd346
 	],
 	"build_system": "",
 	"command_palette":
@@ -105,6 +118,10 @@
 		"height": 49.0,
 		"selected_items":
 		[
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
 			[
 				"install p",
 				"Package Control: Install Package"
@@ -126,10 +143,6 @@
 				"Format: Javascript"
 			],
 			[
-				"install pac",
-				"Package Control: Install Package"
-			],
-			[
 				"install pa",
 				"Package Control: Install Package"
 			]
@@ -138,7 +151,7 @@
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 239.0
 	},
 	"distraction_free":
 	{
@@ -151,21 +164,19 @@
 	},
 	"file_history":
 	[
-		"/D/Development/FunctionalComparison/Python/greedycython.py",
-		"/D/Development/FunctionalComparison/Python/setup.py",
-		"/C/Users/dadugb/AppData/Roaming/Sublime Text 2/Packages/GoSublime/CHANGELOG.md",
-		"/D/Development/FunctionalComparison/Python/greedy.py",
-		"/D/Development/FunctionalComparison/Python/greedymaps.py",
-		"/D/Development/FunctionalComparison/Results2.txt",
-		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedy.py",
-		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedymaps.py",
+		"/Users/daryl/Development/Projects/FunctionalComparison/C++/greedy2.cpp",
+		"/Users/daryl/Development/Projects/FunctionalComparison/C++/greedymap.cpp",
+		"/Users/daryl/Development/Projects/FunctionalComparison/C++/greedy.cpp",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Results2.txt",
+		"/Users/daryl/Development/Projects/FunctionalComparison/CommonLisp/perfcomp.cl",
+		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedymaps.py",
+		"/Users/daryl/Library/Application Support/Sublime Text 2/Packages/Pylinter/Pylinter.sublime-settings",
+		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedy.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Python/greedycython.py",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/src/main/scala/Start.scala",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/build.sbt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Scala/project/plugins.sbt",
 		"/Users/daryl/Development/Projects/FunctionalComparison/.gitignore",
-		"/Users/daryl/Development/Projects/FunctionalComparison/C++/greedy.cpp",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Go/greedy.go",
 		"/Users/daryl/Development/Projects/FunctionalComparison/C#/Program.cs",
 		"/Users/daryl/Development/Projects/FunctionalComparison/Haskell/GreedyPerformance.cabal",
@@ -254,41 +265,88 @@
 	"groups":
 	[
 		{
-<<<<<<< HEAD
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Python/greedymaps.py",
+					"file": "Results2.txt",
 					"settings":
 					{
-						"buffer_size": 2909,
+						"buffer_size": 1260,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1765,
-								1765
+								180,
+								180
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "C++/greedy.cpp",
+					"settings":
+					{
+						"buffer_size": 4171,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 716.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": ".gitignore",
+					"settings":
+					{
+						"buffer_size": 155,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				}
-=======
-			"sheets":
-			[
->>>>>>> 310306480ca4159454673792a8e1a66290fdd346
 			]
 		}
 	],
