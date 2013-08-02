@@ -15,10 +15,10 @@
 (defrecord SchemaData [activities resources])
 
 ;; Memoised
-(def memo-sin (clojure.core.memoize/memo sin))
-(def memo-cos (clojure.core.memoize/memo cos))
-(def memo-sqrt (clojure.core.memoize/memo sqrt))
-(def memo-atan2 (clojure.core.memoize/memo atan2))
+;(def memo-sin (clojure.core.memoize/memo sin))
+;(def memo-cos (clojure.core.memoize/memo cos))
+;(def memo-sqrt (clojure.core.memoize/memo sqrt))
+;(def memo-atan2 (clojure.core.memoize/memo atan2))
 
 (def ^:const earth-radius 6367450.0)
 (def ^:const convert-to-rad (/ (. Math PI) 180.0))
@@ -31,10 +31,10 @@
         dEndLongInRad ^double (p :c4 (* lon2 convert-to-rad))
         dLongitude ^double (p :c5 (- dEndLongInRad dStartLongInRad))
         dLatitude ^double (p :c6 (- dEndLatInRad dStartLatInRad))
-        dSinHalfLatitude ^double (p :c7 (memo-sin (* dLatitude 0.5)))
-        dSinHalfLongitude ^double (p :c8 (memo-sin (* dLongitude 0.5)))
-        a ^double (p :c9 (+ (* dSinHalfLatitude dSinHalfLatitude) (* (memo-cos dStartLatInRad) (memo-cos dEndLatInRad) dSinHalfLongitude dSinHalfLongitude)))
-        c ^double (p :c10 (memo-atan2 (memo-sqrt a) (memo-sqrt (- 1.0 a))))]
+        dSinHalfLatitude ^double (p :c7 (sin (* dLatitude 0.5)))
+        dSinHalfLongitude ^double (p :c8 (sin (* dLongitude 0.5)))
+        a ^double (p :c9 (+ (* dSinHalfLatitude dSinHalfLatitude) (* (cos dStartLatInRad) (cos dEndLatInRad) dSinHalfLongitude dSinHalfLongitude)))
+        c ^double (p :c10 (atan2 (sqrt a) (sqrt (- 1.0 a))))]
     (p :ce (* earth-radius (+ c c)))))
 
 (defn schedule [r c activities resources allocations]
@@ -43,10 +43,17 @@
       allocations
       (recur (first resources) 50 activities (rest resources) allocations))
     (do
-      (let [aid-dist (p :aid-dist (first (sort-by second (map #(list (:id %) (distance-between-points-lat-long (:lat %) (:lng %) (:lat r) (:lng r))) (vals activities)))))]
+      (let [aid-dist-unsorted (p :aid-unsorted (map #(list (:id %) (distance-between-points-lat-long (:lat %) (:lng %) (:lat r) (:lng r))) (vals activities)))
+
+            ;; The sort-by is too slow. Use reduce to figure out the lowest
+            aid-dist (p :aid-reduce (reduce #(if (< (second %1) (second %2)) %1 %2) aid-dist-unsorted))]
+
+            ;; Old sort, so slow
+;            aid-sorted (p :aid-sorted (sort-by second aid-dist-unsorted))
+;            aid-dist (p :aid-first (first aid-sorted-reduce))]
         (let [new-allocation (p :new-allocation (Allocation. (:id r) (first aid-dist) (second aid-dist)))
-              activities (dissoc activities (first aid-dist))
-              allocations (conj allocations new-allocation)]
+              activities (p :activities (dissoc activities (first aid-dist)))
+              allocations (p :allocation (conj allocations new-allocation))]
           (recur r (dec c) activities resources allocations))))))
 
 (defn import-csv [csv]
@@ -70,7 +77,7 @@
       (let [sd (p :import (import-csv csv))
             activities (:activities sd)
             resources (rest (:resources sd))]
-        (loop [countloop 100]
+        (loop [countloop 5]
           (if (zero? countloop)
             0
             (let [allocations []
@@ -80,6 +87,6 @@
             (recur (dec countloop)))))))))
 
 (defn -main []
-;;  (profile :info :Arithmetic (run)))
-  (run))
+  (profile :info :Arithmetic (run)))
+;;  (run))
 
