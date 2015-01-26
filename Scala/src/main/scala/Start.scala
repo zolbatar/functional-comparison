@@ -106,8 +106,8 @@ object Start {
   }
 
   def simplified() {
-    //val path = "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
-    val path = "D:/Development/FunctionalComparison/Data/DataSPIF.csv"
+    val path = "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
+    //val path = "D:/Development/FunctionalComparison/Data/DataSPIF.csv"
     val lines = (for (line <- scala.io.Source.fromFile(path).getLines()) yield line.split(",")).toSeq
     val sd = importCSV(lines, new SchemaData())
     for (i <- 1 to 100) {
