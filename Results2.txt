@@ -1,12 +1,17 @@
 New Run 26/01/2015
 ------------------
 
-C++...............-> 1.074s
-PyPy..............-> 2.112s
-Go................-> 2.437s
-Java..............-> 3.120s
-Scala.............-> 3.717s
-Python............-> 28.586s
+C++               -> 1.074s
+PyPy              -> 2.112s
+Go                -> 2.437s
+PyPy (Maps)       -> 2.493s
+Java              -> 3.120s
+PyPy3             -> 3.565s (Same code as Python2, so expected similar to PyPy)
+Scala             -> 3.717s
+Haskell           -> 4.157s (wrong result??)
+Ruby 2.2          -> 16.585s
+Python3           -> 26.788s
+Python            -> 28.586s
 
 Simplified (Macbook) -> New Style
 ---------------------------------

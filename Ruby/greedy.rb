@@ -1,3 +1,4 @@
+#gem install ruby_deep_clone
 require "deep_clone"
 
 class Activity

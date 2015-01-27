@@ -1,7 +1,7 @@
 module Main where
 
 import Prelude
-import System
+--import System
 import Text.ParserCombinators.Parsec
 import Data.CSV
 import Data.List
