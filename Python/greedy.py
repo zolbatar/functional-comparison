@@ -4,7 +4,6 @@ import string
 import sys
 import timeit
 
-
 class Activity(object):
     id = ""
     lat = 0.0
@@ -14,7 +13,6 @@ class Activity(object):
         self.id = id
         self.lat = lat
         self.lon = lon
-
 
 class Resource(object):
     id = ""
@@ -26,7 +24,6 @@ class Resource(object):
         self.lat = lat
         self.lon = lon
 
-
 class Allocation(object):
     rid = ""
     aid = ""
@@ -37,15 +34,11 @@ class Allocation(object):
         self.aid = aid
         self.dist = dist
 
-
 class SchemaData(object):
     activity = []
     resource = []
-    allocation = []
-
 
 class Greedy(object):
-
     earthRadiusM = 6367450.0
     convert2Rad = math.pi / 180.0
     convert2Deg = 180.0 / math.pi
@@ -66,17 +59,21 @@ class Greedy(object):
         return self.earthRadiusM * (c + c)
 
     def scheduleResources(self, sd):
+        allocation = []
+        done = {}
         for res in sd.resource:
             for c in range(0, 50):
                 lowest = sys.float_info.max
+                lowestact = None
                 for act in sd.activity:
-                    dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
-                    if dist < lowest:
-                        lowest = dist
-                        lowestact = act
-                sd.allocation.append(Allocation(res.id, lowestact.id, lowest))
-                sd.activity.remove(lowestact)
-
+                    if not done.has_key(act.id):
+                        dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
+                        if dist < lowest:
+                            lowest = dist
+                            lowestact = act
+                allocation.append(Allocation(res.id, lowestact.id, lowest))
+                done[lowestact.id] = lowestact
+        return sum(i.dist for i in allocation)
 
 def main():
     a = []
@@ -90,14 +87,13 @@ def main():
         else:
             a.append(Resource(items[0], float(items[1]), float(items[2])))
 
-        gp = Greedy()
+    gp = Greedy()
+    sdi = SchemaData()
+    sdi.resource = copy.deepcopy(r)
+    sdi.activity = copy.deepcopy(a)
     for i in range(0, 100):
-        sdi = SchemaData()
-        sdi.resource = copy.deepcopy(r)
-        sdi.activity = copy.deepcopy(a)
-        sdi.allocation = []
-        gp.scheduleResources(sdi)
-        print(str(i) + ":" + str(sum(i.dist for i in sdi.allocation)))
+        tot = gp.scheduleResources(sdi)
+        print(str(i + 1) + ": " + str(tot))
 
 #print(timeit.timeit("main()", number=1))
 main()

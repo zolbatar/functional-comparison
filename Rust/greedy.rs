@@ -1,4 +1,7 @@
+// rustc -C opt-level=3 -C target-cpu=core2
+
 use std::collections::HashMap;
+use std::collections::HashSet;
 use std::io::fs::File;
 use std::str::FromStr;
 use std::f64;
@@ -51,15 +54,13 @@ impl Allocation {
 struct SchemaData {
     activity: HashMap<String,Activity>,
     resource: Vec<Resource>,
-    allocation: Vec<Allocation>,
 }
 
 impl SchemaData {
     pub fn new() -> SchemaData {
         SchemaData { 
             activity: HashMap::new(), 
-            resource: Vec::new(), 
-            allocation: Vec::new() 
+            resource: Vec::new()
         }
     }
 }
@@ -94,27 +95,31 @@ fn distance_between_points(lat1:f64, lon1:f64, lat2:f64, lon2:f64) -> f64 {
     EARTH_RADIUS_M * (c + c)
 }
 
-fn schedule_resources(sd: &mut SchemaData) -> f64 {
+fn schedule_resources(sd: &SchemaData) -> f64 {
+    let mut allocation: Vec<Allocation> = Vec::new();
+    let mut activity_hash: HashSet<String> = HashSet::new();
     for res in sd.resource.iter() {
         for c in 0..50 {
             let mut lowest: f64 = f64::INFINITY;
             let mut lowest_id = &String::new();
             for (act_key, act) in sd.activity.iter() {
-                let dist = distance_between_points(res.lat, res.lon, act.lat, act.lon); 
-                if dist < lowest {
-                    lowest = dist;
-                    lowest_id = act_key;
+                if (!activity_hash.contains(act_key)) {
+                    let dist = distance_between_points(res.lat, res.lon, act.lat, act.lon); 
+                    if dist < lowest {
+                        lowest = dist;
+                        lowest_id = act_key;
+                    }
                 }
             }
             let a = Allocation::new(&res.id, lowest_id, lowest);
-            sd.allocation.push(a);
-//            sd_copy.activity.remove(lowest_id);
+            allocation.push(a);
+            activity_hash.insert(lowest_id.clone());
         }
     }
 
     // Sum it
     let mut sum: f64 = 0.0;
-    for all in sd.allocation.iter() {
+    for all in allocation.iter() {
         sum += all.dist;
     }
     sum
@@ -132,7 +137,7 @@ fn main() {
 
     // Schedule
     for i in 0..100 {
-        let sum = schedule_resources(&mut sd.clone());
+        let sum = schedule_resources(&sd);
         println!("{}: {}", i, sum);
     }
 }
