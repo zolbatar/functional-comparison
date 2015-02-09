@@ -1,19 +1,26 @@
+C++               -> 1.074s * 171 = 183
+PyPy              -> 2.053s * 104 = 213
+BlitzMax          -> 2.316s * 103 = 238
+Go                -> 2.437s * 141 = 343
+Java              -> 3.120s * 120 = 374
+
 New Run 26/01/2015
 ------------------
 
 C++               -> 1.074s
-PyPy              -> 2.112s
+PyPy              -> 2.053s
+BlitzMax          -> 2.316s
 Go                -> 2.437s
-PyPy (Maps)       -> 2.493s
-Java              -> 3.120s
+Java              -> 3.120s 
 Rust              -> 3.312s
-PyPy3             -> 3.565s (Same code as Python2, so expected similar to PyPy)
 Scala             -> 3.717s
 D                 -> 3.885s
-Haskell           -> 4.157s (wrong result/hash order)
+Haskell           -> 4.157s
 Ruby 2.2          -> 16.585s
-Python3           -> 26.788s
 Python            -> 28.586s
+PyPy (Maps)       -> 2.493s
+PyPy3             -> 3.565s (Same code as Python2, so expected similar to PyPy)
+Python3           -> 26.788s
 
 Simplified (Macbook) -> New Style
 ---------------------------------

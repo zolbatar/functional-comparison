@@ -1,8 +1,6 @@
 // rustc -C opt-level=3 -C target-cpu=core2
 
-use std::collections::HashMap;
-use std::collections::HashSet;
-use std::io::fs::File;
+use std::old_io::File;
 use std::str::FromStr;
 use std::f64;
 use std::f64::consts::PI;
@@ -52,14 +50,14 @@ impl Allocation {
 
 #[derive(Clone)]
 struct SchemaData {
-    activity: HashMap<String,Activity>,
+    activity: Vec<Activity>,
     resource: Vec<Resource>,
 }
 
 impl SchemaData {
     pub fn new() -> SchemaData {
         SchemaData { 
-            activity: HashMap::new(), 
+            activity: Vec::new(), 
             resource: Vec::new()
         }
     }
@@ -75,7 +73,7 @@ fn build(lines: Vec<&str>) -> SchemaData {
         if split.len() == 3 {
             sd.resource.push(Resource::new(&String::from_str(id), lat, lng));
         } else if split.len() == 4 {
-            sd.activity.insert(String::from_str(id), Activity::new(&String::from_str(id), lat, lng));
+            sd.activity.push(Activity::new(&String::from_str(id), lat, lng));
         }
     }
     sd
@@ -95,25 +93,26 @@ fn distance_between_points(lat1:f64, lon1:f64, lat2:f64, lon2:f64) -> f64 {
     EARTH_RADIUS_M * (c + c)
 }
 
-fn schedule_resources(sd: &SchemaData) -> f64 {
+fn schedule_resources(sd: &mut SchemaData) -> f64 {
     let mut allocation: Vec<Allocation> = Vec::new();
-    let mut activity_hash: HashSet<String> = HashSet::new();
     for res in sd.resource.iter() {
         for c in 0..50 {
             let mut lowest: f64 = f64::INFINITY;
             let mut lowest_id = &String::new();
-            for (act_key, act) in sd.activity.iter() {
-                if (!activity_hash.contains(act_key)) {
-                    let dist = distance_between_points(res.lat, res.lon, act.lat, act.lon); 
-                    if dist < lowest {
-                        lowest = dist;
-                        lowest_id = act_key;
-                    }
+            let mut i = 0;
+            let mut j = 0;
+            for act in sd.activity.iter() {
+                let dist = distance_between_points(res.lat, res.lon, act.lat, act.lon); 
+                if dist < lowest {
+                    lowest = dist;
+                    lowest_id = &act.id;
+                    j = i;
                 }
+                i += 1;
             }
-            let a = Allocation::new(&res.id, lowest_id, lowest);
+            let a = Allocation::new(&res.id, &lowest_id, lowest);
             allocation.push(a);
-            activity_hash.insert(lowest_id.clone());
+            sd.activity.remove(j);
         }
     }
 
@@ -137,7 +136,8 @@ fn main() {
 
     // Schedule
     for i in 0..100 {
-        let sum = schedule_resources(&sd);
+        let mut sd2 = sd.clone();
+        let sum = schedule_resources(&mut sd2);
         println!("{}: {}", i, sum);
     }
 }

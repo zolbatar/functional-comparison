@@ -37,8 +37,6 @@ type SchemaData struct {
 
 const earthRadiusM float64 = 6367450
 const convert2Rad float64 = math.Pi / 180.0
-const convert2Deg float64 = 180.0 / math.Pi
-const seconds_per_metre float64 = 0.0559234073
 
 func readLines(path string) (lines []string, err error) {
 	var (

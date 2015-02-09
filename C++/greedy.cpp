@@ -43,8 +43,6 @@ public:
 const double pi = boost::math::constants::pi<double>();
 const double earthRadius = 6367450.0; // geometric mean value gives about .1% error
 const double convert2Rad = pi / 180.0;
-const double convert2Deg = 180.0 / pi;
-const double seconds_per_metre = 0.0559234073;
 
 double distanceBetweenPointsLatLong (double lat1, double lon1, double lat2, double lon2)
 {
@@ -125,7 +123,6 @@ void scheduleResources(SchemaData& sd) {
 			a->rid = (*it)->id;
 			a->aid = (*lowestobj)->id;
 			a->dist = lowest;
-//			std::cout << lowest << std::endl;
 			sd.allocation.push_back(a);
 			sd.activity.erase(lowestobj);
 		}
