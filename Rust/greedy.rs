@@ -39,13 +39,12 @@ impl Resource {
 struct Allocation {
     rid: String,
     aid: String,
-    dist: f64,
-    line: usize
+    dist: f64
 }
 
 impl Allocation {
-    pub fn new(rid: &String, aid: &String, dist: f64, line: usize) -> Allocation {
-        Allocation { rid: rid.clone(), aid: aid.clone(), dist: dist, line: line }
+    pub fn new(rid: &String, aid: &String, dist: f64) -> Allocation {
+        Allocation { rid: rid.clone(), aid: aid.clone(), dist: dist }
     }
 }
 
@@ -94,7 +93,7 @@ fn distance_between_points(lat1:f64, lon1:f64, lat2:f64, lon2:f64) -> f64 {
     EARTH_RADIUS_M * (c + c)
 }
 
-fn schedule_ind(act: &Vec<Activity>, id: &String, lat: f64, lon: f64) -> Allocation {
+fn schedule_ind(act: &Vec<Activity>, id: &String, lat: f64, lon: f64) -> (Allocation, usize) {
     let mut lowest: f64 = f64::INFINITY;
     let mut lowest_id = &String::new();
     let mut i = 0;
@@ -108,16 +107,16 @@ fn schedule_ind(act: &Vec<Activity>, id: &String, lat: f64, lon: f64) -> Allocat
         }
         i += 1;
     }
-    let a = Allocation::new(id, &lowest_id, lowest, j);
-    a
+    let a = Allocation::new(id, &lowest_id, lowest);
+    (a, j)
 }
 
 fn schedule_resources(sd: &mut SchemaData) -> f64 {
     let mut allocation: Vec<Allocation> = Vec::new();
     for res in sd.resource.iter() {
         for _ in 0..50 {
-            let a = schedule_ind(&sd.activity, &res.id, res.lat, res.lon);
-            sd.activity.remove(a.line);
+            let (a, j) = schedule_ind(&sd.activity, &res.id, res.lat, res.lon);
+            sd.activity.remove(j);
             allocation.push(a);
         }
     }
