@@ -1,4 +1,4 @@
-// rustc -C opt-level=3 -C target-cpu=core2
+// rustc -C opt-level=3 -C target-cpu=core2 greedy.rs
 
 use std::old_io::File;
 use std::str::FromStr;
@@ -40,11 +40,12 @@ struct Allocation {
     rid: String,
     aid: String,
     dist: f64,
+    line: usize
 }
 
 impl Allocation {
-    pub fn new(rid: &String, aid: &String, dist: f64) -> Allocation {
-        Allocation { rid: rid.clone(), aid: aid.clone(), dist: dist }
+    pub fn new(rid: &String, aid: &String, dist: f64, line: usize) -> Allocation {
+        Allocation { rid: rid.clone(), aid: aid.clone(), dist: dist, line: line }
     }
 }
 
@@ -93,26 +94,31 @@ fn distance_between_points(lat1:f64, lon1:f64, lat2:f64, lon2:f64) -> f64 {
     EARTH_RADIUS_M * (c + c)
 }
 
+fn schedule_ind(act: &Vec<Activity>, id: &String, lat: f64, lon: f64) -> Allocation {
+    let mut lowest: f64 = f64::INFINITY;
+    let mut lowest_id = &String::new();
+    let mut i = 0;
+    let mut j = 0;
+    for act in act.iter() {
+        let dist = distance_between_points(lat, lon, act.lat, act.lon); 
+        if dist < lowest {
+            lowest = dist;
+            lowest_id = &act.id;
+            j = i;
+        }
+        i += 1;
+    }
+    let a = Allocation::new(id, &lowest_id, lowest, j);
+    a
+}
+
 fn schedule_resources(sd: &mut SchemaData) -> f64 {
     let mut allocation: Vec<Allocation> = Vec::new();
     for res in sd.resource.iter() {
-        for c in 0..50 {
-            let mut lowest: f64 = f64::INFINITY;
-            let mut lowest_id = &String::new();
-            let mut i = 0;
-            let mut j = 0;
-            for act in sd.activity.iter() {
-                let dist = distance_between_points(res.lat, res.lon, act.lat, act.lon); 
-                if dist < lowest {
-                    lowest = dist;
-                    lowest_id = &act.id;
-                    j = i;
-                }
-                i += 1;
-            }
-            let a = Allocation::new(&res.id, &lowest_id, lowest);
+        for _ in 0..50 {
+            let a = schedule_ind(&sd.activity, &res.id, res.lat, res.lon);
+            sd.activity.remove(a.line);
             allocation.push(a);
-            sd.activity.remove(j);
         }
     }
 

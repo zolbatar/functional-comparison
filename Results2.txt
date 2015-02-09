@@ -8,11 +8,11 @@ New Run 26/01/2015
 ------------------
 
 C++               -> 1.074s
+Rust              -> 1.343s
 PyPy              -> 2.053s
 BlitzMax          -> 2.316s
 Go                -> 2.437s
 Java              -> 3.120s 
-Rust              -> 3.312s
 Scala             -> 3.717s
 D                 -> 3.885s
 Haskell           -> 4.157s
