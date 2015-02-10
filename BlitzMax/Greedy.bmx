@@ -1,9 +1,5 @@
 SuperStrict
 
-Import "Activity.bmx"
-Import "Resource.bmx"
-Import "Allocation.bmx"
-
 Local p:Program = New Program
 p.Main()
 

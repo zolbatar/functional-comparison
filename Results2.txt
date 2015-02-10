@@ -8,6 +8,7 @@ New Run 26/01/2015
 ------------------
 
 C++               -> 1.074s
+Monkey-X          -> 1.149s
 Rust              -> 1.181s
 PyPy              -> 2.053s
 BlitzMax          -> 2.316s
