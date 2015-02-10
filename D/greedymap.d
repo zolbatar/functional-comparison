@@ -83,26 +83,29 @@ double distanceBetweenPointsLatLong (double lat1, double lon1, double lat2, doub
 }
 
 double scheduleResources(SchemaData *sd) {
-    auto dupactivity = sd.activity.dup();
+    Activity[string] map;
+    foreach (act; sd.activity) {
+        map[act.id] = act;
+    }
     auto allocation = SList!Allocation();
     foreach (res; sd.resource) {
         for (int c = 0; c < 50; c++) {
             auto lowest = double.max;
-            Activity lowest_id = null;
+            string lowest_id = null;
 
             // See which is closest
-            foreach (act; dupactivity) {
+            foreach (act; map.values) {
                 double dist = distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon);
                 if (dist < lowest) {
                     lowest = dist;
-                    lowest_id = act;
+                    lowest_id = act.id;
                 }
             }
             Allocation a = new Allocation();
             a.rid = res.id;
-            a.aid = lowest_id.id;
+            a.aid = lowest_id;
             a.dist = lowest;
-            dupactivity.linearRemove(find(dupactivity[], lowest_id).take(1));
+            map.remove(lowest_id);
             allocation.insert(a);
         }
     }
