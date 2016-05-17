@@ -37,7 +37,6 @@ Class Program
 	End
 	
 	Method LoadCSV:Void()
-		Print CurrentDir()
 		Local in:FileStream = FileStream.Open("../../../../../../../../../../Data/DataSPIF.csv", "r")
 		While Not in.Eof()
         	Local l:String = in.ReadLine()
@@ -91,7 +90,7 @@ Class Program
 	
 	Method Main:Void()
 		LoadCSV()
-		For Local i:Int = 0 Until 10
+		For Local i:Int = 0 Until 1000
 			Local r:Float = ScheduleResources()
 			Print i + ": " + r
 		Next

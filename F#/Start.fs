@@ -1,4 +1,4 @@
-﻿namespace SkylinedSoftware.GreedyPerformance
+﻿namespace GreedyPerformance
 
 open System
 open System.IO
@@ -8,7 +8,7 @@ module Start =
     type Activity = { id: string; lat: float; lng: float }
     type Resource = { id: string; lat: float; lng: float }
     type Allocation = { resourceId: string; activityId: string; distance: float }
-    type SchemaData = { activity: Activity list; resource: Resource list; allocation: Allocation list }
+    type SchemaData = { activity: Activity list; mutable resource: Resource list; allocation: Allocation list }
 
     let earthRadius = 6367450.0 // geometric mean value gives about .1% error
     let convert2Rad = Math.PI / 180.0
@@ -65,20 +65,20 @@ module Start =
         |> Array.map (fun x-> x.Split(','))
         |> Array.toList
 
-    let rec private runMultiple (c: int) (sd: SchemaData) =
+    let rec private runMultiple (c: int) (tot: int) (sd: SchemaData) =
         match c with
         | 0 -> ()
         | c ->
             let result = scheduleResource sd.resource.Head 50 { sd with resource = sd.resource.Tail }
             let total = result.allocation |> List.map (fun x -> x.distance) |> List.fold (+) 0.0           
-            printfn "%d:%f" c total
-            runMultiple (c - 1) sd
+            printfn "%d: %f" (tot - c) total
+            runMultiple (c - 1) tot sd
 
     [<EntryPoint>]
     let main args =
-        let path = @"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
-//        let path = @"D:/Development/FunctionalComparison/Data/DataSPIF.csv"
+        let path = @"../Data/DataSPIF.csv"
         let lines = readLines path
         let sd = loadCSV lines { activity = []; resource = []; allocation = [] }
-        runMultiple 100 sd
+        sd.resource <- List.rev sd.resource
+        runMultiple 1000 1000 sd
         0

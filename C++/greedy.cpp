@@ -153,7 +153,7 @@ int main()
 	std::list<Resource *> rl;
 	importCSV(csvLines, &al, &rl);
 
-	for (int i = 0; i < 10 ; i++)
+	for (int i = 0; i < 1000 ; i++)
 	{
 		SchemaData *sd = new SchemaData();
 		sd->activity = std::list<Activity *>(al);

@@ -36,7 +36,7 @@ distanceBetweenPointsLatLong lat1 lon1 lat2 lon2 =
   in dist
 
 processRow :: [String] -> SchemaData -> SchemaData
-processRow (x1 : x2 : [x3]) (SchemaData a r al) = SchemaData a ((Resource x1 (read x2) (read x3)) : r) al
+processRow (x1 : x2 : [x3]) (SchemaData a r al) = SchemaData a (r ++ [(Resource x1 (read x2) (read x3))]) al
 processRow (x1 : x2 : x3 : [_]) (SchemaData a r al) = SchemaData ((Activity x1 (read x2) (read x3)) : a) r al
 
 processCSV :: [[String]] -> SchemaData -> SchemaData
@@ -63,14 +63,16 @@ scheduleResource resource c (SchemaData a r al) = do
   let (caid, dist) = head $ sortBy (\ x y -> compare (snd x) (snd y)) dists
   scheduleResource resource (c - 1) (SchemaData (filter (\ (Activity aid _ _) -> aid /= caid) a) r ((Allocation rid caid dist) : al))
 
-runMultiple :: Int -> SchemaData -> IO ()
-runMultiple 0 _ = return ()
-runMultiple c (SchemaData a r al) = do
+runMultiple :: Int -> Int -> SchemaData -> IO ()
+runMultiple 0 _ _ = return ()
+runMultiple c tot (SchemaData a r al) = do
   (SchemaData _ _ res_al) <- scheduleResource (head r) 50 (SchemaData a (tail r) al)
   let distances = map (\ (Allocation _ _ dist) -> dist) res_al
-  let tot = foldl (+) 0.0 distances
-  putStrLn $ show tot
-  runMultiple (c - 1) (SchemaData a r al)
+  let total = foldl (+) 0.0 distances
+  putStr . show $ (tot - c + 1)
+  putStr $ ": " 
+  putStrLn $ show total
+  runMultiple (c - 1) tot (SchemaData a r al)
 
 start :: Int -> IO ()
 start c = do 
@@ -78,7 +80,7 @@ start c = do
   case entities of
     Nothing -> putStrLn "Nothing"
     Just s -> do
-      runMultiple c s
+      runMultiple c c s
 
 main :: IO ()
-main = start 100
+main = start 1000

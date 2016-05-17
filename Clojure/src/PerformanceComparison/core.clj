@@ -63,7 +63,7 @@
       (let [sd (import-csv csv)
             activities (:activities sd)
             resources (rest (:resources sd))]
-        (loop [countloop 10]
+        (loop [countloop 1000]
           (if (zero? countloop)
             0
             (let [allocations []

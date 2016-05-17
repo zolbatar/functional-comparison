@@ -13,6 +13,13 @@ printf "Monkey-X: " > ../../Timings/Monkey-X.txt
 cd ..
 cd ..
 
+# C#
+cd C#
+echo "C#"
+printf "      C#: " > ../Timings/C#.txt
+{ gtime -f "%E real  %U user  %S sys" mono -O=all bin/Release/CSharp.exe ; } 2>> ../Timings/C#.txt
+cd ..
+
 # C++
 cd C++
 echo "C++"
@@ -34,11 +41,25 @@ printf "       D: " > ../Timings/D.txt
 { gtime -f "%E real  %U user  %S sys" ./greedy ; } 2>> ../Timings/D.txt
 cd ..
 
+# F#
+cd F#
+echo "F#"
+printf "      F#: " > ../Timings/F#.txt
+{ gtime -f "%E real  %U user  %S sys" mono -O=all bin/Release/GreedyPerformance.exe ; } 2>> ../Timings/F#.txt
+cd ..
+
 # Go
 cd Go
 echo "Go"
 printf "      Go: " > ../Timings/Go.txt
 { gtime -f "%E real  %U user  %S sys" ./Go ; } 2>> ../Timings/Go.txt
+cd ..
+
+# Haskell
+cd Haskell
+echo "Haskell"
+printf " Haskell: " > ../Timings/Haskell.txt
+{ gtime -f "%E real  %U user  %S sys" dist/build/GreedyPerformance/GreedyPerformance ; } 2>> ../Timings/Haskell.txt
 cd ..
 
 # Java
@@ -93,10 +114,13 @@ cd ..
 # Timings
 cat Timings/BlitzMax.txt
 cat Timings/Monkey-X.txt
+cat Timings/C#.txt
 cat Timings/C++.txt
 cat Timings/Clojure.txt
 cat Timings/D.txt
+cat Timings/F#.txt
 cat Timings/Go.txt
+cat Timings/Haskell.txt
 cat Timings/Java.txt
 cat Timings/Ocaml.txt
 cat Timings/Python2.txt

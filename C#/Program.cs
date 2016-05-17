@@ -107,12 +107,11 @@ namespace CSharp
 
 		static void Main(string[] args)
 		{
-            var lines = System.IO.File.ReadAllLines(@"/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
-//            var lines = System.IO.File.ReadAllLines(@"D:/Development/FunctionalComparison/Data/DataSPIF.csv");
+            var lines = System.IO.File.ReadAllLines(@"../Data/DataSPIF.csv");
             var al = new List<Activity>();
 			var rl = new List<Resource> ();
 			importCSV (lines, al, rl);
-			for (var i = 1; i < 100; i++) 
+			for (var i = 1; i <= 1000; i++) 
 			{
                 var sd2 = new SchemaData();
                 sd2.resource = rl.ToList();

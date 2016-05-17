@@ -84,7 +84,7 @@ Type Program
 	
 	Method Main()
 		LoadCSV()
-		For Local i:Int = 0 Until 10
+		For Local i:Int = 0 Until 1000
 			Local r:Double = ScheduleResources()
 			Print i + ": " + r
 		Next

@@ -1,1 +1,1 @@
- Clojure: 0:01.92 real  3.41 user  0.25 sys
+ Clojure: 1:01.01 real  62.52 user  1.01 sys

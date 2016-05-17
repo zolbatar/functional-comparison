@@ -1,1 +1,1 @@
-   Scala: 0:00.97 real  1.52 user  0.14 sys
+   Scala: 0:31.63 real  31.25 user  0.66 sys

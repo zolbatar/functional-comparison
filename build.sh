@@ -9,6 +9,11 @@ transcc_macos -target="Desktop_Game_(Glfw3)" -config=Release +CPP_DOUBLE_PRECISI
 cd ..
 cd ..
 
+# C#
+cd C#
+xbuild /p:Configuration=Release CSharp.sln
+cd ..
+
 # C++
 cd C++
 clang++ -O3 greedy.cpp -o greedy
@@ -24,9 +29,19 @@ cd D
 dmd -O greedy.d
 cd ..
 
+# F#
+cd F#
+xbuild /p:Configuration=Release GreedyPerformance.sln
+cd ..
+
 # Go
 cd Go
 go build
+cd ..
+
+# Haskell
+cd Haskell
+cabal build
 cd ..
 
 # Java
