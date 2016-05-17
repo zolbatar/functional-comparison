@@ -1,1 +1,1 @@
-   PyPy2: 0:00.43 real  0.39 user  0.03 sys
+   PyPy2: 0:00.45 real  0.41 user  0.03 sys

@@ -65,6 +65,7 @@ void importCSV(SchemaData *sd, string[] lines) {
                 break;
         }
     }
+	sd.resource.reverse();
 }
 
 double distanceBetweenPointsLatLong (double lat1, double lon1, double lat2, double lon2)
@@ -129,10 +130,10 @@ string[] readLines(string filename) {
 
 void main()
 {
-    auto lines = readLines("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
+    auto lines = readLines("../Data/DataSPIF.csv");
     auto sd = new SchemaData();
     importCSV(&sd, lines);
-    for (int c = 0; c < 100; c++) {
+    for (int c = 0; c < 10; c++) {
         auto tot = scheduleResources(&sd);
         writef("%d: %f\n", c, tot);
     }

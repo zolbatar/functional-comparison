@@ -19,6 +19,11 @@ cd Clojure
 lein uberjar
 cd ..
 
+# D
+cd D
+dmd -O greedy.d
+cd ..
+
 # Go
 cd Go
 go build
@@ -37,4 +42,9 @@ cd ..
 # Rust
 cd Rust
 rustc -C opt-level=3 -C target-cpu=native greedy.rs
+cd ..
+
+# Scala
+cd Scala
+sbt one-jar
 cd ..

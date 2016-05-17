@@ -27,6 +27,13 @@ printf " Clojure: " > ../Timings/Clojure.txt
 { gtime -f "%E real  %U user  %S sys" java -server -jar target/PerformanceComparison-1.0.0-standalone.jar ; } 2>> ../Timings/Clojure.txt
 cd ..
 
+# D
+cd D
+echo "D"
+printf "       D: " > ../Timings/D.txt
+{ gtime -f "%E real  %U user  %S sys" ./greedy ; } 2>> ../Timings/D.txt
+cd ..
+
 # Go
 cd Go
 echo "Go"
@@ -75,12 +82,20 @@ printf "    Rust: " > ../Timings/Rust.txt
 { gtime -f "%E real  %U user  %S sys" ./greedy ; } 2>> ../Timings/Rust.txt
 cd ..
 
+# Scala
+cd Scala
+echo "Scala"
+printf "   Scala: " > ../Timings/Scala.txt
+{ gtime -f "%E real  %U user  %S sys" java -server -Xms1024m -XX:+UseG1GC -jar target/scala-2.10/scala_2.10-0.1-SNAPSHOT-one-jar.jar  ; } 2>> ../Timings/Scala.txt
+cd ..
+
 
 # Timings
 cat Timings/BlitzMax.txt
 cat Timings/Monkey-X.txt
 cat Timings/C++.txt
 cat Timings/Clojure.txt
+cat Timings/D.txt
 cat Timings/Go.txt
 cat Timings/Java.txt
 cat Timings/Ocaml.txt
@@ -90,3 +105,4 @@ cat Timings/PyPy2.txt
 cat Timings/PyPy3.txt
 cat Timings/Ruby.txt
 cat Timings/Rust.txt
+cat Timings/Scala.txt

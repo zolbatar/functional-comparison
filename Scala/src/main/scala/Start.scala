@@ -1,5 +1,6 @@
 import java.lang.Math._
 import scala.collection.mutable.HashMap
+import java.io;
 
 object Start {
 
@@ -33,25 +34,8 @@ object Start {
     earthRadiusM * (c + c)
   }
 
-/*  def scheduleResource(r: Resource, c: Int, sd: SchemaData): SchemaData = {
-    c match {
-      case 0 => 
-        sd.resources.length match {
-          case 0 => sd
-          case _ => scheduleResource(sd.resources.head,50,sd.copy(resources = sd.resources.tail))
-        }
-      case c =>
-        val (aid, dist) = 
-        sd.activities.map(x => (x.id, distanceBetweenPointsLatLong(r.lat, r.lng, x.lat, x.lng))).sortBy(_._2).head
-        scheduleResource(r, c-1, sd.copy(
-          activities = sd.activities.filter(x => x.id != aid),
-          allocations = new Allocation(activityId = aid, resourceId = r.id, distance = dist) :: sd.allocations))
-    }
-  }*/
-
   def scheduleResourceSimple(sd: SchemaData): SchemaData = {
     var lsd = sd.copy()
-//    var allocations: List[Allocation] = List()
     for (r <- lsd.resources) {
       for (i <- 1 to 50) {
 
@@ -65,7 +49,6 @@ object Start {
           }
         }
         lsd = lsd.copy(
-//          activities = lsd.activities.filterNot(x => x == aid),
           lsd.activities -= aid,
           allocations = new Allocation(activityId = aid, resourceId = r.id, distance = lowest) :: lsd.allocations)
       }
@@ -82,7 +65,6 @@ object Start {
         val a = new Activity(id = x(0), lat = x(1).toDouble, lng = x(2).toDouble)
         sd.activities += a.id -> a
         sd
-//        sd.copy(activities = sd.activities :+ a)
     }
   }
 
@@ -94,23 +76,12 @@ object Start {
     }
   }
 
-  def functional() {
-/*    val path = "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
-    val lines = (for (line <- scala.io.Source.fromFile(path).getLines()) yield line.split(",")).toSeq
-    val sd = importCSV(lines, new SchemaData())
-    for (i <- 1 to 100) {
-      val res = scheduleResource(sd.resources.head, 50, sd.copy(resources = sd.resources.tail))
-      val total = res.allocations.map(x => x.distance).fold(0.0)(_+_)
-      println(i.toString() + ":" + total)
-    }*/
-  }
-
   def simplified() {
-    val path = "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv"
-    //val path = "D:/Development/FunctionalComparison/Data/DataSPIF.csv"
+	println(new java.io.File( "." ).getCanonicalPath)
+    val path = "../Data/DataSPIF.csv"
     val lines = (for (line <- scala.io.Source.fromFile(path).getLines()) yield line.split(",")).toSeq
     val sd = importCSV(lines, new SchemaData())
-    for (i <- 1 to 100) {
+    for (i <- 1 to 10) {
       val lsd = sd.copy(activities = HashMap() ++= sd.activities)
       val res = scheduleResourceSimple(lsd)
       val total = res.allocations.map(x => x.distance).fold(0.0)(_+_)
@@ -119,11 +90,7 @@ object Start {
   }
 
   def main(args: Array[String]) {
-    if (args(0) == "S") {
-      simplified();
-    } else {
-      functional();
-    }
+  	simplified();
   }
 
 }

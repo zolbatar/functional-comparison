@@ -12,6 +12,10 @@ cd ..
 cd Clojure
 rm -rf target
 cd ..
+cd D
+rm greedy
+rm greedy.o
+cd ..
 cd Go
 rm Go
 cd ..
@@ -25,4 +29,7 @@ rm main.cmi
 rm main.cmx
 cd ..cd Rust
 rm greedy
+cd ..
+cd Scala
+rm -rf target
 cd ..
