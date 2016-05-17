@@ -1,1 +1,1 @@
-Blitzmax: 0:02.31 real  2.20 user  0.03 sys
+Blitzmax: 0:00.31 real  0.28 user  0.01 sys

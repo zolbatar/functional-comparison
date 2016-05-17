@@ -1,6 +1,7 @@
 Strict
 Import monkey
 Import brl
+Import os
 
 Class TActivity
 	Field id:String, lat:Float, lon:Float
@@ -20,29 +21,24 @@ Function Main:Int()
 	Return 0
 End
 
-class Program
+Class Program
 	Const earthRadius:Float = 6367450.0
-	Const convert2Rad:Float = PI / 180.0
 	Field la:List<TActivity> = New List<TActivity>
 	Field lr:List<TResource> = New List<TResource>
 
 	Function DistanceBetweenPointsLatLong:Float(lat1:Float, lon1:Float, lat2:Float, lon2:Float)
-		Local dStartLatInRad:Float = lat1 * convert2Rad
-		Local dStartLongInRad:Float = lon1 * convert2Rad
-		Local dEndLatInRad:Float = lat2 * convert2Rad
-		Local dEndLongInRad:Float = lon2 * convert2Rad
-		Local dLongitude:Float = dEndLongInRad - dStartLongInRad
-		Local dLatitude:Float = dEndLatInRad - dStartLatInRad
+		Local dLongitude:Float = lon2 - lon1
+		Local dLatitude:Float = lat2 - lat1
 		Local dSinHalfLatitude:Float = Sin(dLatitude * 0.5)
 		Local dSinHalfLongitude:Float = Sin(dLongitude * 0.5)
-		Local a:Float = dSinHalfLatitude * dSinHalfLatitude + Cos(dStartLatInRad) * Cos(dEndLatInRad) * dSinHalfLongitude * dSinHalfLongitude
-		Local c:Float = ATan2(Sqrt(a), Sqrt(1.0 - a))
+		Local a:Float = dSinHalfLatitude * dSinHalfLatitude + Cos(lat1) * Cos(lat2) * dSinHalfLongitude * dSinHalfLongitude
+		Local c:Float = ATan2(Sqrt(a), Sqrt(1.0 - a)) / 180 * PI
 		Return (earthRadius * (c + c))
 	End
 	
 	Method LoadCSV:Void()
-'		Local in:TStream = ReadFile("C:\Data\Development\FunctionalComparison\Data\DataSPIF.csv")
-		Local in:FileStream = FileStream.Open("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv", "r")
+		Print CurrentDir()
+		Local in:FileStream = FileStream.Open("../../../../../../../../../../Data/DataSPIF.csv", "r")
 		While Not in.Eof()
         	Local l:String = in.ReadLine()
 			Local s:String[] = l.Split(",")
@@ -95,7 +91,7 @@ class Program
 	
 	Method Main:Void()
 		LoadCSV()
-		For Local i:Int = 0 Until 100
+		For Local i:Int = 0 Until 10
 			Local r:Float = ScheduleResources()
 			Print i + ": " + r
 		Next

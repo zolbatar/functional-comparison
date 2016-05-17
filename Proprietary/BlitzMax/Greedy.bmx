@@ -17,27 +17,21 @@ End Type
 
 Type Program
 	Const earthRadius:Double = 6367450.0
-	Const convert2Rad:Double = Pi / 180.0
 	Field la:TList = New TList
 	Field lr:TList = New TList
 
 	Function DistanceBetweenPointsLatLong:Double(lat1:Double, lon1:Double, lat2:Double, lon2:Double)
-		Local dStartLatInRad:Double = lat1 * convert2Rad
-		Local dStartLongInRad:Double = lon1 * convert2Rad
-		Local dEndLatInRad:Double = lat2 * convert2Rad
-		Local dEndLongInRad:Double = lon2 * convert2Rad
-		Local dLongitude:Double = dEndLongInRad - dStartLongInRad
-		Local dLatitude:Double = dEndLatInRad - dStartLatInRad
+		Local dLongitude:Double = lon2 - lon1
+		Local dLatitude:Double = lat2 - lat1
 		Local dSinHalfLatitude:Double = Sin(dLatitude * 0.5)
 		Local dSinHalfLongitude:Double = Sin(dLongitude * 0.5)
-		Local a:Double = dSinHalfLatitude * dSinHalfLatitude + Cos(dStartLatInRad) * Cos(dEndLatInRad) * dSinHalfLongitude * dSinHalfLongitude
-		Local c:Double = ATan2(Sqr(a), Sqr(1.0 - a))
+		Local a:Double = dSinHalfLatitude * dSinHalfLatitude + Cos(lat1) * Cos(lat2) * dSinHalfLongitude * dSinHalfLongitude
+		Local c:Double = ATan2(Sqr(a), Sqr(1.0 - a)) / 180 * Pi
 		Return (earthRadius * (c + c))
 	End Function
 	
 	Method LoadCSV() 
-'		Local in:TStream = ReadFile("C:\Data\Development\FunctionalComparison\Data\DataSPIF.csv")
-		Local in:TStream = ReadFile("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv")
+		Local in:TStream = ReadFile("../../Data/DataSPIF.csv")
 		While Not Eof(in)
         	Local l:String = ReadLine(in)
 			Local s:String[] = l.Split(",")
@@ -90,7 +84,7 @@ Type Program
 	
 	Method Main()
 		LoadCSV()
-		For Local i:Int = 0 Until 100
+		For Local i:Int = 0 Until 10
 			Local r:Double = ScheduleResources()
 			Print i + ": " + r
 		Next

@@ -78,11 +78,10 @@ class Greedy(object):
                 sd.activity.remove(lowestact)
         return sum(i.dist for i in allocation)
 
-
 def main():
     a = []
     r = []
-    f = open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv', 'r')
+    f = open('../Data/DataSPIF.csv', 'r')
     #f = open('D:/Development/FunctionalComparison/Data/DataSPIF.csv', 'r')
     for line in f:
         items = line.split(',')
@@ -95,7 +94,7 @@ def main():
     sdi = SchemaData()
     sdi.resource = copy.deepcopy(r)
     sdi.activity = copy.deepcopy(a)
-    for i in range(0, 100):
+    for i in range(0, 10):
         tot = gp.scheduleResources(sdi)
         print(str(i + 1) + ": " + str(tot))
         sdi.activity = copy.deepcopy(a)

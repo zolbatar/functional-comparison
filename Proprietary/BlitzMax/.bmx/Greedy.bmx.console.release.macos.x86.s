@@ -87,14 +87,14 @@ __bb_main:
 	push	%ebp
 	mov	%esp,%ebp
 	sub	$8,%esp
-	cmpl	$0,_103
-	je	_104
+	cmpl	$0,_101
+	je	_102
 	mov	$0,%eax
 	mov	%ebp,%esp
 	pop	%ebp
 	ret
-_104:
-	movl	$1,_103
+_102:
+	movl	$1,_101
 	call	___bb_blitz_blitz
 	call	___bb_appstub_appstub
 	call	___bb_audio_audio
@@ -146,8 +146,8 @@ _104:
 	movl	(%eax),%eax
 	calll	*60(%eax)
 	mov	$0,%eax
-	jmp	_60
-_60:
+	jmp	_58
+_58:
 	mov	%ebp,%esp
 	pop	%ebp
 	ret
@@ -168,8 +168,8 @@ __bb_TActivity_New:
 	fldz
 	fstpl	24(%ebx)
 	mov	$0,%eax
-	jmp	_63
-_63:
+	jmp	_61
+_61:
 	add	$4,%esp
 	pop	%ebx
 	mov	%ebp,%esp
@@ -180,16 +180,16 @@ __bb_TActivity_Delete:
 	mov	%esp,%ebp
 	sub	$8,%esp
 	movl	8(%ebp),%eax
-_66:
+_64:
 	movl	8(%eax),%eax
 	decl	4(%eax)
-	jnz	_108
+	jnz	_106
 	movl	%eax,(%esp)
 	call	_bbGCFree
-_108:
-	mov	$0,%eax
-	jmp	_106
 _106:
+	mov	$0,%eax
+	jmp	_104
+_104:
 	mov	%ebp,%esp
 	pop	%ebp
 	ret
@@ -211,8 +211,8 @@ __bb_TAllocation_New:
 	fldz
 	fstpl	16(%ebx)
 	mov	$0,%eax
-	jmp	_69
-_69:
+	jmp	_67
+_67:
 	add	$4,%esp
 	pop	%ebx
 	mov	%ebp,%esp
@@ -224,22 +224,22 @@ __bb_TAllocation_Delete:
 	push	%ebx
 	sub	$4,%esp
 	movl	8(%ebp),%ebx
-_72:
+_70:
 	movl	12(%ebx),%eax
+	decl	4(%eax)
+	jnz	_111
+	movl	%eax,(%esp)
+	call	_bbGCFree
+_111:
+	movl	8(%ebx),%eax
 	decl	4(%eax)
 	jnz	_113
 	movl	%eax,(%esp)
 	call	_bbGCFree
 _113:
-	movl	8(%ebx),%eax
-	decl	4(%eax)
-	jnz	_115
-	movl	%eax,(%esp)
-	call	_bbGCFree
-_115:
 	mov	$0,%eax
-	jmp	_111
-_111:
+	jmp	_109
+_109:
 	add	$4,%esp
 	pop	%ebx
 	mov	%ebp,%esp
@@ -262,8 +262,8 @@ __bb_TResource_New:
 	fldz
 	fstpl	24(%ebx)
 	mov	$0,%eax
-	jmp	_75
-_75:
+	jmp	_73
+_73:
 	add	$4,%esp
 	pop	%ebx
 	mov	%ebp,%esp
@@ -274,16 +274,16 @@ __bb_TResource_Delete:
 	mov	%esp,%ebp
 	sub	$8,%esp
 	movl	8(%ebp),%eax
-_78:
+_76:
 	movl	8(%eax),%eax
 	decl	4(%eax)
-	jnz	_119
+	jnz	_117
 	movl	%eax,(%esp)
 	call	_bbGCFree
-_119:
-	mov	$0,%eax
-	jmp	_117
 _117:
+	mov	$0,%eax
+	jmp	_115
+_115:
 	mov	%ebp,%esp
 	pop	%ebp
 	ret
@@ -305,8 +305,8 @@ __bb_Program_New:
 	incl	4(%eax)
 	movl	%eax,12(%ebx)
 	mov	$0,%eax
-	jmp	_81
-_81:
+	jmp	_79
+_79:
 	add	$4,%esp
 	pop	%ebx
 	mov	%ebp,%esp
@@ -318,22 +318,22 @@ __bb_Program_Delete:
 	push	%ebx
 	sub	$4,%esp
 	movl	8(%ebp),%ebx
-_84:
+_82:
 	movl	12(%ebx),%eax
+	decl	4(%eax)
+	jnz	_122
+	movl	%eax,(%esp)
+	call	_bbGCFree
+_122:
+	movl	8(%ebx),%eax
 	decl	4(%eax)
 	jnz	_124
 	movl	%eax,(%esp)
 	call	_bbGCFree
 _124:
-	movl	8(%ebx),%eax
-	decl	4(%eax)
-	jnz	_126
-	movl	%eax,(%esp)
-	call	_bbGCFree
-_126:
 	mov	$0,%eax
-	jmp	_122
-_122:
+	jmp	_120
+_120:
 	add	$4,%esp
 	pop	%ebx
 	mov	%ebp,%esp
@@ -342,53 +342,40 @@ _122:
 __bb_Program_DistanceBetweenPointsLatLong:
 	push	%ebp
 	mov	%esp,%ebp
-	sub	$88,%esp
-	fldl	8(%ebp)
+	sub	$72,%esp
 	fldl	16(%ebp)
-	fldl	24(%ebp)
 	fldl	32(%ebp)
-	fldl	_218
-	fmulp	%st(0),%st(4)
-	fxch	%st(3)
-	fstpl	-40(%ebp)
-	fldl	_219
-	fmulp	%st(0),%st(2)
-	fldl	_220
-	fmulp	%st(0),%st(1)
-	fstpl	-56(%ebp)
-	fldl	_221
-	fmulp	%st(0),%st(2)
-	fsubrp	%st(0),%st(1)
-	fstpl	-64(%ebp)
-	fldl	-56(%ebp)
-	fsubl	-40(%ebp)
-	fldl	_222
+	fsubp	%st(0),%st(1)
+	fstpl	-48(%ebp)
+	fldl	24(%ebp)
+	fsubl	8(%ebp)
+	fldl	_212
 	fmulp	%st(0),%st(1)
 	fstpl	(%esp)
 	call	_bbSin
 	fstpl	-32(%ebp)
-	fldl	-64(%ebp)
-	fldl	_223
+	fldl	-48(%ebp)
+	fldl	_213
 	fmulp	%st(0),%st(1)
 	fstpl	(%esp)
 	call	_bbSin
-	fstpl	-48(%ebp)
+	fstpl	-40(%ebp)
 	fldl	-32(%ebp)
 	fmull	-32(%ebp)
 	fstpl	-8(%ebp)
-	fldl	-40(%ebp)
+	fldl	8(%ebp)
 	fstpl	(%esp)
 	call	_bbCos
 	fstpl	-16(%ebp)
-	fldl	-56(%ebp)
+	fldl	24(%ebp)
 	fstpl	(%esp)
 	call	_bbCos
 	fldl	-16(%ebp)
 	fmulp	%st(0),%st(1)
 	fstpl	-16(%ebp)
 	fldl	-16(%ebp)
-	fmull	-48(%ebp)
-	fmull	-48(%ebp)
+	fmull	-40(%ebp)
+	fmull	-40(%ebp)
 	fldl	-8(%ebp)
 	faddp	%st(0),%st(1)
 	fstpl	-8(%ebp)
@@ -404,12 +391,16 @@ __bb_Program_DistanceBetweenPointsLatLong:
 	call	_bbSqr
 	fstpl	(%esp)
 	call	_bbATan2
-	fldl	_224
+	fldl	_214
+	fdivrp	%st(0),%st(1)
+	fldl	_215
+	fmulp	%st(0),%st(1)
+	fldl	_216
 	fxch	%st(1)
 	fadd	%st(0),%st(0)
 	fmulp	%st(0),%st(1)
-	jmp	_90
-_90:
+	jmp	_88
+_88:
 	mov	%ebp,%esp
 	pop	%ebp
 	ret
@@ -435,12 +426,41 @@ _10:
 	mov	%eax,%edi
 	movl	20(%edi),%eax
 	cmp	$4,%eax
-	je	_142
+	je	_136
 	cmp	$3,%eax
-	je	_143
-	jmp	_141
-_142:
+	je	_137
+	jmp	_135
+_136:
 	movl	$_bb_TActivity,(%esp)
+	call	_bbObjectNew
+	mov	%eax,%ebx
+	movl	24(%edi),%eax
+	incl	4(%eax)
+	mov	%eax,%esi
+	movl	8(%ebx),%eax
+	decl	4(%eax)
+	jnz	_142
+	movl	%eax,(%esp)
+	call	_bbGCFree
+_142:
+	movl	%esi,8(%ebx)
+	movl	4+24(%edi),%eax
+	movl	%eax,(%esp)
+	call	_bbStringToDouble
+	fstpl	16(%ebx)
+	movl	8+24(%edi),%eax
+	movl	%eax,(%esp)
+	call	_bbStringToDouble
+	fstpl	24(%ebx)
+	movl	8(%ebp),%eax
+	movl	8(%eax),%eax
+	movl	%ebx,4(%esp)
+	movl	%eax,(%esp)
+	movl	(%eax),%eax
+	calll	*68(%eax)
+	jmp	_135
+_137:
+	movl	$_bb_TResource,(%esp)
 	call	_bbObjectNew
 	mov	%eax,%ebx
 	movl	24(%edi),%eax
@@ -462,42 +482,13 @@ _148:
 	call	_bbStringToDouble
 	fstpl	24(%ebx)
 	movl	8(%ebp),%eax
-	movl	8(%eax),%eax
-	movl	%ebx,4(%esp)
-	movl	%eax,(%esp)
-	movl	(%eax),%eax
-	calll	*68(%eax)
-	jmp	_141
-_143:
-	movl	$_bb_TResource,(%esp)
-	call	_bbObjectNew
-	mov	%eax,%ebx
-	movl	24(%edi),%eax
-	incl	4(%eax)
-	mov	%eax,%esi
-	movl	8(%ebx),%eax
-	decl	4(%eax)
-	jnz	_154
-	movl	%eax,(%esp)
-	call	_bbGCFree
-_154:
-	movl	%esi,8(%ebx)
-	movl	4+24(%edi),%eax
-	movl	%eax,(%esp)
-	call	_bbStringToDouble
-	fstpl	16(%ebx)
-	movl	8+24(%edi),%eax
-	movl	%eax,(%esp)
-	call	_bbStringToDouble
-	fstpl	24(%ebx)
-	movl	8(%ebp),%eax
 	movl	12(%eax),%eax
 	movl	%ebx,4(%esp)
 	movl	%eax,(%esp)
 	movl	(%eax),%eax
 	calll	*68(%eax)
-	jmp	_141
-_141:
+	jmp	_135
+_135:
 _8:
 	movl	-4(%ebp),%eax
 	movl	%eax,(%esp)
@@ -509,8 +500,8 @@ _9:
 	movl	%eax,(%esp)
 	call	_brl_stream_CloseStream
 	mov	$0,%eax
-	jmp	_93
-_93:
+	jmp	_91
+_91:
 	add	$8,%esp
 	pop	%edi
 	pop	%esi
@@ -556,9 +547,9 @@ _14:
 	cmpl	$_bbNullObject,-16(%ebp)
 	je	_12
 	movl	$0,-20(%ebp)
-	jmp	_166
+	jmp	_160
 _17:
-	fldl	_232
+	fldl	_224
 	fstpl	-8(%ebp)
 	movl	$_bbNullObject,-12(%ebp)
 	movl	-32(%ebp),%esi
@@ -602,13 +593,13 @@ _20:
 	setae	%al
 	movzbl	%al,%eax
 	cmp	$0,%eax
-	je	_240
+	je	_232
 	fstp	%st(0)
-	jmp	_176
-_240:
+	jmp	_170
+_232:
 	fstpl	-8(%ebp)
 	movl	%ebx,-12(%ebp)
-_176:
+_170:
 _18:
 	mov	%edi,%eax
 	movl	%eax,(%esp)
@@ -626,10 +617,10 @@ _19:
 	mov	%eax,%esi
 	movl	12(%ebx),%eax
 	decl	4(%eax)
-	jnz	_181
+	jnz	_175
 	movl	%eax,(%esp)
 	call	_bbGCFree
-_181:
+_175:
 	movl	%esi,12(%ebx)
 	movl	-16(%ebp),%eax
 	movl	8(%eax),%eax
@@ -637,10 +628,10 @@ _181:
 	mov	%eax,%esi
 	movl	8(%ebx),%eax
 	decl	4(%eax)
-	jnz	_185
+	jnz	_179
 	movl	%eax,(%esp)
 	call	_bbGCFree
-_185:
+_179:
 	movl	%esi,8(%ebx)
 	fldl	-8(%ebp)
 	fstpl	16(%ebx)
@@ -656,7 +647,7 @@ _185:
 	call	_brl_linkedlist_ListRemove
 _15:
 	addl	$1,-20(%ebp)
-_166:
+_160:
 	cmpl	$50,-20(%ebp)
 	jl	_17
 _16:
@@ -699,8 +690,8 @@ _21:
 	jne	_23
 _22:
 	fldl	-28(%ebp)
-	jmp	_96
-_96:
+	jmp	_94
+_94:
 	add	$32,%esp
 	pop	%edi
 	pop	%esi
@@ -721,7 +712,7 @@ __bb_Program_Main:
 	movl	(%eax),%eax
 	calll	*52(%eax)
 	mov	$0,%esi
-	jmp	_196
+	jmp	_190
 _26:
 	mov	%edi,%eax
 	movl	%eax,(%esp)
@@ -742,13 +733,13 @@ _26:
 	call	_brl_standardio_Print
 _24:
 	add	$1,%esi
-_196:
-	cmp	$100,%esi
+_190:
+	cmp	$10,%esi
 	jl	_26
 _25:
 	mov	$0,%eax
-	jmp	_99
-_99:
+	jmp	_97
+_97:
 	add	$12,%esp
 	pop	%edi
 	pop	%esi
@@ -758,7 +749,7 @@ _99:
 	ret
 	.data	
 	.align	4
-_103:
+_101:
 	.long	0
 _29:
 	.asciz	"TActivity"
@@ -917,31 +908,22 @@ _48:
 	.short	54,51,54,55,52,53,48,46,48,48,48,48,48,48,48,48
 	.short	48,48
 _49:
-	.asciz	"convert2Rad"
-	.align	4
-_50:
-	.long	_bbStringClass
-	.long	2147483646
-	.long	20
-	.short	48,46,48,49,55,52,53,51,50,57,50,53,49,57,57,52
-	.short	51,50,57,53
-_51:
 	.asciz	"la"
-_52:
+_50:
 	.asciz	":TList"
-_53:
+_51:
 	.asciz	"lr"
-_54:
+_52:
 	.asciz	"DistanceBetweenPointsLatLong"
-_55:
+_53:
 	.asciz	"(d,d,d,d)d"
-_56:
+_54:
 	.asciz	"LoadCSV"
-_57:
+_55:
 	.asciz	"ScheduleResources"
-_58:
+_56:
 	.asciz	"()d"
-_59:
+_57:
 	.asciz	"Main"
 	.align	4
 _45:
@@ -951,17 +933,13 @@ _45:
 	.long	_47
 	.long	_33
 	.long	_48
-	.long	1
-	.long	_49
-	.long	_33
-	.long	_50
 	.long	3
-	.long	_51
-	.long	_52
+	.long	_49
+	.long	_50
 	.long	8
 	.long	3
-	.long	_53
-	.long	_52
+	.long	_51
+	.long	_50
 	.long	12
 	.long	6
 	.long	_35
@@ -972,19 +950,19 @@ _45:
 	.long	_36
 	.long	20
 	.long	7
-	.long	_54
-	.long	_55
+	.long	_52
+	.long	_53
 	.long	48
 	.long	6
-	.long	_56
+	.long	_54
 	.long	_36
 	.long	52
 	.long	6
-	.long	_57
-	.long	_58
+	.long	_55
+	.long	_56
 	.long	56
 	.long	6
-	.long	_59
+	.long	_57
 	.long	_36
 	.long	60
 	.long	0
@@ -1007,36 +985,27 @@ _bb_Program:
 	.long	__bb_Program_ScheduleResources
 	.long	__bb_Program_Main
 	.align	8
-_218:
-	.long	0xa2529d39,0x3f91df46
-	.align	8
-_219:
-	.long	0xa2529d39,0x3f91df46
-	.align	8
-_220:
-	.long	0xa2529d39,0x3f91df46
-	.align	8
-_221:
-	.long	0xa2529d39,0x3f91df46
-	.align	8
-_222:
+_212:
 	.long	0x0,0x3fe00000
 	.align	8
-_223:
+_213:
 	.long	0x0,0x3fe00000
 	.align	8
-_224:
+_214:
+	.long	0x0,0x40668000
+	.align	8
+_215:
+	.long	0x54442d18,0x400921fb
+	.align	8
+_216:
 	.long	0x80000000,0x41584a36
 	.align	4
 _7:
 	.long	_bbStringClass
 	.long	2147483647
-	.long	72
-	.short	47,85,115,101,114,115,47,100,97,114,121,108,47,68,101,118
-	.short	101,108,111,112,109,101,110,116,47,80,114,111,106,101,99,116
-	.short	115,47,70,117,110,99,116,105,111,110,97,108,67,111,109,112
-	.short	97,114,105,115,111,110,47,68,97,116,97,47,68,97,116,97
-	.short	83,80,73,70,46,99,115,118
+	.long	23
+	.short	46,46,47,46,46,47,68,97,116,97,47,68,97,116,97,83
+	.short	80,73,70,46,99,115,118
 	.align	4
 _11:
 	.long	_bbStringClass
@@ -1044,7 +1013,7 @@ _11:
 	.long	1
 	.short	44
 	.align	8
-_232:
+_224:
 	.long	0x85ebc8a0,0x7fe1ccf3
 	.align	4
 _27:
