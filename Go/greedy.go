@@ -121,9 +121,9 @@ func build(lines []string) SchemaData {
 }
 
 func main() {
-	lines, _ := readLines("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv")
+	lines, _ := readLines("../Data/DataSPIF.csv")
 	sd := build(lines)
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 10; i++ {
 		sdi := SchemaData{}
 		sdi.activity = map[string]Activity{}
 		for k, v := range sd.activity {

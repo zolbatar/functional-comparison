@@ -2,7 +2,6 @@
 
 use std::io::prelude::*;
 use std::fs::File;
-use std::str::FromStr;
 use std::f64;
 use std::f64::consts::PI;
 use std::path::Path;
@@ -72,9 +71,9 @@ fn build(lines: Vec<&str>) -> SchemaData {
         let lat: f64 = split[1].parse::<f64>().unwrap();
         let lng: f64 = split[2].parse::<f64>().unwrap();
         if split.len() == 3 {
-            sd.resource.push(Resource::new(&String::from_str(id).unwrap(), lat, lng));
+            sd.resource.push(Resource::new(&String::from(id), lat, lng));
         } else if split.len() == 4 {
-            sd.activity.push(Activity::new(&String::from_str(id).unwrap(), lat, lng));
+            sd.activity.push(Activity::new(&String::from(id), lat, lng));
         }
     }
     sd
@@ -132,8 +131,7 @@ fn schedule_resources(sd: &mut SchemaData) -> f64 {
 
 fn main() {
     // Load lines
-    let mut file = File::open(Path::new("D:/Development/FunctionalComparison/Data/DataSPIF.csv")).unwrap();
-    //let mut file = File::open(Path::new("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv")).unwrap();
+    let mut file = File::open(Path::new("../Data/DataSPIF.csv")).unwrap();
     let mut buffer = Vec::new();
     file.read_to_end(&mut buffer).unwrap();
     let filestr = String::from_utf8(buffer).unwrap();
@@ -143,7 +141,7 @@ fn main() {
     let sd = build(lines);
 
     // Schedule
-    for i in 0..100 {
+    for i in 0..10 {
         let mut sd2 = sd.clone();
         let sum = schedule_resources(&mut sd2);
         println!("{}: {}", i, sum);

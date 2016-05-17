@@ -105,9 +105,9 @@ class Greedy {
 
     public static void main(String [] args) throws IOException
     {
-        List<String> teams = java.nio.file.Files.lines(Paths.get("/Users/daryl/Development/Projects/FunctionalComparison/Data/","DataSPIF.csv")).collect(Collectors.toList());  
+        List<String> teams = java.nio.file.Files.lines(Paths.get("../Data/","DataSPIF.csv")).collect(Collectors.toList());  
         SchemaData sd = Build(teams);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             SchemaData sdLoop = new SchemaData();
             sdLoop.activity = new HashMap<>(sd.activity);
             sdLoop.resource = new LinkedList<>(sd.resource);

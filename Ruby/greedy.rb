@@ -1,6 +1,3 @@
-#gem install ruby_deep_clone
-require "deep_clone"
-
 class Activity
 attr_reader :id, :lat, :lon
 	def initialize(id, lat, lon)
@@ -79,7 +76,7 @@ end
 
 sd = SchemaData.new
 puts sd.allocation
-File.open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv').each do |line|
+File.open('../Data/DataSPIF.csv').each do |line|
   items = line.split(',')
   case items.count
   when 3
@@ -92,8 +89,10 @@ File.open('/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.
 end
 
 gp = Greedy.new
-100.times do |i|
-	sdi = DeepClone.clone(sd)
+10.times do |i|
+  sdi = SchemaData.new
+  sdi.resource = sd.resource.clone
+  sdi.activity = sd.activity.clone
 	gp.scheduleResources(sdi)
 	puts i.to_s + ":" + (sdi.allocation.reduce(0) { |sum,x| sum + x.dist }).to_s
 end

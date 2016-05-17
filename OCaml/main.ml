@@ -3,7 +3,7 @@
 type activity = { aid: string; alat: float; alng: float }
 type resource = { rid: string; rlat: float; rlng: float }
 type allocation = { resourceId: string; activityId: string; distance: float }
-type schemaData = { activity: activity list; resource: resource list; allocation: allocation list }
+type schemaData = { activity: activity list; mutable resource: resource list; allocation: allocation list }
 
 let rec loadCSV (lines: string array list) (sd: schemaData) =
     match lines with
@@ -59,15 +59,17 @@ let rec scheduleResource (r: resource) (c: int) (sd: schemaData) =
                 activity = activities;
                 allocation = { resourceId = r.rid; activityId = aid; distance = dist } :: sd.allocation }
 
-let rec runMultiple (c: int) (sd: schemaData) =
+let rec runMultiple (c: int) (tot: int) (sd: schemaData) =
     match c with
     | 0 -> ()
     | c ->
         let result = scheduleResource (List.hd sd.resource) 50 { sd with resource = List.tl sd.resource } in
         let distances = List.map (fun x -> x.distance) result.allocation in
         let total = List.fold_left (+.) 0.0 distances in
+		print_int (tot - c + 1);
+		print_string ": ";
         print_endline (string_of_float total);
-        runMultiple (c - 1) sd
+        runMultiple (c - 1) tot sd
 
 let loadFile path =
     let lines = ref [] in
@@ -81,8 +83,8 @@ let loadFile path =
       List.rev !lines;;
 
 let () = 
-    let lines = loadFile "/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv" in
-    print_endline "Done";
+    let lines = loadFile "../Data/DataSPIF.csv" in
     let linesSplit = List.map (fun x -> Array.of_list (Str.split (Str.regexp ",") x)) lines in
     let sd = loadCSV linesSplit { activity = []; resource = []; allocation = [] } in
-    runMultiple 100 sd
+	sd.resource <- List.rev sd.resource;
+    runMultiple 10 10 sd

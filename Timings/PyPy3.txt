@@ -1,1 +1,1 @@
-   PyPy3: 0:00.75 real  0.69 user  0.04 sys
+   PyPy3: 0:00.68 real  0.64 user  0.03 sys
