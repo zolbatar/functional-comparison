@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CSharp
 {
@@ -39,8 +38,6 @@ namespace CSharp
 	{
 		static double earthRadius = 6367450.0; // geometric mean value gives about .1% error
 		static double convert2Rad = Math.PI / 180.0;
-		static double convert2Deg = 180.0 / Math.PI;
-		static double seconds_per_metre = 0.0559234073;
 
 		static double distanceBetweenPointsLatLong (double lat1, double lon1, double lat2, double lon2)
 		{

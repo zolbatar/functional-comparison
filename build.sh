@@ -12,6 +12,7 @@ cd ..
 # C#
 cd C#
 xbuild /p:Configuration=Release CSharp.sln
+dotnet build --configuration Release
 cd ..
 
 # C++

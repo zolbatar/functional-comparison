@@ -16,8 +16,10 @@ cd ..
 # C#
 cd C#
 echo "C#"
+printf " C# Mono: " > ../Timings/C#Mono.txt
 printf "      C#: " > ../Timings/C#.txt
-{ gtime -f "%E real  %U user  %S sys" mono -O=all bin/Release/CSharp.exe ; } 2>> ../Timings/C#.txt
+{ gtime -f "%E real  %U user  %S sys" mono -O=all bin/Release/CSharp.exe ; } 2>> ../Timings/C#Mono.txt
+{ gtime -f "%E real  %U user  %S sys" dotnet run ; } 2>> ../Timings/C#.txt
 cd ..
 
 # C++
@@ -114,6 +116,7 @@ cd ..
 # Timings
 cat Timings/BlitzMax.txt
 cat Timings/Monkey-X.txt
+cat Timings/C#Mono.txt
 cat Timings/C#.txt
 cat Timings/C++.txt
 cat Timings/Clojure.txt
