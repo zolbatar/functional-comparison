@@ -1,1 +1,1 @@
-    Ruby: 2:31.46 real  149.54 user  0.54 sys
+    Ruby: 2:28.14 real  146.17 user  0.57 sys 30310400 set size

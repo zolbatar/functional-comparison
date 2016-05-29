@@ -1,1 +1,1 @@
- Haskell: 0:38.96 real  38.27 user  0.50 sys
+ Haskell: 0:41.39 real  39.17 user  0.81 sys 2190098432 set size

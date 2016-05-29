@@ -1,1 +1,1 @@
-   PyPy3: 0:32.44 real  31.34 user  0.34 sys
+   PyPy3: 0:32.60 real  31.11 user  0.42 sys 292093952 set size

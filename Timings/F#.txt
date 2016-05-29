@@ -1,1 +1,1 @@
-      F#: 0:58.05 real  57.32 user  0.52 sys
+      F#: 0:57.29 real  55.15 user  0.70 sys 151617536 set size

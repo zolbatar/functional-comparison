@@ -1,1 +1,1 @@
- Clojure: 1:01.01 real  62.52 user  1.01 sys
+ Clojure: 1:00.46 real  60.33 user  1.19 sys 2418196480 set size

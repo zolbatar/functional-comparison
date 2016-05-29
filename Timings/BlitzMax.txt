@@ -1,1 +1,1 @@
-Blitzmax: 0:24.87 real  23.99 user  0.24 sys
+Blitzmax: 0:23.44 real  23.19 user  0.08 sys 29114368 set size

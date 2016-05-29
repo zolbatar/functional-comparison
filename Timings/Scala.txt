@@ -1,1 +1,1 @@
-   Scala: 0:31.63 real  31.25 user  0.66 sys
+   Scala: 0:31.60 real  31.20 user  0.69 sys 2940289024 set size
