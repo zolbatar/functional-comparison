@@ -8,7 +8,7 @@ cd Proprietary/BlitzMax/
 C:\BlitzMax\bin\bmk makeapp -r Greedy.bmx
 cd ..
 cd Monkey-X
-C:\MonkeyXFree84f\bin\transcc_winnt -target="Desktop_Game_(Glfw3)" -config=Release +CPP_DOUBLE_PRECISION_FLOATS=1 -build greedy.monkey
+C:\Monkey2-v1.1.07\bin\mx2cc_windows.exe makeapp -target="desktop" -config=release greedy.monkey2
 cd ..
 cd ..
 

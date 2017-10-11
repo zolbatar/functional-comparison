@@ -31,13 +31,14 @@ cd Java
 del /q *.class
 cd ..
 cd OCaml
-rm main
-rm main.o
-rm main.cmi
-rm main.cmx
-cd ..cd Rust
-rm greedy
+del main
+del main.o
+del main.cmi
+del main.cmx
+cd ..
+cd Rust
+del greedy
 cd ..
 cd Scala
-rm -rf target
+del /s /q target
 cd ..

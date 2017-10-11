@@ -1,7 +1,8 @@
-Strict
-Import monkey
-Import brl
-Import os
+#Import "<std>"
+#Import "<monkey>"
+
+Using std..
+Using monkey..
 
 Class TActivity
 	Field id:String, lat:Float, lon:Float
@@ -15,12 +16,6 @@ Class TResource
 	Field id:String, lat:Float, lon:Float
 End
 
-Function Main:Int()
-	Local p:Program = New Program
-	p.Main()
-	Return 0
-End
-
 Class Program
 	Const earthRadius:Float = 6367450.0
 	Field la:List<TActivity> = New List<TActivity>
@@ -32,13 +27,14 @@ Class Program
 		Local dSinHalfLatitude:Float = Sin(dLatitude * 0.5)
 		Local dSinHalfLongitude:Float = Sin(dLongitude * 0.5)
 		Local a:Float = dSinHalfLatitude * dSinHalfLatitude + Cos(lat1) * Cos(lat2) * dSinHalfLongitude * dSinHalfLongitude
-		Local c:Float = ATan2(Sqrt(a), Sqrt(1.0 - a)) / 180 * PI
+		Local c:Float = ATan2(Sqrt(a), Sqrt(1.0 - a)) / 180 * Pi
 		Return (earthRadius * (c + c))
 	End
 	
 	Method LoadCSV:Void()
-		Local in:FileStream = FileStream.Open("../../../../../../../../../../Data/DataSPIF.csv", "r")
-		While Not in.Eof()
+		Local in:FileStream = FileStream.Open("C:\Users\Daryl\Documents\SourceCode\FunctionalComparison\Data\DataSPIF.csv", "r")
+		Print in.Length
+		While Not in.Eof
         	Local l:String = in.ReadLine()
 			Local s:String[] = l.Split(",")
 			Select s.Length
@@ -64,7 +60,7 @@ Class Program
 		Local lal:List<TAllocation> = New List<TAllocation>
 		For Local r:TResource = Eachin lr
 			For Local i:Int = 0 Until 50
-				Local lowest:Float = 10e308
+				Local lowest:Float = 1e38
 				Local lowest_item:TActivity = Null
 				For Local a:TActivity = EachIn lla
 					Local dist:Float = DistanceBetweenPointsLatLong(r.lat, r.lon, a.lat, a.lon)
@@ -96,4 +92,9 @@ Class Program
 		Next
 	End
 
+End
+
+Function Main:Void()
+	Local p:Program = New Program
+	p.Main()
 End
