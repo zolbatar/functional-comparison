@@ -12,6 +12,7 @@ cd ..
 # C#
 cd C#
 csc -O Program.cs
+chmod +x Program.exe
 cd DotNet
 dotnet build --configuration Release
 cd ..

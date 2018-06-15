@@ -1,1 +1,0 @@
-    Rust: 0:12.50 real  11.92 user  0.15 sys 6275072 set size
