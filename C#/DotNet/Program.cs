@@ -108,7 +108,7 @@ namespace Greedy
 
             public static void Main(string[] args)
             {
-                var lines = System.IO.File.ReadAllLines(@"../Data/DataSPIF.csv");
+                var lines = System.IO.File.ReadAllLines(@"../../Data/DataSPIF.csv");
                 var al = new List<Activity>();
                 var rl = new List<Resource>();
                 importCSV(lines, al, rl);

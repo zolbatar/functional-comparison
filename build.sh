@@ -11,8 +11,10 @@ cd ..
 
 # C#
 cd C#
-xbuild /p:Configuration=Release CSharp.sln
+csc -O Program.cs
+cd DotNet
 dotnet build --configuration Release
+cd ..
 cd ..
 
 # C++
@@ -32,7 +34,10 @@ cd ..
 
 # F#
 cd F#
-xbuild /p:Configuration=Release GreedyPerformance.sln
+fsharpc -O Start.fs 
+cd DotNet
+dotnet build --configuration Release
+cd ..
 cd ..
 
 # Go
