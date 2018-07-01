@@ -135,7 +135,7 @@ void main()
     auto lines = readLines("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
     auto sd = new SchemaData();
     importCSV(&sd, lines);
-    for (int c = 0; c < 100; c++) {
+    for (int c = 0; c < 1000; c++) {
         auto tot = scheduleResources(&sd);
         writef("%d: %f\n", c, tot);
     }

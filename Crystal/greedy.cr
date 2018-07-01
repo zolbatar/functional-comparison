@@ -1,23 +1,36 @@
 class Activity
-attr_reader :id, :lat, :lon
+	getter :id, :lat, :lon
+	@id: String
+	@lat: Float64
+	@lon: Float64
 	def initialize(id, lat, lon)
 		@id = id
 		@lat = lat
 		@lon = lon
 	end
+
+	def_clone
 end
 
 class Resource
-attr_reader :id, :lat, :lon
+	getter :id, :lat, :lon
+	@id: String
+	@lat: Float64
+	@lon: Float64
 	def initialize(id, lat, lon)
 		@id = id
 		@lat = lat
 		@lon = lon
 	end
+
+	def_clone
 end
 
 class Allocation
-attr_reader :rid, :aid, :dist
+	getter :rid, :aid, :dist
+	@rid: String
+	@aid: String
+	@dist: Float64
 	def initialize(rid, aid, dist)
 		@rid = rid
 		@aid = aid
@@ -26,20 +39,20 @@ attr_reader :rid, :aid, :dist
 end
 
 class SchemaData
-attr_accessor :activity, :resource, :allocation
+property :activity, :resource, :allocation
 	def initialize
-		@activity = Array.new
-		@resource = Array.new 
-		@allocation = Array.new
+		@activity = Array(Activity).new
+		@resource = Array(Resource).new 
+		@allocation = Array(Allocation).new
 	end
 end
 
 class Greedy
 
-	@@earthRadiusM = 6367450
-	@@convert2Rad = Math::PI / 180.0
-	@@convert2Deg = 180.0 / Math::PI
-	@@seconds_per_metre = 0.0559234073
+	@@earthRadiusM: Float64 = 6367450.0
+	@@convert2Rad: Float64 = Math::PI / 180.0
+	@@convert2Deg: Float64 = 180.0 / Math::PI
+	@@seconds_per_metre: Float64 = 0.0559234073
 
 	def distanceBetweenPointsLatLong(lat1, lon1, lat2, lon2)
 		dStartLatInRad = lat1 * @@convert2Rad
@@ -57,9 +70,9 @@ class Greedy
 
 	def scheduleResources(sd)
 		sd.resource.each do |res|
-			50.times do |c| 
-				lowest = (2**(0.size * 8 - 2) - 1).to_f
-				lowestact = nil
+			50.times do |c|
+				lowest = Float64::MAX
+				lowestact: Activity = Activity.new("", 0.0, 0.0)
 				sd.activity.each do |act|
 					dist = distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
 					if dist < lowest
@@ -76,9 +89,9 @@ end
 
 sd = SchemaData.new
 puts sd.allocation
-File.open("../Data/DataSPIF.csv").each do |line|
+File.each_line("../Data/DataSPIF.csv") do |line|
   items = line.split(',')
-  case items.count
+  case items.size
   when 3
   	r = Resource.new(items[0], items[1].to_f, items[2].to_f)
   	sd.resource << r

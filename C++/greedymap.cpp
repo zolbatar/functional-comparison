@@ -138,7 +138,7 @@ int main()
     // Read in CSV file
     std::list<string> csvLines;
     string line;
-    std::ifstream csv ("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
+	std::ifstream csv ("../Data/DataSPIF.csv");
     if (csv.is_open())
     {
         while (getline(csv, line))
@@ -157,7 +157,7 @@ int main()
     std::list<Resource *> rl;
     importCSV(csvLines, &al, &rl);
 
-    for (int i = 0; i < 100 ; i++)
+    for (int i = 0; i < 1000 ; i++)
     {
         SchemaData *sd = new SchemaData();
         sd->activity = std::map<string, Activity *>(al);

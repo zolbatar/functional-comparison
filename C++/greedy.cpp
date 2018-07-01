@@ -38,6 +38,11 @@ public:
 	std::list<Activity *> activity; 
 	std::list<Resource *> resource; 
 	std::list<Allocation *> allocation; 
+
+	~SchemaData() {
+		for (Allocation* ptr : allocation) delete ptr;
+		allocation.clear();
+	}
 };
 
 const double pi = boost::math::constants::pi<double>();
@@ -134,7 +139,7 @@ int main()
 	// Read in CSV file
 	std::list<string> csvLines;
 	string line;
-	std::ifstream csv ("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv");
+	std::ifstream csv ("../Data/DataSPIF.csv");
 	if (csv.is_open())
 	{
 		while (getline(csv, line))
@@ -167,7 +172,7 @@ int main()
 			sum += (*it)->dist;
 		}
 		std::cout << i << " : " << sum << std::endl;
-
+		delete sd;
 	}
 
 	return 0;

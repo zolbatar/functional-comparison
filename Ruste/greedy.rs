@@ -131,8 +131,8 @@ fn schedule_resources(sd: &mut SchemaData) -> f64 {
 
 fn main() {
     // Load lines
-    let mut file = File::open(Path::new("../Data/DataSPIF.csv")).unwrap();
     let mut buffer = Vec::new();
+    let file = File::open(Path::new("../Data/DataSPIF.csv")).unwrap();
     file.read_to_end(&mut buffer).unwrap();
     let filestr = String::from_utf8(buffer).unwrap();
     let lines: Vec<&str> = filestr.lines().collect();

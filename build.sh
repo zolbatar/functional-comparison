@@ -20,12 +20,18 @@ cd ..
 
 # C++
 cd C++
-clang++ -O3 greedy.cpp -o greedy
+clang++ -O3 -march=native greedy.cpp -o greedy
+clang++ -O3 -march=native greedymap.cpp -o greedymap
 cd ..
 
 # Clojure
 cd Clojure
 lein uberjar
+cd ..
+
+# Crystal
+cd Crystal
+crystal build --release greedy.cr 
 cd ..
 
 # D
@@ -58,12 +64,12 @@ cd ..
 
 # OCaml
 cd OCaml
-ocamlopt str.cmxa main.ml -o main
+ocamlopt -O3 str.cmxa main.ml -o main
 cd ..
 
 # Rust
 cd Rust
-rustc -C opt-level=3 -C target-cpu=native greedy.rs
+cargo build --release
 cd ..
 
 # Scala

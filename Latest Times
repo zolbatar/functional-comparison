@@ -1,0 +1,21 @@
+  Language     Time    Memory
+------------  ------   ------
+        C++:  10.51s     4.3M
+       Rust:  10.67s     3.2M
+    Crystal:  10.96s     5.2M
+      PyPy2:  13.98s    72.4M
+      PyPy3:  15.96s    67.8M
+         Go:  17.60s     7.4M
+         C#:  26.91s   103.0M
+       Java:  29.19s    88.4M
+      Scala:  31.12s   243.3M
+  C# (Mono):  33.88s    37.6M
+TruffleRuby:  34.54s   488.4M
+          D:  36.39s     3.8M
+     O'Caml:  36.67s     5.6M
+    Haskell:  37.52s     6.8M
+         F#:  57.47s    43.1M
+    Clojure:  58.31s  1119.3M
+       Ruby: 124.14s    10.1M
+    Python2: 174.45s     9.2M
+    Python3: 231.56s    10.9M
