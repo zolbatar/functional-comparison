@@ -16,6 +16,7 @@ TruffleRuby:  34.54s   488.4M
     Haskell:  37.52s     6.8M
          F#:  57.47s    43.1M
     Clojure:  58.31s  1119.3M
+      Julia: 107.09s   198.6M
        Ruby: 124.14s    10.1M
     Python2: 174.45s     9.2M
     Python3: 231.56s    10.9M

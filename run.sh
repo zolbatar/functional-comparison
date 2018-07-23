@@ -84,6 +84,13 @@ echo "    Java: " > ../Timings/Java.txt
 /usr/bin/time -v java -server `basename Greedy .java` 2>> ../Timings/Java.txt
 cd ..
 
+# Julia
+cd Julia
+echo "Julia"
+echo "   Julia: " > ../Timings/Julia.txt
+/usr/bin/time -v julia greedy.jl 2>> ../Timings/Julia.txt
+cd ..
+
 # O'caml
 cd OCaml
 echo "OCaml"
