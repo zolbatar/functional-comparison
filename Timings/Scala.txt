@@ -1,19 +1,19 @@
    Scala: 
 	Command being timed: "java -server -jar target/scala-2.10/scala_2.10-0.1-SNAPSHOT-one-jar.jar"
-	User time (seconds): 3.06
-	System time (seconds): 0.18
-	Percent of CPU this job got: 133%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.42
+	User time (seconds): 3.36
+	System time (seconds): 0.23
+	Percent of CPU this job got: 132%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.71
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 378564
+	Maximum resident set size (kbytes): 377696
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 90516
-	Voluntary context switches: 1793
-	Involuntary context switches: 107
+	Minor (reclaiming a frame) page faults: 90809
+	Voluntary context switches: 1775
+	Involuntary context switches: 99
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 64

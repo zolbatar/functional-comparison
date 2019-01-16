@@ -18,8 +18,8 @@ rm Timings/*
 # C#
 cd C#
 echo "C#"
-echo " C# Mono: " > ../Timings/C#Mono.txt
-/usr/bin/time -v mono ./Program.exe 2>> ../Timings/C#Mono.txt
+#echo " C# Mono: " > ../Timings/C#Mono.txt
+#/usr/bin/time -v mono ./Program.exe 2>> ../Timings/C#Mono.txt
 cd DotNet
 echo "      C#: " > ../../Timings/C#.txt
 /usr/bin/time -v dotnet run 2>> ../../Timings/C#.txt
@@ -58,9 +58,11 @@ cd ..
 
 # F#
 cd F#
+cd DotNet
 echo "F#"
 printf "      F#: " > ../Timings/F#.txt
-/usr/bin/time -v mono -O=all Start.exe 2>> ../Timings/F#.txt
+/usr/bin/time -v dotnet run 2>> ../../Timings/F#.txt
+cd ..
 cd ..
 
 # Go
@@ -84,11 +86,18 @@ echo "    Java: " > ../Timings/Java.txt
 /usr/bin/time -v java -server `basename Greedy .java` 2>> ../Timings/Java.txt
 cd ..
 
+# Java
+cd Java
+echo "NodeJS"
+echo "  NodeJS: " > ../Timings/NodeJS.txt
+/usr/bin/time -v node greedy.js 2>> ../Timings/NodeJS.txt
+cd ..
+
 # Julia
 cd Julia
 echo "Julia"
 echo "   Julia: " > ../Timings/Julia.txt
-/usr/bin/time -v julia greedy.jl 2>> ../Timings/Julia.txt
+/usr/bin/time -v julia --optimize=3 greedy.jl 2>> ../Timings/Julia.txt
 cd ..
 
 # O'caml
@@ -115,9 +124,11 @@ cd ..
 cd Ruby
 echo "Ruby"
 echo "    Ruby: " > ../Timings/Ruby.txt
+rvm use ruby
 /usr/bin/time -v ruby greedy.rb 2>> ../Timings/Ruby.txt
 echo "TruffleRuby: " > ../Timings/TruffleRuby.txt
-/usr/bin/time -v ~/Development/graalvm-ce-1.0.0-rc2/bin/ruby greedy.rb 2>> ../Timings/TruffleRuby.txt 
+rvm use truffleruby
+/usr/bin/time -v ruby greedy.rb 2>> ../Timings/TruffleRuby.txt 
 cd ..
 
 # Rust

@@ -76,9 +76,9 @@ module Start =
 
     [<EntryPoint>]
     let main args =
-        let path = @"../Data/DataSPIF.csv"
+        let path = @"../../Data/DataSPIF.csv"
         let lines = readLines path
         let sd = loadCSV lines { activity = []; resource = []; allocation = [] }
         sd.resource <- List.rev sd.resource
-        runMultiple 1000 1000 sd
+        runMultiple 100 100 sd
         0
