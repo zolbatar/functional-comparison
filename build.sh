@@ -1,18 +1,16 @@
 #!/bin/sh
 
 # Proprietary
-cd Proprietary/BlitzMax/
-bmk makeapp -r Greedy.bmx
-cd ..
-cd Monkey-X
-transcc_macos -target="Desktop_Game_(Glfw3)" -config=Release +CPP_DOUBLE_PRECISION_FLOATS=1 -build greedy.monkey
-cd ..
-cd ..
+#cd Proprietary/BlitzMax/
+#bmk makeapp -r Greedy.bmx
+#cd ..
+#cd Monkey-X
+#transcc_macos -target="Desktop_Game_(Glfw3)" -config=Release +CPP_DOUBLE_PRECISION_FLOATS=1 -build greedy.monkey
+#cd ..
+#cd ..
 
 # C#
 cd C#
-csc -O Program.cs
-chmod +x Program.exe
 cd DotNet
 dotnet build --configuration Release
 cd ..
@@ -41,7 +39,6 @@ cd ..
 
 # F#
 cd F#
-fsharpc -O Start.fs 
 cd DotNet
 dotnet build --configuration Release
 cd ..

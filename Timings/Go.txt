@@ -1,20 +1,20 @@
       Go: 	Command being timed: "./Go"
-	User time (seconds): 17.59
-	System time (seconds): 0.07
-	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:17.60
+	User time (seconds): 17.02
+	System time (seconds): 0.03
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:17.05
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 7440
+	Maximum resident set size (kbytes): 6200
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 2385
-	Voluntary context switches: 3655
-	Involuntary context switches: 1871
+	Major (requiring I/O) page faults: 193
+	Minor (reclaiming a frame) page faults: 2125
+	Voluntary context switches: 3013
+	Involuntary context switches: 524
 	Swaps: 0
-	File system inputs: 0
+	File system inputs: 2256
 	File system outputs: 0
 	Socket messages sent: 0
 	Socket messages received: 0

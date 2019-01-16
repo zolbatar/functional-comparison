@@ -87,4 +87,4 @@ let () =
     let linesSplit = List.map (fun x -> Array.of_list (Str.split (Str.regexp ",") x)) lines in
     let sd = loadCSV linesSplit { activity = []; resource = []; allocation = [] } in
 	sd.resource <- List.rev sd.resource;
-    runMultiple 1000 1000 sd
+    runMultiple 100 100 sd

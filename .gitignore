@@ -6,8 +6,8 @@
 *.so
 *.suo
 Haskell/dist
-C#/DotNet/bin/
-C#/DotNet/obj/
+C#/DotNet/bin
+C#/DotNet/obj
 F#/DotNet/bin
 F#/DotNet/obj
 F#/Start.exe

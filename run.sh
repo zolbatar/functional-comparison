@@ -3,17 +3,17 @@
 rm Timings/*
 
 # Proprietary
-echo "BlitzMax"
-cd Proprietary/BlitzMax/
-echo "Blitzmax: " > ../../Timings/BlitzMax.txt
-/usr/bin/time -v ./Greedy 2>> ../../Timings/BlitzMax.txt
-cd ..
-cd Monkey-X
-echo "Monkey-X"
-echo "Monkey-X: " > ../../Timings/Monkey-X.txt
-/usr/bin/time -v ./Greedy greedy.buildv85e/glfw3/xcode/build/Release/MonkeyGame.app/Contents/MacOS/MonkeyGame 2>> ../../Timings/Monkey-X.txt
-cd ..
-cd ..
+#echo "BlitzMax"
+#cd Proprietary/BlitzMax/
+#echo "Blitzmax: " > ../../Timings/BlitzMax.txt
+#/usr/bin/time -v ./Greedy 2>> ../../Timings/BlitzMax.txt
+#cd ..
+#cd Monkey-X
+#echo "Monkey-X"
+#echo "Monkey-X: " > ../../Timings/Monkey-X.txt
+#/usr/bin/time -v ./Greedy greedy.buildv85e/glfw3/xcode/build/Release/MonkeyGame.app/Contents/MacOS/MonkeyGame 2>> ../../Timings/Monkey-X.txt
+#cd ..
+#cd ..
 
 # C#
 cd C#

@@ -1,18 +1,20 @@
-      F#: 	Command being timed: "mono -O=all Start.exe"
-	User time (seconds): 57.26
-	System time (seconds): 0.23
-	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:57.47
+      F#: /usr/bin/time: cannot run mono: No such file or directory
+Command exited with non-zero status 127
+	Command being timed: "mono -O=all Start.exe"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: ?%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 43088
+	Maximum resident set size (kbytes): 1116
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 83609
-	Voluntary context switches: 39
-	Involuntary context switches: 5375
+	Minor (reclaiming a frame) page faults: 27
+	Voluntary context switches: 1
+	Involuntary context switches: 0
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
@@ -20,4 +22,4 @@
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
-	Exit status: 0
+	Exit status: 127

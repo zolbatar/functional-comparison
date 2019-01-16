@@ -1,7 +1,7 @@
-Blitzmax: 
-/usr/bin/time: cannot run ./Greedy: No such file or directory
+   Julia: 
+/usr/bin/time: cannot run julia: No such file or directory
 Command exited with non-zero status 127
-	Command being timed: "./Greedy"
+	Command being timed: "julia greedy.jl"
 	User time (seconds): 0.00
 	System time (seconds): 0.00
 	Percent of CPU this job got: ?%
@@ -10,10 +10,10 @@ Command exited with non-zero status 127
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 1100
+	Maximum resident set size (kbytes): 972
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 26
+	Minor (reclaiming a frame) page faults: 25
 	Voluntary context switches: 1
 	Involuntary context switches: 0
 	Swaps: 0

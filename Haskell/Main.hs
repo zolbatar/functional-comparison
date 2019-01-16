@@ -83,4 +83,4 @@ start c = do
       runMultiple c c s
 
 main :: IO ()
-main = start 1000
+main = start 100

@@ -107,7 +107,7 @@ class Greedy {
     {
         List<String> teams = java.nio.file.Files.lines(Paths.get("../Data/","DataSPIF.csv")).collect(Collectors.toList());  
         SchemaData sd = Build(teams);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             SchemaData sdLoop = new SchemaData();
             sdLoop.activity = new HashMap<>(sd.activity);
             sdLoop.resource = new LinkedList<>(sd.resource);

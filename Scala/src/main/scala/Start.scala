@@ -81,7 +81,7 @@ object Start {
     val path = "../Data/DataSPIF.csv"
     val lines = (for (line <- scala.io.Source.fromFile(path).getLines()) yield line.split(",")).toSeq
     val sd = importCSV(lines, new SchemaData())
-    for (i <- 1 to 1000) {
+    for (i <- 1 to 100) {
       val lsd = sd.copy(activities = HashMap() ++= sd.activities)
       val res = scheduleResourceSimple(lsd)
       val total = res.allocations.map(x => x.distance).fold(0.0)(_+_)
