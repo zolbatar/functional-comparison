@@ -47,6 +47,8 @@ cd ..
 # Go
 cd Go
 go build
+cd Go-Concurrent
+go build
 cd ..
 
 # Haskell

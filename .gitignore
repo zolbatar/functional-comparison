@@ -18,6 +18,8 @@ C++/greedy
 C++/greedymap
 Java/*.class
 Rust/target
+Rust-Concurrent/target
 Go/Go
+Go-Concurrent/Concurrent
 target/
 D/greedy

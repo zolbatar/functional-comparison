@@ -5,6 +5,7 @@ use std::fs::File;
 use std::f64;
 use std::f64::consts::PI;
 use std::path::Path;
+use std::thread;
 
 static EARTH_RADIUS_M:f64 = 6367450.0;
 static CONVERT_RAD:f64 = PI / 180.0;
@@ -141,9 +142,19 @@ fn main() {
     let sd = build(lines);
 
     // Schedule
+    let mut children = vec![];
+
     for i in 0..500 {
+        // Spin up another thread
         let mut sd2 = sd.clone();
-        let sum = schedule_resources(&mut sd2);
-        println!("{}: {}", i, sum);
+        children.push(thread::spawn(move || {
+            let sum = schedule_resources(&mut sd2);
+            println!("{}: {}", i, sum);
+        }));
+    }
+
+    for child in children {
+        // Wait for the thread to finish. Returns a result.
+        let _ = child.join();
     }
 }

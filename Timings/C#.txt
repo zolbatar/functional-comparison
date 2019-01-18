@@ -1,19 +1,19 @@
          C#: 
 	Command being timed: "dotnet run"
-	User time (seconds): 3.23
-	System time (seconds): 0.25
-	Percent of CPU this job got: 119%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.92
+	User time (seconds): 9.51
+	System time (seconds): 0.23
+	Percent of CPU this job got: 105%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.25
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 112272
+	Maximum resident set size (kbytes): 110316
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 69673
-	Voluntary context switches: 4146
-	Involuntary context switches: 478
+	Minor (reclaiming a frame) page faults: 69653
+	Voluntary context switches: 4052
+	Involuntary context switches: 255
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 96

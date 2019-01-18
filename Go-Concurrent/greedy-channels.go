@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 )
 
 type Activity struct {
@@ -120,22 +121,31 @@ func build(lines []string) SchemaData {
 	return sd
 }
 
+func loop(i int, sd *SchemaData) {
+}
+
 func main() {
+	var wg sync.WaitGroup
 	lines, _ := readLines("../Data/DataSPIF.csv")
 	sd := build(lines)
 	for i := 0; i < 500; i++ {
-		sdi := SchemaData{}
-		sdi.activity = map[string]Activity{}
-		for k, v := range sd.activity {
-			sdi.activity[k] = v
-		}
-		sdi.resource = sd.resource
-		sdi.allocation = []Allocation{}
-		scheduleResources(&sdi)
-		sum := 0.0
-		for _, alloc := range sdi.allocation {
-			sum += alloc.dist
-		}
-		fmt.Printf("%d : %f\n", i, sum)
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			sdi := SchemaData{}
+			sdi.activity = map[string]Activity{}
+			for k, v := range sd.activity {
+				sdi.activity[k] = v
+			}
+			sdi.resource = sd.resource
+			sdi.allocation = []Allocation{}
+			scheduleResources(&sdi)
+			sum := 0.0
+			for _, alloc := range sdi.allocation {
+				sum += alloc.dist
+			}
+			fmt.Printf("%d : %f\n", i, sum)
+		}(i)
 	}
+	wg.Wait()
 }

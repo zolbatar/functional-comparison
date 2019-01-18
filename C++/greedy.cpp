@@ -3,12 +3,12 @@
 #include <float.h>
 #include <iostream>
 #include <fstream>
-#include <list>	
+#include <list>
 #include <boost/math/constants/constants.hpp>
 
 using std::string;
 
-class Activity 
+class Activity
 {
 public:
 	string id;
@@ -16,7 +16,7 @@ public:
 	double lon;
 };
 
-class Resource 
+class Resource
 {
 public:
 	string id;
@@ -35,12 +35,14 @@ public:
 class SchemaData
 {
 public:
-	std::list<Activity *> activity; 
-	std::list<Resource *> resource; 
-	std::list<Allocation *> allocation; 
+	std::list<Activity *> activity;
+	std::list<Resource *> resource;
+	std::list<Allocation *> allocation;
 
-	~SchemaData() {
-		for (Allocation* ptr : allocation) delete ptr;
+	~SchemaData()
+	{
+		for (Allocation *ptr : allocation)
+			delete ptr;
 		allocation.clear();
 	}
 };
@@ -49,7 +51,7 @@ const double pi = boost::math::constants::pi<double>();
 const double earthRadius = 6367450.0; // geometric mean value gives about .1% error
 const double convert2Rad = pi / 180.0;
 
-double distanceBetweenPointsLatLong (double lat1, double lon1, double lat2, double lon2)
+double distanceBetweenPointsLatLong(double lat1, double lon1, double lat2, double lon2)
 {
 	double dStartLatInRad = lat1 * convert2Rad;
 	double dStartLongInRad = lon1 * convert2Rad;
@@ -64,7 +66,7 @@ double distanceBetweenPointsLatLong (double lat1, double lon1, double lat2, doub
 	return (earthRadius * (c + c));
 }
 
-void importCSV(std::list<string>& lines, std::list<Activity *> *al, std::list<Resource *> *rl)
+void importCSV(std::list<string> &lines, std::list<Activity *> *al, std::list<Resource *> *rl)
 {
 	string delimiter = ",";
 	for (std::list<string>::iterator it = lines.begin(); it != lines.end(); ++it)
@@ -72,44 +74,46 @@ void importCSV(std::list<string>& lines, std::list<Activity *> *al, std::list<Re
 		std::list<string> splits;
 		size_t pos = 0;
 		string token;
-		while ((pos = (*it).find(delimiter)) != std::string::npos) {
-		    token = (*it).substr(0, pos);
-		    splits.push_back(token);
-		    (*it).erase(0, pos + delimiter.length());
+		while ((pos = (*it).find(delimiter)) != std::string::npos)
+		{
+			token = (*it).substr(0, pos);
+			splits.push_back(token);
+			(*it).erase(0, pos + delimiter.length());
 		}
 		splits.push_back(*it);
 		switch (splits.size())
 		{
-			case 3:
-			{
-				Resource *r = new Resource();
-				r->id = splits.front();
-				splits.pop_front();
-				r->lat = atof(splits.front().c_str());
-				splits.pop_front();
-				r->lon = atof(splits.front().c_str());
-				rl->push_back(r);
-				break;
-			}
-			case 4:
-			{
-				Activity *a = new Activity();
-				a->id = splits.front();
-				splits.pop_front();
-				a->lat = atof(splits.front().c_str());
-				splits.pop_front();
-				a->lon = atof(splits.front().c_str());
-				al->push_back(a);
-				break;
-			}
+		case 3:
+		{
+			Resource *r = new Resource();
+			r->id = splits.front();
+			splits.pop_front();
+			r->lat = atof(splits.front().c_str());
+			splits.pop_front();
+			r->lon = atof(splits.front().c_str());
+			rl->push_back(r);
+			break;
+		}
+		case 4:
+		{
+			Activity *a = new Activity();
+			a->id = splits.front();
+			splits.pop_front();
+			a->lat = atof(splits.front().c_str());
+			splits.pop_front();
+			a->lon = atof(splits.front().c_str());
+			al->push_back(a);
+			break;
+		}
 		}
 	}
 }
 
-void scheduleResources(SchemaData& sd) {
+void scheduleResources(SchemaData &sd)
+{
 	for (std::list<Resource *>::iterator it = sd.resource.begin(); it != sd.resource.end(); ++it)
 	{
-		for (int c = 0; c < 50; c++) 
+		for (int c = 0; c < 50; c++)
 		{
 			double lowest = DBL_MAX;
 			std::list<Activity *>::iterator lowestobj;
@@ -118,7 +122,7 @@ void scheduleResources(SchemaData& sd) {
 			for (std::list<Activity *>::iterator ait = sd.activity.begin(); ait != sd.activity.end(); ++ait)
 			{
 				double dist = distanceBetweenPointsLatLong((*it)->lat, (*it)->lon, (*ait)->lat, (*ait)->lon);
-				if (dist < lowest) 
+				if (dist < lowest)
 				{
 					lowest = dist;
 					lowestobj = ait;
@@ -139,7 +143,7 @@ int main()
 	// Read in CSV file
 	std::list<string> csvLines;
 	string line;
-	std::ifstream csv ("../Data/DataSPIF.csv");
+	std::ifstream csv("../Data/DataSPIF.csv");
 	if (csv.is_open())
 	{
 		while (getline(csv, line))
@@ -150,20 +154,21 @@ int main()
 	}
 	else
 	{
-		std::cout << "Unable to open file" << std::endl << std::endl;
+		std::cout << "Unable to open file" << std::endl
+							<< std::endl;
 	}
 
 	// Import each CSV line in turn
-    std::list<Activity *> al;
+	std::list<Activity *> al;
 	std::list<Resource *> rl;
 	importCSV(csvLines, &al, &rl);
 
-	for (int i = 0; i < 100 ; i++)
+	for (int i = 0; i < 500; i++)
 	{
 		SchemaData *sd = new SchemaData();
 		sd->activity = std::list<Activity *>(al);
 		sd->resource = std::list<Resource *>(rl);
-		scheduleResources(*sd);	
+		scheduleResources(*sd);
 
 		// Total
 		double sum = 0.0;

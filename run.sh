@@ -71,6 +71,11 @@ echo "Go"
 echo "         Go: " > ../Timings/Go.txt
 /usr/bin/time -v ./Go 2>> ../Timings/Go.txt
 cd ..
+cd Go-Concurrent
+echo "Go (Concurrent)"
+echo "        Go*: " > ../Timings/GoConcurrent.txt
+/usr/bin/time -v ./Go-Concurrent 2>> ../Timings/GoConcurrent.txt
+cd ..
 
 # Haskell
 cd Haskell
@@ -137,6 +142,11 @@ echo "Rust"
 echo "       Rust: " > ../../../Timings/Rust.txt
 /usr/bin/time -v ./rust 2>> ../../../Timings/Rust.txt
 cd ../../..
+cd Rust-Concurrent/target/release
+echo "Rust (Concurrent)"
+echo "      Rust*: " > ../../../Timings/RustConcurrent.txt
+/usr/bin/time -v ./rust 2>> ../../../Timings/RustConcurrent.txt
+cd ../../..
 
 # Scala
 cd Scala
@@ -144,27 +154,3 @@ echo "Scala"
 echo "      Scala: " > ../Timings/Scala.txt
 /usr/bin/time -v java -server -jar target/scala-2.10/scala_2.10-0.1-SNAPSHOT-one-jar.jar 2>> ../Timings/Scala.txt
 cd ..
-
-# Timings
-cat Timings/BlitzMax.txt
-cat Timings/Monkey-X.txt
-cat Timings/C#Mono.txt
-cat Timings/C#.txt
-cat Timings/C++.txt
-cat Timings/C++Map.txt
-cat Timings/Clojure.txt
-cat Timings/Crystal.txt
-cat Timings/D.txt
-cat Timings/F#.txt
-cat Timings/Go.txt
-cat Timings/Haskell.txt
-cat Timings/Java.txt
-cat Timings/Ocaml.txt
-cat Timings/Python2.txt
-cat Timings/Python3.txt
-cat Timings/PyPy2.txt
-cat Timings/PyPy3.txt
-cat Timings/TruffleRuby.txt
-cat Timings/Ruby.txt
-cat Timings/Rust.txt
-cat Timings/Scala.txt

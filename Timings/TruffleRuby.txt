@@ -1,19 +1,19 @@
-          D: 
-	Command being timed: "./greedy"
-	User time (seconds): 12.91
-	System time (seconds): 0.01
+TruffleRuby: 
+	Command being timed: "ruby greedy.rb"
+	User time (seconds): 44.51
+	System time (seconds): 0.02
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.96
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:44.64
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 3760
+	Maximum resident set size (kbytes): 14444
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 392
+	Minor (reclaiming a frame) page faults: 2492
 	Voluntary context switches: 1
-	Involuntary context switches: 632
+	Involuntary context switches: 1647
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

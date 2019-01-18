@@ -63,8 +63,8 @@ for (i in contents) {
   }
 }
 
-// Run schedule routine 100 times
-for (let i = 1; i <= 100; i++) {
+// Run schedule routine 500 times
+for (let i = 1; i <= 500; i++) {
   const sdi = { activity: new Map(sd.activity), resource: sd.resource, allocation: [] };
   scheduleResources(sdi);
   let sum = 0;
