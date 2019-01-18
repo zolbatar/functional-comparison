@@ -21,7 +21,7 @@ echo "C#"
 #echo " C# Mono: " > ../Timings/C#Mono.txt
 #/usr/bin/time -v mono ./Program.exe 2>> ../Timings/C#Mono.txt
 cd DotNet
-echo "      C#: " > ../../Timings/C#.txt
+echo "         C#: " > ../../Timings/C#.txt
 /usr/bin/time -v dotnet run 2>> ../../Timings/C#.txt
 cd ..
 cd ..
@@ -29,30 +29,30 @@ cd ..
 # C++
 cd C++
 echo "C++"
-echo "     C++: " > ../Timings/C++.txt
+echo "        C++: " > ../Timings/C++.txt
 /usr/bin/time -v ./greedy 2>> ../Timings/C++.txt
-echo "     C++ (Map): " > ../Timings/C++Map.txt
-/usr/bin/time -v ./greedymap 2>> ../Timings/C++Map.txt
+#echo "     C++ (Map): " > ../Timings/C++Map.txt
+#/usr/bin/time -v ./greedymap 2>> ../Timings/C++Map.txt
 cd ..
 
 # Clojure
 cd Clojure
 echo "Clojure"
-echo " Clojure: " > ../Timings/Clojure.txt
+echo "    Clojure: " > ../Timings/Clojure.txt
 /usr/bin/time -v java -server -jar target/PerformanceComparison-1.0.0-standalone.jar 2>> ../Timings/Clojure.txt
 cd ..
 
 # Crystal
 cd Crystal
 echo "Crystal"
-echo " Crystal: " > ../Timings/Crystal.txt
+echo "    Crystal: " > ../Timings/Crystal.txt
 /usr/bin/time -v ./greedy 2>> ../Timings/Crystal.txt
 cd ..
 
 # D
 cd D
 echo "D"
-echo "       D: " > ../Timings/D.txt
+echo "          D: " > ../Timings/D.txt
 /usr/bin/time -v ./greedy 2>> ../Timings/D.txt
 cd ..
 
@@ -60,7 +60,7 @@ cd ..
 cd F#
 cd DotNet
 echo "F#"
-printf "      F#: " > ../Timings/F#.txt
+echo "         F#: " > ../../Timings/F#.txt
 /usr/bin/time -v dotnet run 2>> ../../Timings/F#.txt
 cd ..
 cd ..
@@ -68,62 +68,62 @@ cd ..
 # Go
 cd Go
 echo "Go"
-printf "      Go: " > ../Timings/Go.txt
+echo "         Go: " > ../Timings/Go.txt
 /usr/bin/time -v ./Go 2>> ../Timings/Go.txt
 cd ..
 
 # Haskell
 cd Haskell
 echo "Haskell"
-echo " Haskell: " > ../Timings/Haskell.txt
+echo "    Haskell: " > ../Timings/Haskell.txt
 /usr/bin/time -v dist/build/GreedyPerformance/GreedyPerformance 2>> ../Timings/Haskell.txt
 cd ..
 
 # Java
 cd Java
 echo "Java"
-echo "    Java: " > ../Timings/Java.txt
+echo "       Java: " > ../Timings/Java.txt
 /usr/bin/time -v java -server `basename Greedy .java` 2>> ../Timings/Java.txt
 cd ..
 
-# Java
-cd Java
+# NodeJS
+cd NodeJS
 echo "NodeJS"
-echo "  NodeJS: " > ../Timings/NodeJS.txt
+echo "     NodeJS: " > ../Timings/NodeJS.txt
 /usr/bin/time -v node greedy.js 2>> ../Timings/NodeJS.txt
 cd ..
 
 # Julia
 cd Julia
 echo "Julia"
-echo "   Julia: " > ../Timings/Julia.txt
+echo "      Julia: " > ../Timings/Julia.txt
 /usr/bin/time -v julia --optimize=3 greedy.jl 2>> ../Timings/Julia.txt
 cd ..
 
 # O'caml
 cd OCaml
 echo "OCaml"
-echo "   OCaml: " > ../Timings/OCaml.txt
+echo "     O'Caml: " > ../Timings/OCaml.txt
 /usr/bin/time -v ./main 2>> ../Timings/OCaml.txt
 cd ..
 
 # Python
 cd Python
 echo "Pythons"
-echo " Python2: " > ../Timings/Python2.txt
+echo "    Python2: " > ../Timings/Python2.txt
 /usr/bin/time -v python2 greedy.py 2>> ../Timings/Python2.txt
-echo " Python3: " > ../Timings/Python3.txt
+echo "    Python3: " > ../Timings/Python3.txt
 /usr/bin/time -v python3 greedy.py 2>> ../Timings/Python3.txt
-echo "   PyPy2: " > ../Timings/PyPy2.txt
+echo "      PyPy2: " > ../Timings/PyPy2.txt
 /usr/bin/time -v pypy greedy.py 2>> ../Timings/PyPy2.txt
-echo "   PyPy3: " > ../Timings/PyPy3.txt
+echo "      PyPy3: " > ../Timings/PyPy3.txt
 /usr/bin/time -v pypy3 greedy.py 2>> ../Timings/PyPy3.txt
 cd ..
 
 # Ruby
 cd Ruby
 echo "Ruby"
-echo "    Ruby: " > ../Timings/Ruby.txt
+echo "       Ruby: " > ../Timings/Ruby.txt
 rvm use ruby
 /usr/bin/time -v ruby greedy.rb 2>> ../Timings/Ruby.txt
 echo "TruffleRuby: " > ../Timings/TruffleRuby.txt
@@ -134,17 +134,16 @@ cd ..
 # Rust
 cd Rust/target/release
 echo "Rust"
-echo "    Rust: " > ../../../Timings/Rust.txt
+echo "       Rust: " > ../../../Timings/Rust.txt
 /usr/bin/time -v ./rust 2>> ../../../Timings/Rust.txt
 cd ../../..
 
 # Scala
 cd Scala
 echo "Scala"
-echo "   Scala: " > ../Timings/Scala.txt
+echo "      Scala: " > ../Timings/Scala.txt
 /usr/bin/time -v java -server -jar target/scala-2.10/scala_2.10-0.1-SNAPSHOT-one-jar.jar 2>> ../Timings/Scala.txt
 cd ..
-
 
 # Timings
 cat Timings/BlitzMax.txt

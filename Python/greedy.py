@@ -59,7 +59,8 @@ class Greedy(object):
         dSinHalfLatitude = math.sin(dLatitude * 0.5)
         dSinHalfLongitude = math.sin(dLongitude * 0.5)
         a = dSinHalfLatitude * dSinHalfLatitude + \
-            math.cos(dStartLatInRad) * math.cos(dEndLatInRad) * dSinHalfLongitude * dSinHalfLongitude
+            math.cos(dStartLatInRad) * math.cos(dEndLatInRad) * \
+            dSinHalfLongitude * dSinHalfLongitude
         c = math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
         return self.earthRadiusM * (c + c)
 
@@ -70,13 +71,15 @@ class Greedy(object):
                 lowest = sys.float_info.max
                 lowestact = None
                 for act in sd.activity:
-                    dist = self.distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
+                    dist = self.distanceBetweenPointsLatLong(
+                        res.lat, res.lon, act.lat, act.lon)
                     if dist < lowest:
                         lowest = dist
                         lowestact = act
                 allocation.append(Allocation(res.id, lowestact.id, lowest))
                 sd.activity.remove(lowestact)
         return sum(i.dist for i in allocation)
+
 
 def main():
     a = []
@@ -98,6 +101,7 @@ def main():
         tot = gp.scheduleResources(sdi)
         print(str(i + 1) + ": " + str(tot))
         sdi.activity = copy.deepcopy(a)
+
 
 #print(timeit.timeit("main()", number=1))
 main()

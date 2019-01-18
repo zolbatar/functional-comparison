@@ -1,19 +1,19 @@
-     C++: 
+        C++: 
 	Command being timed: "./greedy"
-	User time (seconds): 0.81
+	User time (seconds): 0.76
 	System time (seconds): 0.00
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.82
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.76
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 4164
+	Maximum resident set size (kbytes): 3928
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 180
+	Minor (reclaiming a frame) page faults: 181
 	Voluntary context switches: 1
-	Involuntary context switches: 101
+	Involuntary context switches: 7
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
