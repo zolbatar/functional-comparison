@@ -44,7 +44,7 @@ def main():
     print("")
     print("Sorted by GB/s:")
     for result in sorted(results, key=lambda x: x.gbs, reverse=False):
-        print(f"{result.name} {result.time}s {result.cpu} {result.memory:,.0f}kb {result.gbs:,.4f}MB/s")
+        print(f"{result.name} {result.time}s {result.cpu} {result.memory:,.0f}kb {result.gbs:,.2f}MB/s")
     print("")
     print("Sorted by time:")
     for result in sorted(results, key=lambda x: x.time, reverse=False):

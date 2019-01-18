@@ -59,6 +59,7 @@ cd ..
 # Java
 cd Java
 javac Greedy.java -Xdiags:verbose
+javac Greedy-Concurrent.java -Xdiags:verbose
 cd ..
 
 # OCaml

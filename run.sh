@@ -89,6 +89,9 @@ cd Java
 echo "Java"
 echo "       Java: " > ../Timings/Java.txt
 /usr/bin/time -v java -server `basename Greedy .java` 2>> ../Timings/Java.txt
+echo "Java (Concurrent)"
+echo "      Java*: " > ../Timings/JavaConcurrent.txt
+/usr/bin/time -v java -server `basename GreedyConcurrent .java` 2>> ../Timings/JavaConcurrent.txt
 cd ..
 
 # NodeJS
