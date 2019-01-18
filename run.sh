@@ -97,6 +97,10 @@ echo "NodeJS"
 echo "     NodeJS: " > ../Timings/NodeJS.txt
 /usr/bin/time -v node greedy.js 2>> ../Timings/NodeJS.txt
 cd ..
+echo "NodeJS (Concurrent)"
+echo "    NodeJS*: " > ../Timings/NodeJS-Concurrent.txt
+/usr/bin/time -v node greedy-concurrent.js 2>> ../Timings/NodeJS-Concurrent.txt
+cd ..
 
 # Julia
 cd Julia
