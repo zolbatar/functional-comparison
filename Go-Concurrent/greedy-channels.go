@@ -128,7 +128,7 @@ func main() {
 	var wg sync.WaitGroup
 	lines, _ := readLines("../Data/DataSPIF.csv")
 	sd := build(lines)
-	for i := 0; i < 500; i++ {
+	for i := 0; i < 2500; i++ {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()

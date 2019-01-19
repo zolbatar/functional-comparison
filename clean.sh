@@ -8,14 +8,18 @@ rm -rf greedy.buildv85e
 cd ..
 cd ..
 cd C#
-rm -rf bin
-rm -rf obj
+rm -rf DotNet/bin
+rm -rf DotNet/obj
 cd ..
 cd C++
 rm greedy
+rm greedymap
 cd ..
 cd Clojure
 rm -rf target
+cd ..
+cd Crystal
+rm -rf greedy
 cd ..
 cd D
 rm greedy

@@ -133,7 +133,7 @@ void main()
     auto lines = readLines("../Data/DataSPIF.csv");
     auto sd = new SchemaData();
     importCSV(&sd, lines);
-    for (int c = 0; c < 500; c++) {
+    for (int c = 0; c < 2500; c++) {
         auto tot = scheduleResources(&sd);
         writef("%d: %f\n", c, tot);
     }

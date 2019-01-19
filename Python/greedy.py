@@ -97,7 +97,7 @@ def main():
     sdi = SchemaData()
     sdi.resource = copy.deepcopy(r)
     sdi.activity = copy.deepcopy(a)
-    for i in range(0, 500):
+    for i in range(0, 2500):
         tot = gp.scheduleResources(sdi)
         print(str(i + 1) + ": " + str(tot))
         sdi.activity = copy.deepcopy(a)

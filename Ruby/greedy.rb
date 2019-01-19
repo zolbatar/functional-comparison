@@ -89,7 +89,7 @@ File.open("../Data/DataSPIF.csv").each do |line|
 end
 
 gp = Greedy.new
-500.times do |i|
+2500.times do |i|
   sdi = SchemaData.new
   sdi.resource = sd.resource.clone
   sdi.activity = sd.activity.clone

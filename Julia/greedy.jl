@@ -89,7 +89,7 @@ function run()
     convert2Deg = 180.0 / pi
     seconds_per_metre = 0.0559234073
 
-    for i in 1:500
+    for i in 1:2500
         sd = SchemaData(copy(activities), copy(resources), Allocation[])
         scheduleResources(sd)
         f = map(x->x.dist, sd.allocation)

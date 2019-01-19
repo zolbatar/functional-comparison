@@ -47,6 +47,7 @@ cd ..
 # Go
 cd Go
 go build
+cd ..
 cd Go-Concurrent
 go build
 cd ..
@@ -69,6 +70,9 @@ cd ..
 
 # Rust
 cd Rust
+cargo build --release
+cd ..
+cd Rust-Concurrent
 cargo build --release
 cd ..
 
