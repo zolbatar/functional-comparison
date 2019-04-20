@@ -63,9 +63,9 @@ for (i in contents) {
   }
 }
 
-// Run schedule routine 2500 times
+// Run schedule routine 100 times
 async function go() {
-  const m = Array.apply(null, { length: 2500 }).map(Number.call, Number);
+  const m = Array.apply(null, { length: 100 }).map(Number.call, Number);
   await Promise.all(
     m.map(async i => {
       const sdi = { activity: new Map(sd.activity), resource: sd.resource, allocation: [] };

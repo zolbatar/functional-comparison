@@ -141,7 +141,7 @@ fn main() {
     let sd = build(lines);
 
     // Schedule
-    for i in 0..2500 {
+    for i in 0..100 {
         let mut sd2 = sd.clone();
         let sum = schedule_resources(&mut sd2);
         println!("{}: {}", i, sum);

@@ -112,7 +112,7 @@ namespace Greedy
                 var al = new List<Activity>();
                 var rl = new List<Resource>();
                 importCSV(lines, al, rl);
-                for (var i = 1; i <= 2500; i++)
+                for (var i = 1; i <= 100; i++)
                 {
                     var sd2 = new SchemaData();
                     sd2.resource = rl.ToList();

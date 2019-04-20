@@ -80,5 +80,5 @@ module Start =
         let lines = readLines path
         let sd = loadCSV lines { activity = []; resource = []; allocation = [] }
         sd.resource <- List.rev sd.resource
-        runMultiple 2500 2500 sd
+        runMultiple 100 100 sd
         0

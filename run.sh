@@ -22,7 +22,7 @@ echo "C#"
 #/usr/bin/time -v mono ./Program.exe 2>> ../Timings/C#Mono.txt
 cd DotNet
 echo "         C#: " > ../../Timings/C#.txt
-/usr/bin/time -v dotnet run 2>> ../../Timings/C#.txt
+/usr/bin/time -v dotnet-sdk.dotnet run 2>> ../../Timings/C#.txt
 cd ..
 cd ..
 
@@ -61,7 +61,7 @@ cd F#
 cd DotNet
 echo "F#"
 echo "         F#: " > ../../Timings/F#.txt
-/usr/bin/time -v dotnet run 2>> ../../Timings/F#.txt
+/usr/bin/time -v dotnet-sdk.dotnet run 2>> ../../Timings/F#.txt
 cd ..
 cd ..
 

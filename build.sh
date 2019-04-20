@@ -12,7 +12,7 @@
 # C#
 cd C#
 cd DotNet
-dotnet build --configuration Release
+dotnet-sdk.dotnet build --configuration Release
 cd ..
 cd ..
 
@@ -40,7 +40,7 @@ cd ..
 # F#
 cd F#
 cd DotNet
-dotnet build --configuration Release
+dotnet-sdk.dotnet build --configuration Release
 cd ..
 cd ..
 

@@ -1,19 +1,19 @@
           D: 
 	Command being timed: "./greedy"
-	User time (seconds): 91.42
-	System time (seconds): 0.02
+	User time (seconds): 3.03
+	System time (seconds): 0.00
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:31.54
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.03
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 3884
+	Maximum resident set size (kbytes): 3864
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 394
+	Minor (reclaiming a frame) page faults: 386
 	Voluntary context switches: 1
-	Involuntary context switches: 10693
+	Involuntary context switches: 291
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
