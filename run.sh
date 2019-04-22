@@ -26,6 +26,15 @@ echo "         C#: " > ../../Timings/C#.txt
 cd ..
 cd ..
 
+# C
+cd C
+echo "C"
+echo "          C: " > ../Timings/C.txt
+/usr/bin/time -v ./greedy 2>> ../Timings/C.txt
+#echo "     C++ (Map): " > ../Timings/C++Map.txt
+#/usr/bin/time -v ./greedymap 2>> ../Timings/C++Map.txt
+cd ..
+
 # C++
 cd C++
 echo "C++"

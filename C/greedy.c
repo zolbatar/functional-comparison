@@ -1,4 +1,5 @@
-// clang greedy.c -O3 -o greedy -lm
+// clang greedy.c -O3 -o greedy -lm -march=native -ffast-math
+// gcc greedy.c -O3 -o greedy -lm -march=native -ffast-math
 
 #include <stdio.h>
 #include <stdlib.h>

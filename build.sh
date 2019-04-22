@@ -16,6 +16,11 @@ dotnet-sdk.dotnet build --configuration Release
 cd ..
 cd ..
 
+# C
+cd C
+clang -O3 -march=native greedy.cpp -lm -o greedy
+cd ..
+
 # C++
 cd C++
 clang++ -O3 -march=native greedy.cpp -o greedy
