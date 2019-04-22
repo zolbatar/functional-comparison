@@ -65,7 +65,7 @@ void scheduleResources(t_schemadata *sd, int run)
     double total;
     for (int ri = 0; ri < NUM_RESOURCES; ri++) {
         t_resource r = sd->resource[ri];
-		for (int c = 0; c < 50; c++)
+		for (int c = 0; c < NUM_ACTIVITIES / NUM_RESOURCES; c++)
 		{
             double lowest = DBL_MAX;
             int lowestIndex;
@@ -73,6 +73,7 @@ void scheduleResources(t_schemadata *sd, int run)
                 t_activity a = sd->activity[ai];
                 if (a.used == 0) {
     				double dist = distanceBetweenPointsLatLong(r.lat, r.lon, a.lat, a.lon);
+//                    printf("%f\n", dist);
                     if (dist < lowest) {
                         lowest = dist;
                         lowestIndex = ai;
@@ -88,8 +89,8 @@ void scheduleResources(t_schemadata *sd, int run)
             sd->activity[lowestIndex].used = 1;
             total += lowest;
         }
-        printf("Run %d, total: %f\n", run, total);
     }
+    printf("Run %d, total: %f\n", run, total);
 }
 
 char** str_split(char* a_str, const char a_delim)
