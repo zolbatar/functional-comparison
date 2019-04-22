@@ -1,19 +1,19 @@
       Java*: 
 	Command being timed: "java -server GreedyConcurrent"
-	User time (seconds): 9.36
-	System time (seconds): 0.09
-	Percent of CPU this job got: 1299%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.72
+	User time (seconds): 11.56
+	System time (seconds): 0.08
+	Percent of CPU this job got: 1316%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.88
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 75572
+	Maximum resident set size (kbytes): 67968
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 17542
-	Voluntary context switches: 4417
-	Involuntary context switches: 2397
+	Minor (reclaiming a frame) page faults: 15993
+	Voluntary context switches: 4017
+	Involuntary context switches: 2702
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 64

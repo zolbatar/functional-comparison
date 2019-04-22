@@ -1,19 +1,19 @@
     Clojure: 
 	Command being timed: "java -server -jar target/PerformanceComparison-1.0.0-standalone.jar"
-	User time (seconds): 7.76
-	System time (seconds): 0.28
-	Percent of CPU this job got: 150%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.33
+	User time (seconds): 8.00
+	System time (seconds): 0.33
+	Percent of CPU this job got: 155%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.37
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 625156
+	Maximum resident set size (kbytes): 788436
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 151842
-	Voluntary context switches: 5718
-	Involuntary context switches: 717
+	Minor (reclaiming a frame) page faults: 193377
+	Voluntary context switches: 5990
+	Involuntary context switches: 858
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 96

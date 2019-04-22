@@ -5,6 +5,7 @@
 *.o
 *.so
 *.suo
+.vscode/
 Haskell/dist
 C#/DotNet/bin
 C#/DotNet/obj
@@ -14,6 +15,7 @@ F#/Start.exe
 OCaml/main
 Scala/Project/target
 Clojure/target
+C/greedy
 C++/greedy
 C++/greedymap
 Java/*.class
