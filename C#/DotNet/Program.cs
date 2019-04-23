@@ -8,7 +8,7 @@ namespace Greedy
 {
     class MainClass
     {
-		class Activity
+        class Activity
         {
             public string id;
             public double lat;
@@ -62,38 +62,45 @@ namespace Greedy
                 {
                     for (int i = 0; i < c; i++)
                     {
-                        var l = new List<Tuple<double, Activity>>();
+                        var lowest = Double.MaxValue;
+                        Activity lowestItem = null;
                         foreach (var x in sd.activity)
                         {
-                            l.Add(new Tuple<double, Activity>(distanceBetweenPointsLatLong(r.lat, r.lon, x.lat, x.lon), x));
+                            var dist = distanceBetweenPointsLatLong(r.lat, r.lon, x.lat, x.lon);
+                            if (dist < lowest)
+                            {
+                                lowest = dist;
+                                lowestItem = x;
+                            }
                         }
-                        var f = l.OrderBy(x => x.Item1).First();
                         var all = new Allocation();
-                        all.activityId = f.Item2.id;
-                        all.distance = f.Item1;
+                        all.activityId = lowestItem.id;
+                        all.distance = lowest;
                         all.resourceId = r.id;
                         sd.allocation.Add(all);
-                        sd.activity.Remove(f.Item2);
+                        sd.activity.Remove(lowestItem);
                     }
                 }
             }
 
             static void importLine(string[] x, List<Activity> al, List<Resource> rl)
             {
+                var lat = Convert.ToDouble(x[1]);
+                var lon = Convert.ToDouble(x[2]);
                 if (x.Length == 3)
                 {
-                    var r = new Resource();
+                    var r = new Resource(x[0], lat, lon);
                     r.id = x[0];
-                    r.lat = Convert.ToDouble(x[1]);
-                    r.lon = Convert.ToDouble(x[2]);
+                    r.lat = lat;
+                    r.lon = lon;
                     rl.Add(r);
                 }
                 else if (x.Length == 4)
                 {
                     var a = new Activity();
                     a.id = x[0];
-                    a.lat = Convert.ToDouble(x[1]);
-                    a.lon = Convert.ToDouble(x[2]);
+                    a.lat = lat);
+                    a.lon = lon);
                     al.Add(a);
                 }
             }

@@ -48,7 +48,6 @@ property :activity, :resource, :allocation
 end
 
 class Greedy
-
 	@@earthRadiusM: Float64 = 6367450.0
 	@@convert2Rad: Float64 = Math::PI / 180.0
 	@@convert2Deg: Float64 = 180.0 / Math::PI
@@ -109,4 +108,3 @@ gp = Greedy.new
 	gp.scheduleResources(sdi)
 	puts i.to_s + ":" + (sdi.allocation.reduce(0) { |sum,x| sum + x.dist }).to_s
 end
-

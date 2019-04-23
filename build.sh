@@ -9,22 +9,22 @@
 #cd ..
 #cd ..
 
-# C#
-cd C#
-cd DotNet
-dotnet-sdk.dotnet build --configuration Release
-cd ..
-cd ..
-
 # C
 cd C
-clang -O3 -march=native greedy.cpp -lm -o greedy
+clang -O3 -march=native greedy.c -lm -o greedy
 cd ..
 
 # C++
 cd C++
 clang++ -O3 -march=native greedy.cpp -o greedy
-clang++ -O3 -march=native greedymap.cpp -o greedymap
+#clang++ -O3 -march=native greedymap.cpp -o greedymap
+cd ..
+
+# C#
+cd C#
+cd DotNet
+dotnet-sdk.dotnet build --configuration Release
+cd ..
 cd ..
 
 # Clojure
