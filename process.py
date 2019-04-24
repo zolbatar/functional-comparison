@@ -5,7 +5,7 @@ import pprint
 
 
 class Result(object):
-    def __init__(self, name, time, cpu, memory, gbs, loc, word, byte, score_time, score_memory, score_loc, score_bytes, score_test_safety, score_productivity, score_overall):
+    def __init__(self, name, time, cpu, memory, gbs, loc, word, byte, score_time, score_memory, score_bytes, score_test_safety, score_productivity, score_overall):
         self.id = id
         self.name = name
         self.time = time
@@ -17,7 +17,6 @@ class Result(object):
         self.byte = byte
         self.score_time = score_time
         self.score_memory = score_memory
-        self.score_loc = score_loc
         self.score_bytes = score_bytes
         self.score_test_safety = score_test_safety
         self.score_productivity = score_productivity
@@ -81,31 +80,25 @@ def main():
         else:
             score_memory = 0
 
-        # LOC score
-        if loc < 100:
-            score_loc = 3
-        elif loc < 130:
-            score_loc = 2
-        elif loc < 160:
-            score_loc = 1
-        else:
-            score_loc = 0
-
         # Byte count score
         if byte < 2500:
-            score_bytes = 6
+            score_bytes = 10
+        elif byte < 3000:
+            score_bytes = 8
         elif byte < 3500:
+            score_bytes = 6
+        elif byte < 4000:
             score_bytes = 4
         elif byte < 4500:
             score_bytes = 2
         else:
             score_bytes = 0
 
-        score_overall = score_time + score_memory + score_loc + score_bytes + score_test_safety + (score_productivity * 2)
+        score_overall = score_time + score_memory + score_bytes + score_test_safety + (score_productivity * 2)
 
         # Add to results list
         results.append(
-            Result(lines[0].rstrip(), time, cpu.group(), memory, gbs, loc, word, byte, score_time, score_memory, score_loc, score_bytes, score_test_safety, score_productivity * 2, score_overall))
+            Result(lines[0].rstrip(), time, cpu.group(), memory, gbs, loc, word, byte, score_time, score_memory, score_bytes, score_test_safety, score_productivity * 2, score_overall))
     print("")
     print("Sorted by GB/s:")
     print("")
@@ -130,21 +123,21 @@ def main():
     print("")
     print("Sorted by overall score (concurrent):")
     print("")
-    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC  /3    Bytes /6    Test./Safety /5    Productivity /10    Overall /40")
-    print("    --------    -----    ----------    -----------     -------------    -------    --------    ---------------    ----------------    -----------")
+    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC        Bytes /10    Test./Safety /5    Productivity /10    Overall")
+    print("    --------    -----    ----------    -----------     -------------    -------    ---------    ---------------    ----------------    -------")
     for result in sorted([x for x in results if '*' in x.name], key=lambda x: x.score_overall, reverse=True):
         print(f"{result.name}   {result.cpu:>6s}  {result.gbs:8.2f}MB/s   {result.time:6.2f}s ({result.score_time:>2})   {result.memory:9,.0f}kb ({result.score_memory:>1})    "
-        + f"{result.loc:>3} ({result.score_loc:>1})   {result.byte:>5} ({result.score_bytes:>1})                 "
-        + f"{result.score_test_safety:>2}                  {result.score_productivity:>2}             {result.score_overall:>2}")
+        + f"{result.loc:>3}       {result.byte:>5} ({result.score_bytes:>2})                 "
+        + f"{result.score_test_safety:>2}                  {result.score_productivity:>2}         {result.score_overall:>2}")
     print("")
     print("Sorted by overall score:")
     print("")
-    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC  /3    Bytes /6    Test./Safety /5    Productivity /10    Overall /40")
-    print("    --------    -----    ----------    -----------     -------------    -------    --------    ---------------    ----------------    -----------")
+    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC        Bytes /10    Test./Safety /5    Productivity /10    Overall")
+    print("    --------    -----    ----------    -----------     -------------    -------    ---------    ---------------    ----------------    -------")
     for result in sorted([x for x in results if '*' not in x.name], key=lambda x: x.score_overall, reverse=True):
         print(f"{result.name}   {result.cpu:>6s}  {result.gbs:8.2f}MB/s   {result.time:6.2f}s ({result.score_time:>2})   {result.memory:9,.0f}kb ({result.score_memory:>1})    "
-        + f"{result.loc:>3} ({result.score_loc:>1})   {result.byte:>5} ({result.score_bytes:>1})                 "
-        + f"{result.score_test_safety:>2}                  {result.score_productivity:>2}             {result.score_overall:>2}")
+        + f"{result.loc:>3}       {result.byte:>5} ({result.score_bytes:>2})                 "
+        + f"{result.score_test_safety:>2}                  {result.score_productivity:>2}         {result.score_overall:>2}")
 
 
 main()

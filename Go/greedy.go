@@ -1,12 +1,9 @@
 package main
 
 import (
-	"bufio"
-	"bytes"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"math"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -38,35 +35,6 @@ type SchemaData struct {
 const earthRadiusM float64 = 6367450
 const convert2Rad float64 = math.Pi / 180.0
 
-func readLines(path string) (lines []string, err error) {
-	var (
-		file   *os.File
-		part   []byte
-		prefix bool
-	)
-	if file, err = os.Open(path); err != nil {
-		return
-	}
-	defer file.Close()
-
-	reader := bufio.NewReader(file)
-	buffer := bytes.NewBuffer(make([]byte, 0))
-	for {
-		if part, prefix, err = reader.ReadLine(); err != nil {
-			break
-		}
-		buffer.Write(part)
-		if !prefix {
-			lines = append(lines, buffer.String())
-			buffer.Reset()
-		}
-	}
-	if err == io.EOF {
-		err = nil
-	}
-	return
-}
-
 func distanceBetweenPointsLatLong(lat1 float64, lon1 float64, lat2 float64, lon2 float64) float64 {
 	dStartLatInRad := lat1 * convert2Rad
 	dStartLongInRad := lon1 * convert2Rad
@@ -85,7 +53,7 @@ func scheduleResources(sd *SchemaData) {
 	for _, res := range sd.resource {
 		for c := 0; c < 50; c++ {
 			lowest := math.Inf(0)
-			var lowestid = ""
+			lowestid := ""
 			for xact, act := range sd.activity {
 				dist := distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)
 				if dist < lowest {
@@ -105,23 +73,29 @@ func build(lines []string) SchemaData {
 	sd.activity = map[string]Activity{}
 	sd.resource = []Resource{}
 	for _, line := range lines {
-		split := strings.Split(line, ",")
-		lat, _ := strconv.ParseFloat(split[1], 64)
-		lon, _ := strconv.ParseFloat(split[2], 64)
-		switch len(split) {
-		case 3:
-			r := Resource{id: split[0], lat: lat, lon: lon}
-			sd.resource = append(sd.resource, r)
-		case 4:
-			a := Activity{id: split[0], lat: lat, lon: lon}
-			sd.activity[a.id] = a
+		if len(line) > 0 {
+			split := strings.Split(line, ",")
+			lat, _ := strconv.ParseFloat(split[1], 64)
+			lon, _ := strconv.ParseFloat(split[2], 64)
+			switch len(split) {
+			case 3:
+				r := Resource{id: split[0], lat: lat, lon: lon}
+				sd.resource = append(sd.resource, r)
+			case 4:
+				a := Activity{id: split[0], lat: lat, lon: lon}
+				sd.activity[a.id] = a
+			}
 		}
 	}
 	return sd
 }
 
 func main() {
-	lines, _ := readLines("../Data/DataSPIF.csv")
+	content, err := ioutil.ReadFile("../Data/DataSPIF.csv")
+	if err != nil {
+		fmt.Println("Error opening file")
+	}
+	lines := strings.Split(string(content), "\n")
 	sd := build(lines)
 	for i := 0; i < 100; i++ {
 		sdi := SchemaData{}
