@@ -123,20 +123,20 @@ def main():
     print("")
     print("Sorted by overall score (concurrent):")
     print("")
-    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC        Bytes /10    Test./Safety /5    Productivity /10    Overall")
-    print("    --------    -----    ----------    -----------     -------------    -------    ---------    ---------------    ----------------    -------")
+    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC    Bytes /10    Test./Safety /5    Productivity /10    Overall")
+    print("    --------    -----    ----------    -----------     -------------    ---    ---------    ---------------    ----------------    -------")
     for result in sorted([x for x in results if '*' in x.name], key=lambda x: x.score_overall, reverse=True):
         print(f"{result.name}   {result.cpu:>6s}  {result.gbs:8.2f}MB/s   {result.time:6.2f}s ({result.score_time:>2})   {result.memory:9,.0f}kb ({result.score_memory:>1})    "
-        + f"{result.loc:>3}       {result.byte:>5} ({result.score_bytes:>2})                 "
+        + f"{result.loc:>3}   {result.byte:>5} ({result.score_bytes:>2})                 "
         + f"{result.score_test_safety:>2}                  {result.score_productivity:>2}         {result.score_overall:>2}")
     print("")
     print("Sorted by overall score:")
     print("")
-    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC        Bytes /10    Test./Safety /5    Productivity /10    Overall")
-    print("    --------    -----    ----------    -----------     -------------    -------    ---------    ---------------    ----------------    -------")
+    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC    Bytes /10    Test./Safety /5    Productivity /10    Overall")
+    print("    --------    -----    ----------    -----------     -------------    ---    ---------    ---------------    ----------------    -------")
     for result in sorted([x for x in results if '*' not in x.name], key=lambda x: x.score_overall, reverse=True):
         print(f"{result.name}   {result.cpu:>6s}  {result.gbs:8.2f}MB/s   {result.time:6.2f}s ({result.score_time:>2})   {result.memory:9,.0f}kb ({result.score_memory:>1})    "
-        + f"{result.loc:>3}       {result.byte:>5} ({result.score_bytes:>2})                 "
+        + f"{result.loc:>3}   {result.byte:>5} ({result.score_bytes:>2})                 "
         + f"{result.score_test_safety:>2}                  {result.score_productivity:>2}         {result.score_overall:>2}")
 
 
