@@ -56,11 +56,11 @@ def main():
             score_time = 10
         elif time < 1.0:
             score_time = 8
-        elif time < 2.5:
+        elif time < 2.0:
             score_time = 6
-        elif time < 5:
+        elif time < 4.0:
             score_time = 4
-        elif time < 10:
+        elif time < 8.0:
             score_time = 2
         else:
             score_time = 0

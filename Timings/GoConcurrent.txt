@@ -1,19 +1,19 @@
         Go*: 
 	Command being timed: "./Go-Concurrent"
-	User time (seconds): 3.52
-	System time (seconds): 0.01
-	Percent of CPU this job got: 1113%
+	User time (seconds): 3.56
+	System time (seconds): 0.03
+	Percent of CPU this job got: 1147%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.31
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 10320
+	Maximum resident set size (kbytes): 11076
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3612
-	Voluntary context switches: 623
-	Involuntary context switches: 256
+	Minor (reclaiming a frame) page faults: 4042
+	Voluntary context switches: 615
+	Involuntary context switches: 284
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

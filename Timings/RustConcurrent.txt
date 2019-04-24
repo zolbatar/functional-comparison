@@ -1,19 +1,19 @@
-     O'Caml: 
-	Command being timed: "./main"
-	User time (seconds): 5.27
-	System time (seconds): 0.00
-	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.28
+      Rust*: 
+	Command being timed: "./rust"
+	User time (seconds): 2.07
+	System time (seconds): 0.02
+	Percent of CPU this job got: 1035%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.20
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 5648
+	Maximum resident set size (kbytes): 9384
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 957
-	Voluntary context switches: 1
-	Involuntary context switches: 16
+	Minor (reclaiming a frame) page faults: 1815
+	Voluntary context switches: 1206
+	Involuntary context switches: 430
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
@@ -22,5 +22,5 @@
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
-  90  524 3583 main.ml
-3 3
+ 159  530 4207 ../../src/main.rs
+5 2
