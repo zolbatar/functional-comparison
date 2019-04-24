@@ -58,7 +58,7 @@ class Greedy
 	def scheduleResources(sd)
 		sd.resource.each do |res|
 			50.times do |c| 
-				lowest = (2**(0.size * 8 - 2) - 1).to_f
+				lowest = Float::MAX
 				lowestact = nil
 				sd.activity.each do |act|
 					dist = distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon)

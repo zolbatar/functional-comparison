@@ -206,7 +206,7 @@ wc *.rb >> ../Timings/TruffleRuby.txt
 echo "3 4" >> ../Timings/TruffleRuby.txt
 echo "      JRuby: " > ../Timings/JRuby.txt
 rvm use jruby
-/usr/bin/time -v ruby greedy.rb 2>> ../Timings/JRuby.txt  1>> /dev/null
+/usr/bin/time -v  jruby -J-Xmx128m greedy.rb 2>> ../Timings/JRuby.txt  1>> /dev/null
 wc *.rb >> ../Timings/JRuby.txt
 echo "4 4" >> ../Timings/JRuby.txt
 cd ..
