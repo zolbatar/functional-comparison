@@ -89,7 +89,7 @@ namespace Greedy
                 var lon = Convert.ToDouble(x[2]);
                 if (x.Length == 3)
                 {
-                    var r = new Resource(x[0], lat, lon);
+                    var r = new Resource();
                     r.id = x[0];
                     r.lat = lat;
                     r.lon = lon;
@@ -99,8 +99,8 @@ namespace Greedy
                 {
                     var a = new Activity();
                     a.id = x[0];
-                    a.lat = lat);
-                    a.lon = lon);
+                    a.lat = lat;
+                    a.lon = lon;
                     al.Add(a);
                 }
             }

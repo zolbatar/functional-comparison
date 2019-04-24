@@ -1,19 +1,19 @@
     Haskell: 
 	Command being timed: "dist/build/GreedyPerformance/GreedyPerformance"
-	User time (seconds): 3.27
-	System time (seconds): 0.00
+	User time (seconds): 7.60
+	System time (seconds): 0.04
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.27
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.67
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 7436
+	Maximum resident set size (kbytes): 7592
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 943
+	Minor (reclaiming a frame) page faults: 946
 	Voluntary context switches: 1
-	Involuntary context switches: 324
+	Involuntary context switches: 400
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

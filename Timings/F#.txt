@@ -1,19 +1,19 @@
          F#: 
 	Command being timed: "dotnet-sdk.dotnet bin/Release/netcoreapp2.1/DotNet.dll"
-	User time (seconds): 3.14
-	System time (seconds): 0.03
+	User time (seconds): 4.48
+	System time (seconds): 0.06
 	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.16
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.53
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 39036
+	Maximum resident set size (kbytes): 41932
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11912
-	Voluntary context switches: 164
-	Involuntary context switches: 310
+	Minor (reclaiming a frame) page faults: 11788
+	Voluntary context switches: 266
+	Involuntary context switches: 22
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
