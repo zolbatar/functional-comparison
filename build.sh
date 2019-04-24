@@ -35,6 +35,7 @@ cd ..
 # Crystal
 cd Crystal
 crystal build --release greedy.cr 
+crystal build --release greedy-concurrent.cr 
 cd ..
 
 # D

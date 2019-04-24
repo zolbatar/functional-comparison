@@ -63,8 +63,12 @@ cd Crystal
 echo "Crystal"
 echo "    Crystal: " > ../Timings/Crystal.txt
 /usr/bin/time -v ./greedy 2>> ../Timings/Crystal.txt 1>> /dev/null
-wc ./*.cr >> ../Timings/Crystal.txt
+wc ./greedy.cr >> ../Timings/Crystal.txt
 echo "2 3" >> ../Timings/Crystal.txt
+echo "   Crystal*: " > ../Timings/CrystalConcurrent.txt
+/usr/bin/time -v ./greedy 2>> ../Timings/CrystalConcurrent.txt 1>> /dev/null
+wc ./greedy-concurrent.cr >> ../Timings/CrystalConcurrent.txt
+echo "2 3" >> ../Timings/CrystalConcurrent.txt
 cd ..
 
 # D
@@ -163,20 +167,28 @@ cd Python
 echo "Pythons"
 echo "    Python2: " > ../Timings/Python2.txt
 /usr/bin/time -v python2 greedy.py 2>> ../Timings/Python2.txt 1>> /dev/null
-wc *.py >> ../Timings/Python2.txt
+wc greedy.py >> ../Timings/Python2.txt
 echo "4 5" >> ../Timings/Python2.txt
 echo "    Python3: " > ../Timings/Python3.txt
 /usr/bin/time -v python3 greedy.py 2>> ../Timings/Python3.txt 1>> /dev/null
-wc *.py >> ../Timings/Python3.txt
+wc greedy.py >> ../Timings/Python3.txt
 echo "4 5" >> ../Timings/Python3.txt
 echo "      PyPy2: " > ../Timings/PyPy2.txt
 /usr/bin/time -v pypy greedy.py 2>> ../Timings/PyPy2.txt 1>> /dev/null
-wc *.py >> ../Timings/PyPy2.txt
+wc greedy.py >> ../Timings/PyPy2.txt
 echo "4 5" >> ../Timings/PyPy2.txt
 echo "      PyPy3: " > ../Timings/PyPy3.txt
 /usr/bin/time -v pypy3 greedy.py 2>> ../Timings/PyPy3.txt 1>> /dev/null
-wc *.py >> ../Timings/PyPy3.txt
+wc greedy.py >> ../Timings/PyPy3.txt
 echo "4 5" >> ../Timings/PyPy3.txt
+echo "   Python3*: " > ../Timings/Python3Concurrent.txt
+/usr/bin/time -v python3 greedy-concurrent.py 2>> ../Timings/Python3Concurrent.txt 1>> /dev/null
+wc greedy-concurrent.py >> ../Timings/Python3Concurrent.txt
+echo "4 5" >> ../Timings/Python3Concurrent.txt
+echo "     PyPy3*: " > ../Timings/PyPy3Concurrent.txt
+/usr/bin/time -v pypy3 greedy-concurrent.py 2>> ../Timings/PyPy3Concurrent.txt 1>> /dev/null
+wc greedy-concurrent.py >> ../Timings/PyPy3Concurrent.txt
+echo "4 5" >> ../Timings/PyPy3Concurrent.txt
 cd ..
 
 # Ruby
