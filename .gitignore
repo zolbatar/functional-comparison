@@ -25,3 +25,5 @@ Go/Go
 Go-Concurrent/Concurrent
 target/
 D/greedy
+Crystal/greedy
+Crystal/greedy-concurrent

@@ -93,11 +93,11 @@ def main():
 
         # Byte count score
         if byte < 2500:
-            score_bytes = 3
+            score_bytes = 6
         elif byte < 3500:
-            score_bytes = 2
+            score_bytes = 4
         elif byte < 4500:
-            score_bytes = 1
+            score_bytes = 2
         else:
             score_bytes = 0
 
@@ -130,7 +130,7 @@ def main():
     print("")
     print("Sorted by overall score (concurrent):")
     print("")
-    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC  /3    Bytes /3    Test./Safety /5    Productivity /10    Overall /32")
+    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC  /3    Bytes /6    Test./Safety /5    Productivity /10    Overall /40")
     print("    --------    -----    ----------    -----------     -------------    -------    --------    ---------------    ----------------    -----------")
     for result in sorted([x for x in results if '*' in x.name], key=lambda x: x.score_overall, reverse=True):
         print(f"{result.name}   {result.cpu:>6s}  {result.gbs:8.2f}MB/s   {result.time:6.2f}s ({result.score_time:>2})   {result.memory:9,.0f}kb ({result.score_memory:>1})    "
@@ -139,7 +139,7 @@ def main():
     print("")
     print("Sorted by overall score:")
     print("")
-    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC  /3    Bytes /3    Test./Safety /5    Productivity /10    Overall /32")
+    print("    Language    CPU      GB/s          Time    /10     Memory     /6    LoC  /3    Bytes /6    Test./Safety /5    Productivity /10    Overall /40")
     print("    --------    -----    ----------    -----------     -------------    -------    --------    ---------------    ----------------    -----------")
     for result in sorted([x for x in results if '*' not in x.name], key=lambda x: x.score_overall, reverse=True):
         print(f"{result.name}   {result.cpu:>6s}  {result.gbs:8.2f}MB/s   {result.time:6.2f}s ({result.score_time:>2})   {result.memory:9,.0f}kb ({result.score_memory:>1})    "
