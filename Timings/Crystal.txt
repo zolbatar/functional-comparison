@@ -1,19 +1,19 @@
     Crystal: 
 	Command being timed: "./greedy"
-	User time (seconds): 1.87
-	System time (seconds): 0.03
+	User time (seconds): 0.94
+	System time (seconds): 0.02
 	Percent of CPU this job got: 101%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.89
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.95
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 5068
+	Maximum resident set size (kbytes): 5344
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 548
-	Voluntary context switches: 1161
-	Involuntary context switches: 9
+	Minor (reclaiming a frame) page faults: 569
+	Voluntary context switches: 1648
+	Involuntary context switches: 119
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
@@ -22,5 +22,5 @@
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
- 109  306 2531 ./greedy.cr
+ 114  321 2693 ./greedy.cr
 2 3

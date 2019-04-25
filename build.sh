@@ -84,5 +84,5 @@ cd ..
 
 # Scala
 cd Scala
-sbt one-jar
+sbt assembly
 cd ..

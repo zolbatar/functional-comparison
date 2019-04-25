@@ -1,19 +1,19 @@
      PyPy3*: 
 	Command being timed: "pypy3 greedy-concurrent.py"
-	User time (seconds): 3.04
-	System time (seconds): 0.13
-	Percent of CPU this job got: 276%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.15
+	User time (seconds): 3.18
+	System time (seconds): 0.07
+	Percent of CPU this job got: 286%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.13
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 117728
+	Maximum resident set size (kbytes): 85048
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 81046
-	Voluntary context switches: 1867
-	Involuntary context switches: 19
+	Minor (reclaiming a frame) page faults: 37106
+	Voluntary context switches: 2563
+	Involuntary context switches: 343
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0

@@ -231,7 +231,7 @@ cd ../../..
 cd Scala
 echo "Scala"
 echo "      Scala: " > ../Timings/Scala.txt
-/usr/bin/time -v java -server -jar target/scala-2.10/scala_2.10-0.1-SNAPSHOT-one-jar.jar 2>> ../Timings/Scala.txt 1>> /dev/null
+/usr/bin/time -v java -server -jar target/scala-2.12/scala-assembly-0.1.0-SNAPSHOT.jar 2>> ../Timings/Scala.txt 1>> /dev/null
 wc src/main/scala/*.scala >> ../Timings/Scala.txt
 echo "5 4" >> ../Timings/Scala.txt
 cd ..

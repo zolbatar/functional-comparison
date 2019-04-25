@@ -48,7 +48,8 @@ object Start {
   }
 
   def scheduleResourceSimple(sd: SchemaData): SchemaData = {
-    for (r <- sd.resources) {
+    var lsd = sd.copy()
+    for (r <- lsd.resources) {
       for (i <- 1 to 50) {
         var lowest = Double.MaxValue
         var aid = ""
@@ -60,7 +61,7 @@ object Start {
             aid = a._1
           }
         }
-        sd = sd.copy(
+        lsd = lsd.copy(
           sd.activities -= aid,
           allocations = new Allocation(
             activityId = aid,

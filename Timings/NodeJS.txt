@@ -1,19 +1,19 @@
      NodeJS: 
 	Command being timed: "node greedy.js"
-	User time (seconds): 2.02
-	System time (seconds): 0.01
+	User time (seconds): 1.05
+	System time (seconds): 0.02
 	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.03
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.07
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 26692
+	Maximum resident set size (kbytes): 35524
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3415
-	Voluntary context switches: 68
-	Involuntary context switches: 8
+	Minor (reclaiming a frame) page faults: 3410
+	Voluntary context switches: 86
+	Involuntary context switches: 143
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
