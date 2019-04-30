@@ -12,6 +12,43 @@
 (defparameter resources '())
 (defparameter activities '())
 
+(defconstant earth-radius 6367450.0)
+(defconstant convert-to-rad (/ PI 180.0))
+(defconstant convert-to-deg (/ 180.0 PI))
+
+(defun distance-between-points-lat-long (lat1 lon1 lat2 lon2)
+  (let* ((dStartLatInRad (* lat1 convert-to-rad))
+        (dStartLongInRad (* lon1 convert-to-rad))
+        (dEndLatInRad (* lat2 convert-to-rad))
+        (dEndLongInRad (* lon2 convert-to-rad))
+        (dLongitude (- dEndLongInRad dStartLongInRad))
+        (dLatitude (- dEndLatInRad dStartLatInRad))
+        (dSinHalfLatitude (sin (* dLatitude 0.5)))
+        (dSinHalfLongitude (sin (* dLongitude 0.5)))
+        (a (+ (* dSinHalfLatitude dSinHalfLatitude) (* (cos dStartLatInRad) (cos dEndLatInRad) dSinHalfLongitude dSinHalfLongitude)))
+        (c (atan (sqrt a) (sqrt (- 1.0 a)))))
+    (* earth-radius (+ c c))))
+
+(defun distance-between-resource-activity (resource activity)
+  (distance-between-points-lat-long (resource-lat resource) (resource-lng resource) (activity-lat activity) (activity-lng activity)))
+
+(defun schedule-resource (resource)
+  (let ((lowest 999999999) (lowest-id ""))
+    (loop for activity in activities
+      do (let ((dist (distance-between-resource-activity resource activity)))
+        (if (< dist lowest)
+          (setq lowest dist)
+          (setq lowest-id (activity-id activity)))
+        ;(format t "~S-~S = ~F~%" (resource-id resource) (activity-id activity) dist)
+      )
+    )
+    (delete-if #'(lambda (x) (string= (activity-id x) lowest-id)) activities)
+    lowest))
+
+(defun schedule ()
+  (loop for resource in resources
+    do (print (schedule-resource resource))))
+
 (defun main ()
   (cl-csv:do-csv (row #P"../Data/DataSPIF.csv" )
     (let ((len (list-length row)))
@@ -21,8 +58,11 @@
         (setq activities (push (make-activity :id (nth 0 row) :lat (parse-float (nth 1 row)) :lng (parse-float (nth 2 row))) activities)))
     )
   )
-  (print resources)
-  (print activities)
+  (setq resources (reverse resources))
+  (setq activities (reverse activities))
+  ;(print resources)
+  ;(print activities)
+  (schedule)
 )
 
 (sb-ext:save-lisp-and-die "greedy.bin" :executable t :toplevel 'main) 
