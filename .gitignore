@@ -27,3 +27,4 @@ target/
 D/greedy
 Crystal/greedy
 Crystal/greedy-concurrent
+CommonLisp/greedy.bin
