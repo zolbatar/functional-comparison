@@ -58,6 +58,15 @@ wc src/PerformanceComparison/*.clj >> ../Timings/Clojure.txt
 echo "3 2" >> ../Timings/Clojure.txt
 cd ..
 
+# Common Lisp
+cd CommonLisp
+echo "Common Lisp"
+echo "Common Lisp: " > ../Timings/CommonLisp.txt
+/usr/bin/time -v sbcl --core greedy.bin 2>> ../Timings/CommonLisp.txt 1>> /dev/null
+wc greedy.lisp >> ../Timings/CommonLisp.txt
+echo "3 3" >> ../Timings/CommonLisp.txt
+cd ..
+
 # Crystal
 cd Crystal
 echo "Crystal"

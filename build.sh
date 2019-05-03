@@ -32,6 +32,11 @@ cd Clojure
 lein uberjar
 cd ..
 
+# Common Lisp
+cd CommonLisp
+sbcl --script greedy.lisp
+cd ..
+
 # Crystal
 cd Crystal
 crystal build --release greedy.cr 
