@@ -132,6 +132,7 @@ echo "       Java: " > ../Timings/Java.txt
 /usr/bin/time -v java -server `basename Greedy .java` 2>> ../Timings/Java.txt 1>> /dev/null
 wc Greedy.java >> ../Timings/Java.txt
 echo "5 5" >> ../Timings/Java.txt
+
 echo "Java (Concurrent)"
 echo "      Java*: " > ../Timings/JavaConcurrent.txt
 /usr/bin/time -v java -server `basename GreedyConcurrent .java` 2>> ../Timings/JavaConcurrent.txt 1>> /dev/null
@@ -243,4 +244,10 @@ echo "      Scala: " > ../Timings/Scala.txt
 /usr/bin/time -v java -server -jar target/scala-2.12/scala-assembly-0.1.0-SNAPSHOT.jar 2>> ../Timings/Scala.txt 1>> /dev/null
 wc src/main/scala/*.scala >> ../Timings/Scala.txt
 echo "5 4" >> ../Timings/Scala.txt
+cd ..
+
+# GraalVM
+cd Java
+echo "GraalVM"
+./graal.sh
 cd ..

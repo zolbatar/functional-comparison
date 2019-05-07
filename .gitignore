@@ -28,3 +28,7 @@ D/greedy
 Crystal/greedy
 Crystal/greedy-concurrent
 CommonLisp/greedy.bin
+Java/greedy
+Kotlin/*.class
+Kotlin/*.jar
+Kotlin/program.kexe
