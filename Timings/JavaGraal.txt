@@ -1,19 +1,19 @@
 Native Java: 
 	Command being timed: "./greedy"
-	User time (seconds): 1.37
+	User time (seconds): 1.33
 	System time (seconds): 0.00
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.37
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.34
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 9468
+	Maximum resident set size (kbytes): 9656
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 1325
-	Voluntary context switches: 1
-	Involuntary context switches: 135
+	Minor (reclaiming a frame) page faults: 1327
+	Voluntary context switches: 0
+	Involuntary context switches: 126
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 0
@@ -22,5 +22,5 @@ Native Java:
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
- 122  412 4289 Greedy.java
+ 121  410 4259 Greedy.java
 5 5
