@@ -82,15 +82,15 @@ def main():
 
         # Byte count score
         if byte < 2500:
-            score_bytes = 10
+            score_bytes = 5
         elif byte < 3000:
-            score_bytes = 8
-        elif byte < 3500:
-            score_bytes = 6
-        elif byte < 4000:
             score_bytes = 4
-        elif byte < 4500:
+        elif byte < 3500:
+            score_bytes = 3
+        elif byte < 4000:
             score_bytes = 2
+        elif byte < 4500:
+            score_bytes = 1
         else:
             score_bytes = 0
 

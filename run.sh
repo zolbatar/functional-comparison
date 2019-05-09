@@ -251,3 +251,9 @@ cd Java
 echo "GraalVM"
 ./graal.sh
 cd ..
+
+# Kotlin
+cd Kotlin
+echo "Kotlin"
+./kotlin.sh
+cd ..
