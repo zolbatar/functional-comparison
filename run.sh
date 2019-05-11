@@ -199,6 +199,10 @@ echo "     PyPy3*: " > ../Timings/PyPy3Concurrent.txt
 /usr/bin/time -v pypy3 greedy-concurrent.py 2>> ../Timings/PyPy3Concurrent.txt 1>> /dev/null
 wc greedy-concurrent.py >> ../Timings/PyPy3Concurrent.txt
 echo "4 5" >> ../Timings/PyPy3Concurrent.txt
+echo "     Cython: " > ../Timings/Cython.txt
+/usr/bin/time -v python greedyCython.py 2>> ../Timings/Cython.txt 1>> /dev/null
+wc greedyCythonLib.pyx >> ../Timings/Cython.txt
+echo "5 5" >> ../Timings/Cython.txt
 cd ..
 
 # Ruby

@@ -1,8 +1,12 @@
-import copy
+# cython: language_level=3
+
 import math
-import string
 import sys
-import timeit
+from libc.math cimport sin, cos, sqrt, atan2
+
+cdef double earthRadiusM = 6367450.0
+cdef double convert2Rad = math.pi / 180.0
+cdef double convert2Deg = 180.0 / math.pi
 
 
 class Activity(object):
@@ -20,7 +24,7 @@ class Resource(object):
 
 
 class Allocation(object):
-    def __init__(self, rid, aid, dist):
+    def __init__(self, rid, aid, double dist):
         self.rid = rid
         self.aid = aid
         self.dist = dist
@@ -31,12 +35,26 @@ class SchemaData(object):
     resource = []
 
 
-earthRadiusM = 6367450.0
-convert2Rad = math.pi / 180.0
-convert2Deg = 180.0 / math.pi
+cdef double distanceBetweenPointsLatLong(double lat1, double lon1, double lat2, double lon2):
+    cdef double dStartLatInRad = lat1 * convert2Rad
+    cdef double dStartLongInRad = lon1 * convert2Rad
+    cdef double dEndLatInRad = lat2 * convert2Rad
+    cdef double dEndLongInRad = lon2 * convert2Rad
+    cdef double dLongitude = dEndLongInRad - dStartLongInRad
+    cdef double dLatitude = dEndLatInRad - dStartLatInRad
+    cdef double dSinHalfLatitude = sin(dLatitude * 0.5)
+    cdef double dSinHalfLongitude = sin(dLongitude * 0.5)
+    cdef double a = dSinHalfLatitude * dSinHalfLatitude + \
+        cos(dStartLatInRad) * cos(dEndLatInRad) * \
+        dSinHalfLongitude * dSinHalfLongitude
+    cdef double c = atan2(sqrt(a), sqrt(1.0 - a))
+    return earthRadiusM * (c + c)
 
 
 def scheduleResources(sd):
+    cdef double lowest
+    cdef double dist
+    cdef int c
     allocation = []
     for res in sd.resource:
         for c in range(0, 50):
@@ -51,22 +69,6 @@ def scheduleResources(sd):
             allocation.append(Allocation(res.id, lowestact.id, lowest))
             sd.activity.remove(lowestact)
     return sum(i.dist for i in allocation)
-
-
-def distanceBetweenPointsLatLong(lat1, lon1, lat2, lon2):
-    dStartLatInRad = lat1 * convert2Rad
-    dStartLongInRad = lon1 * convert2Rad
-    dEndLatInRad = lat2 * convert2Rad
-    dEndLongInRad = lon2 * convert2Rad
-    dLongitude = dEndLongInRad - dStartLongInRad
-    dLatitude = dEndLatInRad - dStartLatInRad
-    dSinHalfLatitude = math.sin(dLatitude * 0.5)
-    dSinHalfLongitude = math.sin(dLongitude * 0.5)
-    a = dSinHalfLatitude * dSinHalfLatitude + \
-        math.cos(dStartLatInRad) * math.cos(dEndLatInRad) * \
-        dSinHalfLongitude * dSinHalfLongitude
-    c = math.atan2(math.sqrt(a), math.sqrt(1.0 - a))
-    return earthRadiusM * (c + c)
 
 
 def run():
@@ -87,7 +89,3 @@ def run():
         tot = scheduleResources(sdi)
         print(str(i + 1) + ": " + str(tot))
         sdi.activity = list(a)
-
-
-if __name__ == '__main__':
-    run()

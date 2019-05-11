@@ -79,6 +79,10 @@ cd OCaml
 ocamlopt -O3 str.cmxa main.ml -o main
 cd ..
 
+# Python
+cd Python
+python setup.py build_ext --inplace
+
 # Rust
 cd Rust
 cargo build --release

@@ -32,3 +32,5 @@ Java/greedy
 Kotlin/*.class
 Kotlin/*.jar
 Kotlin/program.kexe
+Timings/
+Python/*.c
