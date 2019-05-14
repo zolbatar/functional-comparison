@@ -82,6 +82,7 @@ cd ..
 # Python
 cd Python
 python setup.py build_ext --inplace
+cd ..
 
 # Rust
 cd Rust
