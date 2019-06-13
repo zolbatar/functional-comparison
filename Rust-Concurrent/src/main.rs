@@ -144,7 +144,7 @@ fn main() {
     // Schedule
     let mut children = vec![];
 
-    for i in 0..100 {
+    for i in 0..1000 {
         // Spin up another thread
         let mut sd2 = sd.clone();
         children.push(thread::spawn(move || {

@@ -105,7 +105,7 @@ end
 
 gp = Greedy.new
 channel = Channel(Int32).new
-100.times do |i|
+1000.times do |i|
   spawn do
     sdi = SchemaData.new
     sdi.resource = sd.resource.clone
@@ -117,6 +117,6 @@ channel = Channel(Int32).new
 end
 
 sum = 0
-100.times do
+1000.times do
   sum += channel.receive
 end

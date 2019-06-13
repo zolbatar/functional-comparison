@@ -75,7 +75,7 @@ echo "    Crystal: " > ../Timings/Crystal.txt
 wc ./greedy.cr >> ../Timings/Crystal.txt
 echo "2 3" >> ../Timings/Crystal.txt
 echo "   Crystal*: " > ../Timings/CrystalConcurrent.txt
-/usr/bin/time -v ./greedy 2>> ../Timings/CrystalConcurrent.txt 1>> /dev/null
+/usr/bin/time -v ./greedy-concurrent 2>> ../Timings/CrystalConcurrent.txt 1>> /dev/null
 wc ./greedy-concurrent.cr >> ../Timings/CrystalConcurrent.txt
 echo "2 3" >> ../Timings/CrystalConcurrent.txt
 cd ..

@@ -5,11 +5,13 @@ use std::fs::File;
 use std::f64;
 use std::f64::consts::PI;
 use std::path::Path;
+use serde_json::json;
+use serde::{Serialize};
 
 static EARTH_RADIUS_M:f64 = 6367450.0;
 static CONVERT_RAD:f64 = PI / 180.0;
 
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 struct Activity {
     id: String,
     lat: f64,
@@ -22,7 +24,7 @@ impl Activity {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 struct Resource {
     id: String,
     lat: f64,
@@ -48,7 +50,7 @@ impl Allocation {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 struct SchemaData {
     activity: Vec<Activity>,
     resource: Vec<Resource>,
@@ -139,6 +141,8 @@ fn main() {
 
     // Build
     let sd = build(lines);
+//    let json = json!(sd);
+    //dbg!(json.to_string());
 
     // Schedule
     for i in 0..100 {
