@@ -32,7 +32,7 @@ echo "C#"
 #/usr/bin/time -v mono ./Program.exe 2>> ../Timings/C#Mono.txt
 cd DotNet
 echo "         C#: " > ../../Timings/C#.txt
-/usr/bin/time -v dotnet-sdk.dotnet bin/Release/netcoreapp2.1/DotNet.dll 2>> ../../Timings/C#.txt 1>> /dev/null
+/usr/bin/time -v dotnet-sdk.dotnet bin/Release/netcoreapp3.0/DotNet.dll 2>> ../../Timings/C#.txt 1>> /dev/null
 wc *.cs >> ../../Timings/C#.txt
 echo "5 5" >> ../../Timings/C#.txt
 cd ..
@@ -94,7 +94,7 @@ cd F#
 cd DotNet
 echo "F#"
 echo "         F#: " > ../../Timings/F#.txt
-/usr/bin/time -v dotnet-sdk.dotnet bin/Release/netcoreapp2.1/DotNet.dll 2>> ../../Timings/F#.txt 1>> /dev/null
+/usr/bin/time -v dotnet-sdk.dotnet bin/Release/netcoreapp3.0/DotNet.dll 2>> ../../Timings/F#.txt 1>> /dev/null
 wc *.fs >> ../../Timings/F#.txt
 echo "4 4" >> ../../Timings/F#.txt
 cd ..

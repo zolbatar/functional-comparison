@@ -102,7 +102,7 @@ func main() {
 	}
 	lines := strings.Split(string(content), "\n")
 	sd := build(lines)
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 100; i++ {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()

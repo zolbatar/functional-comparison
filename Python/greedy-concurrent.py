@@ -85,7 +85,7 @@ def run():
             a.append(Resource(items[0], float(items[1]), float(items[2])))
 
     with Pool(processes=8) as pool:
-        for i in range(0, 1000):
+        for i in range(0, 100):
             sdi = SchemaData()
             sdi.resource = list(r)
             sdi.activity = list(a)

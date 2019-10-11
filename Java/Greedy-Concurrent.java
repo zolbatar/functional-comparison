@@ -126,7 +126,7 @@ class GreedyConcurrent {
   public static void main(String[] args) throws IOException {
     List<String> teams = java.nio.file.Files.lines(Paths.get("../Data/", "DataSPIF.csv")).collect(Collectors.toList());
     SchemaData sd = Build(teams);
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 100; i++) {
       Thread object = new Thread(new Runner(i, sd));
       object.start();
     }
