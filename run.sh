@@ -144,7 +144,7 @@ cd ..
 cd Julia
 echo "Julia"
 echo "      Julia: " > ../Timings/Julia.txt
-/usr/bin/time -v julia --optimize=3 greedy.jl 2>> ../Timings/Julia.txt 1>> /dev/null
+/usr/bin/time -v julia --optimize=3 --inline=yes --math-mode=fast greedy.jl 2>> ../Timings/Julia.txt 1>> /dev/null
 wc *.jl >> ../Timings/Julia.txt
 echo "3 4" >> ../Timings/Julia.txt
 cd ..
@@ -230,7 +230,7 @@ cd Rust/target/release
 echo "Rust"
 echo "       Rust: " > ../../../Timings/Rust.txt
 /usr/bin/time -v ./rust 2>> ../../../Timings/Rust.txt 1>> /dev/null
-wc ../../src/*.rs >> ../../../Timings/Rust.txt
+wc ../../src/main.rs >> ../../../Timings/Rust.txt
 echo "5 2" >> ../../../Timings/Rust.txt
 cd ../../..
 cd Rust-Concurrent/target/release
