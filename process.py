@@ -111,7 +111,14 @@ def main():
     print("")
     print("    Language   Time        Memory")
     print("    --------   ----        ------")
-    for result in sorted(results, key=lambda x: x.time, reverse=False):
+    for result in sorted([x for x in results if '*' not in x.name], key=lambda x: x.time, reverse=False):
+        print(f"{result.name} {result.time:6.2f}s {result.memory:10,.0f}kb")
+    print("")
+    print("Sorted by time (concurrent):")
+    print("")
+    print("    Language   Time        Memory")
+    print("    --------   ----        ------")
+    for result in sorted([x for x in results if '*' in x.name], key=lambda x: x.time, reverse=False):
         print(f"{result.name} {result.time:6.2f}s {result.memory:10,.0f}kb")
     print("")
     print("Sorted by memory:")
