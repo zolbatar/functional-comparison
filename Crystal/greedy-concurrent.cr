@@ -117,6 +117,6 @@ channel = Channel(Int32).new
 end
 
 sum = 0
-1000.times do
+100.times do
   sum += channel.receive
 end

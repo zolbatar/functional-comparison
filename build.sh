@@ -65,7 +65,7 @@ cd ..
 
 # Haskell
 cd Haskell
-cabal build
+cabal new-build
 cd ..
 
 # Java
