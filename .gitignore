@@ -35,3 +35,4 @@ Kotlin/*.jar
 Kotlin/program.kexe
 Timings/
 Python/*.c
+Fortran/a.out
