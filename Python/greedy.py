@@ -33,13 +33,12 @@ class SchemaData(object):
 
 earthRadiusM = 6367450.0
 convert2Rad = math.pi / 180.0
-convert2Deg = 180.0 / math.pi
 
 
 def scheduleResources(sd):
     allocation = []
     for res in sd.resource:
-        for c in range(0, 50):
+        for _ in range(0, 50):
             lowest = sys.float_info.max
             lowestact = None
             for act in sd.activity:
