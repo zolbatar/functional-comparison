@@ -96,3 +96,8 @@ cd ..
 cd Scala
 sbt assembly
 cd ..
+
+# Fortran
+cd Fortran
+gfortran -Ofast greedy.f90
+cd ..

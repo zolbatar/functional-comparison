@@ -4,6 +4,7 @@ module types
         character(50) :: id
         double precision :: lat
         double precision :: lon
+        logical :: used 
     end type Activity
 
     type Resource
@@ -51,30 +52,56 @@ pure function distance_between_points(lat1, lon1, lat2, lon2) result (distance)
     dSinHalfLongitude = sin(dLongitude * 0.5)
     a = (dSinHalfLatitude * dSinHalfLatitude) + cos(dStartLatInRad) * cos(dEndLatInRad)
     b = a * (dSinHalfLongitude * dSinHalfLongitude)
-    c = atan2(sqrt(b), sqrt(1.0 - a))
+    c = atan2(sqrt(b), sqrt(1.0 - b))
     distance = earthRadiusM * (c + c)
  end function
 
-function schedule(activities, resources) result (distance)
+function schedule(activities, resources, allocations) result (distance)
     use types
     implicit None
 
-    type(Activity), intent(in) :: activities(500)
+    type(Activity), intent(inout) :: activities(500)
     type(Resource), intent(in) :: resources(10)
+    type(Allocation), intent(inout) :: allocations(500)
     double precision :: distance
-    integer :: i, j
+    integer :: i, j, l, k
     double precision :: this_distance
+    double precision :: lowest_distance
+    integer :: lowest_id
     double precision :: distance_between_points
 
+    ! reset used
+    activities%used = .false.
+
     ! Loop through each resource in turn
-    do i = 1,1
-        do j = 1,5
-            this_distance = distance_between_points(resources(i)%lat, resources(i)%lon, activities(j)%lat, activities(j)%lon)
-            print *, activities(j), this_distance
+    k = 1
+    do i = 1,10
+        do l = 1,50
+            lowest_distance = 1.7e+38
+            lowest_id = -1
+            do j = 1,500
+                if (.not. activities(j)%used) then
+                    this_distance = distance_between_points(resources(i)%lat, resources(i)%lon, &
+                                                            activities(j)%lat, activities(j)%lon)
+                    if (this_distance < lowest_distance) then
+                        lowest_distance = this_distance
+                        lowest_id = j
+                    end if
+                end if
+            end do
+            activities(lowest_id)%used = .true.
+            allocations(k)%rid = resources(i)%id
+            allocations(k)%aid = activities(lowest_id)%id
+            allocations(k)%dist = lowest_distance
+            k = k + 1
         end do
     end do
-    
+
+    ! add up distances
     distance = 0.0
+    do i = 1,500
+        distance = distance + allocations(i)%dist
+    end do
 end function
 
 program greedy
@@ -87,6 +114,7 @@ program greedy
     integer :: i  
     type(Activity) :: activities(500)
     type(Resource) :: resources(10)
+    type(Allocation) :: allocations(500)
     character :: type
     double precision :: schedule
 
@@ -107,7 +135,9 @@ program greedy
     end do
     close(1) 
 
-    result = schedule(activities, resources)
-    print *, 'The total is: ', result
+    do i = 1,100
+        result = schedule(activities, resources, allocations)
+        print *, i, ': ', result
+    end do
 
 end program

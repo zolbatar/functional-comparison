@@ -250,6 +250,15 @@ wc src/main/scala/*.scala >> ../Timings/Scala.txt
 echo "5 4" >> ../Timings/Scala.txt
 cd ..
 
+# Fortran
+cd Fortran
+echo "Fortran"
+echo "    Fortran: " > ../Timings/Fortran.txt
+/usr/bin/time -v ./a.out 2>> ../Timings/Fortran.txt 1>> /dev/null
+wc *.f90 >> ../Timings/Fortran.txt
+echo "3 4" >> ../Timings/Fortran.txt
+cd ..
+
 # GraalVM
 cd Java
 echo "GraalVM"
