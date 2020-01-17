@@ -31,8 +31,7 @@ Type Program
 	End Function
 	
 	Method LoadCSV() 
-'		Local in:TStream = ReadFile("C:\Data\Development\FunctionalComparison\Data\DataSPIF.csv")
-		Local in:TStream = ReadFile("/Users/daryl/Development/Projects/FunctionalComparison/Data/DataSPIF.csv")
+		Local in:TStream = ReadFile("~/Development/repos/personal/functional-comparison/Data/DataSPIF.csv")
 		While Not Eof(in)
         	Local l:String = ReadLine(in)
 			Local s:String[] = l.Split(",")

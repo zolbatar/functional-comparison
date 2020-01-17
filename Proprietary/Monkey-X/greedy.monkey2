@@ -32,8 +32,7 @@ Class Program
 	End
 	
 	Method LoadCSV:Void()
-		Local in:FileStream = FileStream.Open("C:\Users\Daryl\Documents\SourceCode\FunctionalComparison\Data\DataSPIF.csv", "r")
-		Print in.Length
+		Local in:FileStream = FileStream.Open("home::/Development/repos/personal/functional-comparison/Data/DataSPIF.csv", "r")
 		While Not in.Eof
         	Local l:String = in.ReadLine()
 			Local s:String[] = l.Split(",")
@@ -41,6 +40,7 @@ Class Program
 				Case 4
 					Local a:TActivity = New TActivity
 					a.id = s[0]
+
 					a.lat = Float(s[1])
 					a.lon = Float(s[2])
 					la.AddLast(a)

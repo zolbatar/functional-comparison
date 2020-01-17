@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Proprietary
-#cd Proprietary/BlitzMax/
-#bmk makeapp -r Greedy.bmx
-#cd ..
-#cd Monkey-X
-#transcc_macos -target="Desktop_Game_(Glfw3)" -config=Release +CPP_DOUBLE_PRECISION_FLOATS=1 -build greedy.monkey
-#cd ..
-#cd ..
+cd Proprietary/BlitzMax/
+~/Development/BlitzMax/bin/bmk makeapp -r Greedy.bmx
+cd ..
+cd Monkey-X
+~/Development/monkey2/bin/mx2cc_linux makeapp -config=release -build greedy.monkey2
+cd ..
+cd ..
 
 # C
 cd C
