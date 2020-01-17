@@ -64,6 +64,7 @@ function schedule(activities, resources, allocations) result (distance)
     type(Resource), intent(in) :: resources(10)
     type(Allocation), intent(inout) :: allocations(500)
     double precision :: distance
+
     integer :: i, j, l, k
     double precision :: this_distance
     double precision :: lowest_distance
@@ -77,7 +78,7 @@ function schedule(activities, resources, allocations) result (distance)
     k = 1
     do i = 1,10
         do l = 1,50
-            lowest_distance = 1.7e+38
+            lowest_distance = huge(0.0)
             lowest_id = -1
             do j = 1,500
                 if (.not. activities(j)%used) then

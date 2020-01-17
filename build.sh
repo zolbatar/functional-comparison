@@ -88,6 +88,9 @@ cd ..
 cd Rust
 cargo build --release
 cd ..
+cd Rust-Optimised
+cargo build --release
+cd ..
 cd Rust-Concurrent
 cargo build --release
 cd ..

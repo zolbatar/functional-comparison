@@ -231,14 +231,21 @@ echo "Rust"
 echo "       Rust: " > ../../../Timings/Rust.txt
 /usr/bin/time -v ./rust 2>> ../../../Timings/Rust.txt 1>> /dev/null
 wc ../../src/main.rs >> ../../../Timings/Rust.txt
-echo "5 2" >> ../../../Timings/Rust.txt
+echo "5 3" >> ../../../Timings/Rust.txt
+cd ../../..
+cd Rust-Optimised/target/release
+echo "Rust Opt"
+echo "   Rust Opt: " > ../../../Timings/RustOpt.txt
+/usr/bin/time -v ./rust 2>> ../../../Timings/RustOpt.txt 1>> /dev/null
+wc ../../src/main.rs >> ../../../Timings/RustOpt.txt
+echo "5 3" >> ../../../Timings/RustOpt.txt
 cd ../../..
 cd Rust-Concurrent/target/release
 echo "Rust (Concurrent)"
 echo "      Rust*: " > ../../../Timings/RustConcurrent.txt
 /usr/bin/time -v ./rust 2>> ../../../Timings/RustConcurrent.txt 1>> /dev/null
 wc ../../src/*.rs >> ../../../Timings/RustConcurrent.txt
-echo "5 2" >> ../../../Timings/RustConcurrent.txt
+echo "5 3" >> ../../../Timings/RustConcurrent.txt
 cd ../../..
 
 # Scala
