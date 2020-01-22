@@ -1,0 +1,85 @@
+	Sat Jan 18 20:43 2020 Time and Allocation Profiling Report  (Final)
+
+	   Main +RTS -p -RTS
+
+	total time  =       21.03 secs   (21033 ticks @ 1000 us, 1 processor)
+	total alloc = 17,800,281,696 bytes  (excludes profiling overheads)
+
+COST CENTRE                                    MODULE    SRC                      %time %alloc
+
+distanceBetweenPointsLatLong.a                 Main      Main.hs:53:7-127          20.1   20.8
+distanceBetweenPointsLatLong.c                 Main      Main.hs:54:7-41           11.2   10.7
+distanceBetweenPointsLatLong                   Main      Main.hs:(44,1)-(56,9)     10.0   19.7
+scheduleResource.(...).\                       Main      Main.hs:66:46-68           9.9    4.8
+scheduleResource.\                             Main      Main.hs:67:82-92           6.7    0.0
+distanceBetweenPointsLatLong.dSinHalfLongitude Main      Main.hs:52:7-48            5.6    5.1
+distanceBetweenPointsLatLong.dSinHalfLatitude  Main      Main.hs:51:7-46            5.4    5.1
+distanceBetweenPointsLatLong.dist              Main      Main.hs:55:7-34            4.8    3.9
+scheduleResource.(...)                         Main      Main.hs:66:7-75            4.0    7.7
+scheduleResource.dists                         Main      Main.hs:65:7-105           3.2   11.3
+distanceBetweenPointsLatLong.dLatitude         Main      Main.hs:50:7-47            2.9    1.1
+distanceBetweenPointsLatLong.dLongitude        Main      Main.hs:49:7-50            2.7    1.1
+distanceBetweenPointsLatLong.dEndLongInRad     Main      Main.hs:48:7-40            2.6    1.1
+distanceBetweenPointsLatLong.dStartLongInRad   Main      Main.hs:46:7-42            2.6    1.1
+distanceBetweenPointsLatLong.dStartLatInRad    Main      Main.hs:45:7-41            2.5    1.1
+distanceBetweenPointsLatLong.dEndLatInRad      Main      Main.hs:47:7-39            2.5    1.1
+scheduleResource                               Main      Main.hs:(59,1)-(67,133)    2.4    4.0
+
+
+                                                                                                                          individual      inherited
+COST CENTRE                                            MODULE                  SRC                     no.     entries  %time %alloc   %time %alloc
+
+MAIN                                                   MAIN                    <built-in>              170          0    0.0    0.0   100.0  100.0
+ CAF                                                   Main                    <entire-module>         339          0    0.0    0.0     0.0    0.0
+  convert2Rad                                          Main                    Main.hs:37:1-24         371          1    0.0    0.0     0.0    0.0
+  earthRadius                                          Main                    Main.hs:35:1-23         365          1    0.0    0.0     0.0    0.0
+  importCSV                                            Main                    Main.hs:(25,1)-(31,19)  344          1    0.0    0.0     0.0    0.0
+  main                                                 Main                    Main.hs:89:1-16         340          1    0.0    0.0     0.0    0.0
+   start                                               Main                    Main.hs:(81,1)-(86,23)  341          1    0.0    0.0     0.0    0.0
+ CAF                                                   Data.CSV                <entire-module>         338          0    0.0    0.0     0.0    0.0
+  csvFile                                              Data.CSV                src/Data/CSV.hs:87:1-24 347          1    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.Conc.Signal         <entire-module>         278          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.Float               <entire-module>         271          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.Encoding         <entire-module>         263          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.Encoding.Iconv   <entire-module>         261          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.Exception        <entire-module>         255          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.Handle.FD        <entire-module>         253          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.Handle.Internals <entire-module>         252          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.Handle.Text      <entire-module>         251          0    0.0    0.0     0.0    0.0
+ CAF                                                   System.Posix.Internals  <entire-module>         221          0    0.0    0.0     0.0    0.0
+ CAF                                                   Text.Read.Lex           <entire-module>         217          0    0.0    0.0     0.0    0.0
+ CAF                                                   GHC.IO.FD               <entire-module>         193          0    0.0    0.0     0.0    0.0
+ main                                                  Main                    Main.hs:89:1-16         342          0    0.0    0.0   100.0  100.0
+  start                                                Main                    Main.hs:(81,1)-(86,23)  343          0    0.0    0.0   100.0  100.0
+   runMultiple                                         Main                    Main.hs:(70,1)-(78,45)  349        101    0.0    0.0    99.9   99.9
+    scheduleResource                                   Main                    Main.hs:(59,1)-(67,133) 352      51000    2.4    4.0    99.9   99.8
+     scheduleResource.\                                Main                    Main.hs:67:82-92        359   12524900    6.7    0.0     6.7    0.0
+     scheduleResource.(...)                            Main                    Main.hs:64:7-39         374      50000    0.0    0.0     0.0    0.0
+     scheduleResource.(...)                            Main                    Main.hs:66:7-75         357      50000    4.0    7.7    13.9   12.5
+      scheduleResource.(...).\                         Main                    Main.hs:66:46-68        361   17645500    9.9    4.8     9.9    4.8
+     scheduleResource.dist                             Main                    Main.hs:66:7-75         356      50000    0.0    0.0     0.0    0.0
+     scheduleResource.dists                            Main                    Main.hs:65:7-105        358      50000    3.2   11.3    76.8   83.3
+      scheduleResource.dists.\                         Main                    Main.hs:65:50-102       362   12525000    0.6    0.0    73.6   72.1
+       distanceBetweenPointsLatLong                    Main                    Main.hs:(44,1)-(56,9)   363   12525000   10.0   19.7    73.0   72.1
+        distanceBetweenPointsLatLong.a                 Main                    Main.hs:53:7-127        367   12525000   20.1   20.8    20.1   20.8
+        distanceBetweenPointsLatLong.c                 Main                    Main.hs:54:7-41         366   12525000   11.2   10.7    11.2   10.7
+        distanceBetweenPointsLatLong.dEndLatInRad      Main                    Main.hs:47:7-39         370   12525000    2.5    1.1     2.5    1.1
+        distanceBetweenPointsLatLong.dEndLongInRad     Main                    Main.hs:48:7-40         377   12525000    2.6    1.1     2.6    1.1
+        distanceBetweenPointsLatLong.dLatitude         Main                    Main.hs:50:7-47         369   12525000    2.9    1.1     2.9    1.1
+        distanceBetweenPointsLatLong.dLongitude        Main                    Main.hs:49:7-50         376   12525000    2.7    1.1     2.7    1.1
+        distanceBetweenPointsLatLong.dSinHalfLatitude  Main                    Main.hs:51:7-46         368   12525000    5.4    5.1     5.4    5.1
+        distanceBetweenPointsLatLong.dSinHalfLongitude Main                    Main.hs:52:7-48         375   12525000    5.6    5.1     5.6    5.1
+        distanceBetweenPointsLatLong.dStartLatInRad    Main                    Main.hs:45:7-41         372   12525000    2.5    1.1     2.5    1.1
+        distanceBetweenPointsLatLong.dStartLongInRad   Main                    Main.hs:46:7-42         378   12525000    2.6    1.1     2.6    1.1
+        distanceBetweenPointsLatLong.dist              Main                    Main.hs:55:7-34         364   12525000    4.8    3.9     4.8    3.9
+     scheduleResource.lat                              Main                    Main.hs:64:7-39         373      50000    0.0    0.0     0.0    0.0
+     scheduleResource.lng                              Main                    Main.hs:64:7-39         379      50000    0.0    0.0     0.0    0.0
+     scheduleResource.caid                             Main                    Main.hs:66:7-75         360      49900    0.0    0.0     0.0    0.0
+    runMultiple.distances                              Main                    Main.hs:73:7-62         354        100    0.0    0.0     0.0    0.0
+     runMultiple.distances.\                           Main                    Main.hs:73:51-54        355      50000    0.0    0.0     0.0    0.0
+    runMultiple.total                                  Main                    Main.hs:74:7-37         353        100    0.0    0.0     0.0    0.0
+   importCSV                                           Main                    Main.hs:(25,1)-(31,19)  345          0    0.0    0.0     0.1    0.1
+    importCSV.entities                                 Main                    Main.hs:(28,9)-(30,74)  346          1    0.0    0.0     0.0    0.0
+     processCSV                                        Main                    Main.hs:(21,1)-(22,68)  350        511    0.0    0.0     0.0    0.0
+      processRow                                       Main                    Main.hs:(17,1)-(18,109) 351        510    0.0    0.0     0.0    0.0
+    csvFile                                            Data.CSV                src/Data/CSV.hs:87:1-24 348          0    0.0    0.1     0.0    0.1

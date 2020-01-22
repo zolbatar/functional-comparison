@@ -1,7 +1,7 @@
+--Haskell:   2.93s      7,688kb
 module Main where
 
 import Prelude
---import System
 import Text.ParserCombinators.Parsec
 import Data.CSV
 import Data.List
@@ -11,6 +11,25 @@ data Resource = Resource String Double Double deriving Show
 data Allocation = Allocation String String Double deriving Show
 data SchemaData = SchemaData [Activity] [Resource] [Allocation] deriving Show
 
+-- Importing CSV files
+processRow :: [String] -> SchemaData -> SchemaData
+processRow (x1 : x2 : [x3]) (SchemaData a r al) = SchemaData a (r ++ [(Resource x1 (read x2) (read x3))]) al
+processRow (x1 : x2 : x3 : [_]) (SchemaData a r al) = SchemaData ((Activity x1 (read x2) (read x3)) : a) r al
+
+processCSV :: [[String]] -> SchemaData -> SchemaData
+processCSV [] entities = entities
+processCSV (x : xs) entities = processCSV xs $ processRow x entities
+
+importCSV :: IO (Maybe SchemaData)
+importCSV = 
+  do 
+    result <- parseFromFile csvFile "../Data/DataSPIF_BlankLine.csv"
+    let entities = case result of
+                    (Left _) -> Nothing
+                    (Right x) -> Just $ processCSV x $ SchemaData [] [] []
+    return entities
+
+-- Useful constants
 earthRadius :: Double
 earthRadius = 6367450.0 -- geometric mean value gives about .1% error
 convert2Rad :: Double
@@ -35,22 +54,8 @@ distanceBetweenPointsLatLong lat1 lon1 lat2 lon2 =
       dist = earthRadius * (c + c)
   in dist
 
-processRow :: [String] -> SchemaData -> SchemaData
-processRow (x1 : x2 : [x3]) (SchemaData a r al) = SchemaData a (r ++ [(Resource x1 (read x2) (read x3))]) al
-processRow (x1 : x2 : x3 : [_]) (SchemaData a r al) = SchemaData ((Activity x1 (read x2) (read x3)) : a) r al
-
-processCSV :: [[String]] -> SchemaData -> SchemaData
-processCSV [] entities = entities
-processCSV (x : xs) entities = processCSV xs $ processRow x entities
-
-importCSV :: IO (Maybe SchemaData)
-importCSV = 
-  do 
-    result <- parseFromFile csvFile "../Data/DataSPIF_BlankLine.csv"
-    let entities = case result of
-                    (Left _) -> Nothing
-                    (Right x) -> Just $ processCSV x $ SchemaData [] [] []
-    return entities
+scheduleIndJob :: Double-> Double -> Activity -> (String, Double)
+scheduleIndJob lat lng (Activity aid alat alng) = (aid, distanceBetweenPointsLatLong lat lng alat alng)
 
 scheduleResource :: Resource -> Int -> SchemaData -> IO SchemaData
 scheduleResource _ 0 (SchemaData a r al) = 
@@ -59,8 +64,8 @@ scheduleResource _ 0 (SchemaData a r al) =
     _ -> scheduleResource (head r) 50 (SchemaData a (tail r) al)
 scheduleResource resource c (SchemaData a r al) = do
   let (Resource rid lat lng) = resource
-  let dists = map (\ (Activity aid alat alng) -> (aid, distanceBetweenPointsLatLong lat lng alat alng)) a
-  let (caid, dist) = head $ sortBy (\ x y -> compare (snd x) (snd y)) dists
+  let dists = map (\ activity -> scheduleIndJob lat lng activity) a                                           -- Calculate distances to all jobs
+  let (caid, dist) = head $ sortBy (\ x y -> compare (snd x) (snd y)) dists                                   -- Sort by distance
   scheduleResource resource (c - 1) (SchemaData (filter (\ (Activity aid _ _) -> aid /= caid) a) r ((Allocation rid caid dist) : al))
 
 runMultiple :: Int -> Int -> SchemaData -> IO ()
@@ -68,7 +73,7 @@ runMultiple 0 _ _ = return ()
 runMultiple c tot (SchemaData a r al) = do
   (SchemaData _ _ res_al) <- scheduleResource (head r) 50 (SchemaData a (tail r) al)
   let distances = map (\ (Allocation _ _ dist) -> dist) res_al
-  let total = foldl (+) 0.0 distances
+  let total = foldl' (+) 0.0 distances
   putStr . show $ (tot - c + 1)
   putStr $ ": " 
   putStrLn $ show total

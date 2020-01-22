@@ -4,9 +4,10 @@ synopsis:            Greedy algorithm performance tester
 author:              Daryl Dudey
 maintainer:          daryljdudey@googlemail.com
 build-type:          Simple
-cabal-version:       >=1.8
+cabal-version:       >=1.10
 
 executable GreedyPerformance
+  default-language:  Haskell2010
   main-is:           Main.hs
-  build-depends:     base == 4.*, MissingH >=1.4, parsec >= 3.1
-  ghc-options:       -Wall -O3
+  build-depends:     base == 4.*, MissingH, parsec
+  ghc-options:       -Wall -O3 -threaded +RTS -N16

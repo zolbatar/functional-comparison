@@ -6,6 +6,8 @@
 *.so
 *.suo
 .vscode/
+Haskell/*.hi
+Haskell/*.o
 Haskell/dist
 Haskell/dist-newstyle
 C#/DotNet/bin

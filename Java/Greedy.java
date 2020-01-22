@@ -12,32 +12,28 @@ class Greedy {
     final static double convert2Deg = 180.0 / Math.PI;
     final static double seconds_per_metre = 0.0559234073;
 
-    static class Activity 
-    {
+    static class Activity {
         public String id;
         public double lat;
         public double lon;
     }
 
-    static class Resource 
-    {
+    static class Resource {
         public String id;
         public double lat;
         public double lon;
     }
 
-    static class Allocation
-    {
+    static class Allocation {
         public String resourceId;
         public String activityId;
         public double distance;
     }
 
-    static class SchemaData
-    {
-        public Map<String, Activity> activity = new HashMap<>();
-        public List<Resource> resource = new LinkedList<>();
-        public List<Allocation> allocation = new LinkedList<>();
+    static class SchemaData {
+        public List<Activity> activity = new ArrayList<>();
+        public List<Resource> resource = new ArrayList<>();
+        public List<Allocation> allocation = new ArrayList<>();
     }
 
     private static double distanceBetweenPointsLatLong(double lat1, double lon1, double lat2, double lon2) {
@@ -49,8 +45,9 @@ class Greedy {
         double dLatitude = dEndLatInRad - dStartLatInRad;
         double dSinHalfLatitude = Math.sin(dLatitude * 0.5);
         double dSinHalfLongitude = Math.sin(dLongitude * 0.5);
-        double a = dSinHalfLatitude*dSinHalfLatitude + Math.cos(dStartLatInRad)*Math.cos(dEndLatInRad)*dSinHalfLongitude*dSinHalfLongitude;
-        double c = Math.atan2(Math.sqrt(a), Math.sqrt(1.0-a));
+        double a = dSinHalfLatitude * dSinHalfLatitude
+                + Math.cos(dStartLatInRad) * Math.cos(dEndLatInRad) * dSinHalfLongitude * dSinHalfLongitude;
+        double c = Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a));
         return earthRadiusM * (c + c);
     }
 
@@ -61,20 +58,20 @@ class Greedy {
             double lat = Double.parseDouble(split[1]);
             double lon = Double.parseDouble(split[2]);
             switch (split.length) {
-                case 3:
-                    Resource r = new Resource();
-                    r.id = split[0];
-                    r.lat = lat;
-                    r.lon = lon;
-                    sd.resource.add(r);
-                    break;
-                case 4:
-                    Activity a = new Activity();
-                    a.id = split[0];
-                    a.lat = lat;
-                    a.lon = lon;
-                    sd.activity.put(a.id, a);
-                    break;
+            case 3:
+                Resource r = new Resource();
+                r.id = split[0];
+                r.lat = lat;
+                r.lon = lon;
+                sd.resource.add(r);
+                break;
+            case 4:
+                Activity a = new Activity();
+                a.id = split[0];
+                a.lat = lat;
+                a.lon = lon;
+                sd.activity.add(a);
+                break;
             }
         }
         return sd;
@@ -84,17 +81,17 @@ class Greedy {
         for (Resource res : sd.resource) {
             for (int c = 0; c < 50; c++) {
                 double lowest = Double.POSITIVE_INFINITY;
-                String lowestid = "";
-                for (Activity act : sd.activity.values()) {
+                Activity lowestid = null;
+                for (Activity act : sd.activity) {
                     double dist = distanceBetweenPointsLatLong(res.lat, res.lon, act.lat, act.lon);
                     if (dist < lowest) {
                         lowest = dist;
-                        lowestid = act.id;
+                        lowestid = act;
                     }
                 }
                 Allocation a = new Allocation();
                 a.resourceId = res.id;
-                a.activityId = lowestid;
+                a.activityId = lowestid.id;
                 a.distance = lowest;
                 sd.allocation.add(a);
                 sd.activity.remove(lowestid);
@@ -103,13 +100,14 @@ class Greedy {
     }
 
     public static void main(String [] args) throws IOException
-    {
+    {                 
         List<String> teams = java.nio.file.Files.lines(Paths.get("../Data/","DataSPIF.csv")).collect(Collectors.toList());  
         SchemaData sd = Build(teams);
+        SchemaData sdLoop = new SchemaData();
+        sdLoop.resource = sd.resource;
         for (int i = 0; i < 100; i++) {
-            SchemaData sdLoop = new SchemaData();
-            sdLoop.activity = new HashMap<>(sd.activity);
-            sdLoop.resource = new LinkedList<>(sd.resource);
+            sdLoop.activity = new ArrayList<>(sd.activity);
+            sdLoop.allocation = new ArrayList<>();
             scheduleResources(sdLoop);
             double sum = 0;
             for (Allocation a : sdLoop.allocation) {

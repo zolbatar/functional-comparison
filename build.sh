@@ -65,13 +65,20 @@ cd ..
 
 # Haskell
 cd Haskell
-cabal new-build
+#ghc -prof -fprof-auto -rtsopts Main.hs
+# cabal new-build --enable-profiling --enable-optimization=2
+cabal v2-build
 cd ..
 
 # Java
 cd Java
 javac Greedy.java -Xdiags:verbose
 javac Greedy-Concurrent.java -Xdiags:verbose
+cd ..
+
+# GraalVM
+echo "GraalVM"
+./graal.sh
 cd ..
 
 # OCaml

@@ -1,13 +1,13 @@
 #!/bin/bash
 source ~/.rvm/scripts/rvm
 
-rm Timings/*
+rm -f Timings/*.txt
 
 # Proprietary
 echo "BlitzMax"
 cd Proprietary/BlitzMax/
 echo "  Blitz Max: " > ../../Timings/BlitzMax.txt
-/usr/bin/time -v ./Greedy 2>> ../../Timings/BlitzMax.txt
+/usr/bin/time -v ./Greedy 2>> ../../Timings/BlitzMax.txt 1>> /dev/null
 wc *.bmx >> ../../Timings/BlitzMax.txt
 echo "3 5" >> ../../Timings/BlitzMax.txt
 cd ..
@@ -140,6 +140,11 @@ echo "      Java*: " > ../Timings/JavaConcurrent.txt
 /usr/bin/time -v java -server `basename GreedyConcurrent .java` 2>> ../Timings/JavaConcurrent.txt 1>> /dev/null
 wc Greedy-Concurrent.java >> ../Timings/JavaConcurrent.txt
 echo "5 5" >> ../Timings/JavaConcurrent.txt
+
+echo "Native Java: " > ../Timings/JavaGraal.txt
+/usr/bin/time -v ./greedy 2>> ../Timings/JavaGraal.txt 1>> /dev/null
+wc Greedy.java >> ../Timings/JavaGraal.txt
+echo "5 5" >> ../Timings/JavaGraal.txt
 cd ..
 
 # Julia
@@ -266,12 +271,6 @@ echo "    Fortran: " > ../Timings/Fortran.txt
 /usr/bin/time -v ./a.out 2>> ../Timings/Fortran.txt 1>> /dev/null
 wc *.f90 >> ../Timings/Fortran.txt
 echo "3 4" >> ../Timings/Fortran.txt
-cd ..
-
-# GraalVM
-cd Java
-echo "GraalVM"
-./graal.sh
 cd ..
 
 # Kotlin
