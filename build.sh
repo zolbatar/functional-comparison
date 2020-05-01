@@ -2,11 +2,11 @@
 
 # Proprietary
 cd Proprietary/BlitzMax/
-~/Development/BlitzMax/bin/bmk makeapp -r Greedy.bmx
+/mnt/Data/Dropbox/Development/BlitzMax/bin/bmk makeapp -r Greedy.bmx
 cd ..
-cd Monkey-X
-~/Development/monkey2/bin/mx2cc_linux makeapp -config=release -build greedy.monkey2
-cd ..
+#cd Monkey-X
+#~/Development/monkey2/bin/mx2cc_linux makeapp -config=release -build greedy.monkey2
+#cd ..
 cd ..
 
 # C
@@ -74,7 +74,6 @@ cd ..
 cd Java
 javac Greedy.java -Xdiags:verbose
 javac Greedy-Concurrent.java -Xdiags:verbose
-cd ..
 
 # GraalVM
 echo "GraalVM"
@@ -88,7 +87,7 @@ cd ..
 
 # Python
 cd Python
-python setup.py build_ext --inplace
+python3 setup.py build_ext --inplace
 cd ..
 
 # Rust

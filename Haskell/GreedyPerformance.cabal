@@ -10,4 +10,5 @@ executable GreedyPerformance
   default-language:  Haskell2010
   main-is:           Main.hs
   build-depends:     base == 4.*, MissingH, parsec
-  ghc-options:       -Wall -O3 -threaded +RTS -N16
+  ghc-options:       -Wall -O3 
+-- -threaded +RTS -N16
