@@ -4,19 +4,19 @@ source ~/.rvm/scripts/rvm
 rm -f Timings/*.txt
 
 # Proprietary
-echo "BlitzMax"
-cd Proprietary/BlitzMax/
-echo "  Blitz Max: " > ../../Timings/BlitzMax.txt
-/usr/bin/time -v ./Greedy 2>> ../../Timings/BlitzMax.txt 1>> /dev/null
-wc *.bmx >> ../../Timings/BlitzMax.txt
-echo "3 5" >> ../../Timings/BlitzMax.txt
-cd ..
+#echo "BlitzMax"
+#cd Proprietary/BlitzMax/
+#echo "  Blitz Max: " > ../../Timings/BlitzMax.txt
+#/usr/bin/time -v ./Greedy 2>> ../../Timings/BlitzMax.txt 1>> /dev/null
+#wc *.bmx >> ../../Timings/BlitzMax.txt
+#echo "3 5" >> ../../Timings/BlitzMax.txt
+#cd ..
 #cd Monkey-X
 #echo "Monkey-X"
 #echo "   Monkey-X: " > ../../Timings/Monkey-X.txt
 #/usr/bin/time -v greedy.buildv1.1.15/linux_release_mx/greedy 2>> ../../Timings/Monkey-X.txt
 #cd ..
-cd ..
+#cd ..
 
 # C
 cd C
@@ -34,7 +34,7 @@ echo "C#"
 #/usr/bin/time -v mono ./Program.exe 2>> ../Timings/C#Mono.txt
 cd DotNet
 echo "         C#: " > ../../Timings/C#.txt
-/usr/bin/time -v dotnet-sdk.dotnet bin/Release/netcoreapp3.0/DotNet.dll 2>> ../../Timings/C#.txt 1>> /dev/null
+/usr/bin/time -v dotnet bin/Release/netcoreapp3.0/DotNet.dll 2>> ../../Timings/C#.txt 1>> /dev/null
 wc *.cs >> ../../Timings/C#.txt
 echo "5 5" >> ../../Timings/C#.txt
 cd ..
@@ -96,7 +96,7 @@ cd F#
 cd DotNet
 echo "F#"
 echo "         F#: " > ../../Timings/F#.txt
-/usr/bin/time -v dotnet-sdk.dotnet bin/Release/netcoreapp3.0/DotNet.dll 2>> ../../Timings/F#.txt 1>> /dev/null
+/usr/bin/time -v dotnet bin/Release/netcoreapp3.0/DotNet.dll 2>> ../../Timings/F#.txt 1>> /dev/null
 wc *.fs >> ../../Timings/F#.txt
 echo "4 4" >> ../../Timings/F#.txt
 cd ..
@@ -204,23 +204,32 @@ wc greedyCythonLib.pyx >> ../Timings/Cython.txt
 echo "5 5" >> ../Timings/Cython.txt
 cd ..
 
+# Pibasic
+cd PiBasic
+echo "PiBasic"
+echo "    PiBasic: " > ../Timings/PiBasic.txt
+/usr/bin/time -v ~/repos/personal/PiBasic/V2/pibasic greedy.bas 2>> ../Timings/PiBasic.txt 1>> /dev/null
+wc greedy.bas >> ../Timings/PiBasic.txt
+echo "4 5" >> ../Timings/PiBasic.txt
+cd ..
+
 # Ruby
 cd Ruby
 echo "Ruby"
 echo "       Ruby: " > ../Timings/Ruby.txt
 rvm use ruby
 /usr/bin/time -v ruby greedy.rb 2>> ../Timings/Ruby.txt 1>> /dev/null
-wc *.rb >> ../Timings/Ruby.txt
+wc greedy.rb >> ../Timings/Ruby.txt
 echo "3 4" >> ../Timings/Ruby.txt
 echo "TruffleRuby: " > ../Timings/TruffleRuby.txt
 rvm use truffleruby
 /usr/bin/time -v ruby greedy.rb 2>> ../Timings/TruffleRuby.txt  1>> /dev/null
-wc *.rb >> ../Timings/TruffleRuby.txt
+wc greedy.rb >> ../Timings/TruffleRuby.txt
 echo "3 4" >> ../Timings/TruffleRuby.txt
 echo "      JRuby: " > ../Timings/JRuby.txt
 rvm use jruby
 /usr/bin/time -v  jruby greedy.rb 2>> ../Timings/JRuby.txt  1>> /dev/null
-wc *.rb >> ../Timings/JRuby.txt
+wc greedy.rb >> ../Timings/JRuby.txt
 echo "4 4" >> ../Timings/JRuby.txt
 cd ..
 

@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Proprietary
-cd Proprietary/BlitzMax/
-/mnt/Data/Dropbox/Development/BlitzMax/bin/bmk makeapp -r Greedy.bmx
-cd ..
+#cd Proprietary/BlitzMax/
+#/mnt/Data/Dropbox/Development/BlitzMax/bin/bmk makeapp -r Greedy.bmx
+#cd ..
 #cd Monkey-X
 #~/Development/monkey2/bin/mx2cc_linux makeapp -config=release -build greedy.monkey2
 #cd ..
-cd ..
+#cd ..
 
 # C
 cd C
@@ -23,7 +23,7 @@ cd ..
 # C#
 cd C#
 cd DotNet
-dotnet-sdk.dotnet build --configuration Release
+dotnet build --configuration Release
 cd ..
 cd ..
 
@@ -51,7 +51,7 @@ cd ..
 # F#
 cd F#
 cd DotNet
-dotnet-sdk.dotnet build --configuration Release
+dotnet build --configuration Release
 cd ..
 cd ..
 
