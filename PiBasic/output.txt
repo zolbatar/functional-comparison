@@ -2,7 +2,7 @@ AST Debug Output
 ----------------
    0:  Token (Dim)
    1:    Variable (with index): line$ (String Array)
-   2:      Integer: 510
+   2:      Integer: 4
    1:    Variable (with index): used% (Integer Array)
    2:      Integer: 500
    1:    Variable (with index): callId$ (String Array)
@@ -44,7 +44,7 @@ AST Debug Output
    3:        Token (PI)
    2:        /
    0:  Function  (No return)
-   1:    Variable: AddCall (None)
+   1:    Variable: PROCAddCall (None)
    1:    Token (Global or Unspecified)
    2:      Assignment: 
    3:        Variable (with index): callId$ (String Array)
@@ -73,7 +73,7 @@ AST Debug Output
    4:          Integer: 1
    3:          +
    0:  Function  (No return)
-   1:    Variable: AddResource (None)
+   1:    Variable: PROCAddResource (None)
    1:    Token (Global or Unspecified)
    2:      Assignment: 
    3:        Variable (with index): resourceId$ (String Array)
@@ -102,21 +102,21 @@ AST Debug Output
    4:          Integer: 1
    3:          +
    0:  Function  (No return)
-   1:    Variable: AddToList (None)
+   1:    Variable: PROCAddToList (None)
    1:    Token (If)
    2:      Expression: 
    3:        Variable: I% (Integer)
    3:        Integer: 3
    2:        =
    2:      Token (Function Call)
-   3:        Variable: AddCall (None)
+   3:        Variable: PROCAddCall (None)
    1:    Token (If)
    2:      Expression: 
    3:        Variable: I% (Integer)
    3:        Integer: 2
    2:        =
    2:      Token (Function Call)
-   3:        Variable: AddResource (None)
+   3:        Variable: PROCAddResource (None)
    1:    Token (Global or Unspecified)
    2:      Assignment: 
    3:        Variable: I% (Integer)
@@ -141,84 +141,8 @@ AST Debug Output
    3:        Variable (with index): line$ (String Array)
    4:          Integer: 3
    3:        String: ''
-   0:  Function  (No return)
-   1:    Variable: Load (None)
-   1:    Token (Local)
-   2:      Assignment: 
-   3:        Variable: T% (Integer)
-   3:        Token (Time)
-   1:    Token (Global or Unspecified)
-   2:      Assignment: 
-   3:        Variable: channel% (Integer)
-   3:        Token (OpenIn)
-   4:          Expression: 
-   5:            String: 'DATA'
-   4:            NONE
-   1:    Token (Global or Unspecified)
-   2:      Assignment: 
-   3:        Variable: I% (Integer)
-   3:        Integer: 0
-   1:    Token (Repeat)
-   1:    Token (Global or Unspecified)
-   2:      Assignment: 
-   3:        Variable: a (Float)
-   3:        Token (BGet#)
-   4:          Variable: channel% (Integer)
-   1:    Token (If)
-   2:      Expression: 
-   3:        Variable: a (Float)
-   3:        Token (Asc)
-   4:          String: ','
-   2:        =
-   2:      Token (Global or Unspecified)
-   3:        Assignment: 
-   4:          Variable: I% (Integer)
-   4:          Expression: 
-   5:            Variable: I% (Integer)
-   5:            Integer: 1
-   4:            +
-   2:      Token (Global or Unspecified)
-   3:        Assignment: 
-   4:          Variable (with index): line$ (String Array)
-   5:            Variable: I% (Integer)
-   4:          Expression: 
-   5:            Variable (with index): line$ (String Array)
-   6:              Variable: I% (Integer)
-   5:            Token (Chr$)
-   6:              Variable: a (Float)
-   4:            +
-   1:    Token (If)
-   2:      Expression: 
-   3:        Variable: a (Float)
-   3:        Integer: 10
-   2:        =
-   2:      Token (Function Call)
-   3:        Variable: AddToList (None)
-   1:    Token (Until)
-   2:      Token (Eof#)
-   3:        Variable: channel% (Integer)
-   1:    Token (Close)
-   2:      Variable: channel% (Integer)
-   1:    Token (Print)
-   2:      String: 'Imported in '
-   2:      Token (Print ;)
-   1:    Token (Print)
-   2:      Expression: 
-   3:        Expression: 
-   4:          Expression: 
-   5:            Expression: 
-   6:              Token (Time)
-   6:              Variable: T% (Integer)
-   5:              -
-   4:            NONE
-   4:          Float: 100
-   3:          /
-   2:        NONE
-   2:      Token (Print ;)
-   1:    Token (Print)
-   2:      String: ' seconds'
    0:  Function  (Float return)
-   1:    Variable: atan2 (Integer)
+   1:    Variable: FNatan2 (Integer)
    1:    Variable: y (Float)
    1:    Variable: x (Float)
    1:    Token (If)
@@ -256,7 +180,7 @@ AST Debug Output
    3:        Token (PI)
    2:        -
    0:  Function  (Float return)
-   1:    Variable: CalcDistance (Integer)
+   1:    Variable: FNCalcDistance (Integer)
    1:    Variable: la1 (Float)
    1:    Variable: lo1 (Float)
    1:    Variable: la2 (Float)
@@ -349,8 +273,8 @@ AST Debug Output
    1:    Token (Local)
    2:      Assignment: 
    3:        Variable: c (Float)
-   3:        Token (Function Call - Expression)
-   4:          Variable: atan2 (None)
+   3:        Token (Function Call)
+   4:          Variable: FNatan2 (None)
    4:          Token (Sqr)
    5:            Variable: a (Float)
    4:          Token (Sqr)
@@ -373,7 +297,7 @@ AST Debug Output
    1:    Token (Return Value)
    2:      Variable: d (Float)
    0:  Function  (No return)
-   1:    Variable: ResetUsed (None)
+   1:    Variable: PROCResetUsed (None)
    1:    Token (For)
    2:      Assignment: 
    3:        Variable: A% (Integer)
@@ -387,7 +311,81 @@ AST Debug Output
    1:    Token (Next)
    2:      Variable: A% (Integer)
    0:  Function  (No return)
-   1:    Variable: Greedy (None)
+   1:    Variable: PROCLoad (None)
+   1:    Token (Local)
+   2:      Assignment: 
+   3:        Variable: T% (Integer)
+   3:        Token (Time)
+   1:    Token (Global or Unspecified)
+   2:      Assignment: 
+   3:        Variable: channel% (Integer)
+   3:        Token (OpenIn)
+   4:          Expression: 
+   5:            String: 'DATA'
+   4:            NONE
+   1:    Token (Global or Unspecified)
+   2:      Assignment: 
+   3:        Variable: I% (Integer)
+   3:        Integer: 0
+   1:    Token (Repeat)
+   1:    Token (Global or Unspecified)
+   2:      Assignment: 
+   3:        Variable: a% (Integer)
+   3:        Token (BGet#)
+   4:          Variable: channel% (Integer)
+   1:    Token (If)
+   2:      Expression: 
+   3:        Variable: a% (Integer)
+   3:        Token (Asc)
+   4:          String: ','
+   2:        =
+   2:      Token (Global or Unspecified)
+   3:        Assignment: 
+   4:          Variable: I% (Integer)
+   4:          Expression: 
+   5:            Variable: I% (Integer)
+   5:            Integer: 1
+   4:            +
+   2:      Token (Global or Unspecified)
+   3:        Assignment: 
+   4:          Variable (with index): line$ (String Array)
+   5:            Variable: I% (Integer)
+   4:          Expression: 
+   5:            Variable (with index): line$ (String Array)
+   6:              Variable: I% (Integer)
+   5:            Token (Chr$)
+   6:              Variable: a% (Integer)
+   4:            +
+   1:    Token (If)
+   2:      Expression: 
+   3:        Variable: a% (Integer)
+   3:        Integer: 10
+   2:        =
+   2:      Token (Function Call)
+   3:        Variable: PROCAddToList (None)
+   1:    Token (Until)
+   2:      Token (Eof#)
+   3:        Variable: channel% (Integer)
+   1:    Token (Close)
+   2:      Variable: channel% (Integer)
+   1:    Token (PrintN)
+   2:      String: 'Imported in '
+   1:    Token (PrintN)
+   2:      Expression: 
+   3:        Expression: 
+   4:          Expression: 
+   5:            Expression: 
+   6:              Token (Time)
+   6:              Variable: T% (Integer)
+   5:              -
+   4:            NONE
+   4:          Float: 100
+   3:          /
+   2:        NONE
+   1:    Token (Print)
+   2:      String: ' seconds'
+   0:  Function  (No return)
+   1:    Variable: PROCGreedy (None)
    1:    Token (For)
    2:      Assignment: 
    3:        Variable: K% (Integer)
@@ -398,13 +396,11 @@ AST Debug Output
    3:        Variable: total (Float)
    3:        Float: 0
    1:    Token (Function Call)
-   2:      Variable: ResetUsed (None)
-   1:    Token (Print)
+   2:      Variable: PROCResetUsed (None)
+   1:    Token (PrintN)
    2:      Variable: K% (Integer)
-   2:      Token (Print ;)
-   1:    Token (Print)
+   1:    Token (PrintN)
    2:      String: ': '
-   2:      Token (Print ;)
    1:    Token (For)
    2:      Assignment: 
    3:        Variable: C% (Integer)
@@ -447,8 +443,8 @@ AST Debug Output
    2:      Token (Global or Unspecified)
    3:        Assignment: 
    4:          Variable: D (Float)
-   4:          Token (Function Call - Expression)
-   5:            Variable: CalcDistance (None)
+   4:          Token (Function Call)
+   5:            Variable: FNCalcDistance (None)
    5:            Variable (with index): resourceX (Float Array)
    6:              Variable: C% (Integer)
    5:            Variable (with index): resourceY (Float Array)
@@ -501,448 +497,436 @@ AST Debug Output
    1:    Token (Next)
    2:      Variable: K% (Integer)
    0:  Token (Function Call)
-   1:    Variable: Load (None)
+   1:    Variable: PROCLoad (None)
    0:  Token (Function Call)
-   1:    Variable: Greedy (None)
+   1:    Variable: PROCGreedy (None)
 
 
 
 Bytecode Output
 ---------------
-[       0 :  6]  LOAD.I   510
-[       1 : 16]  DIM.S    [line$]
-[       2 :  6]  LOAD.I   500
-[       3 : 15]  DIM.I    [used%]
-[       4 :  6]  LOAD.I   500
-[       5 : 16]  DIM.S    [callId$]
-[       6 :  6]  LOAD.I   50
-[       7 : 16]  DIM.S    [resourceId$]
-[       8 :  6]  LOAD.I   50
-[       9 : 14]  DIM.F    [resourceX]
-[       A :  6]  LOAD.I   50
-[       B : 14]  DIM.F    [resourceY]
-[       C :  6]  LOAD.I   500
-[       D : 14]  DIM.F    [callX]
-[       E :  6]  LOAD.I   500
-[       F : 14]  DIM.F    [callY]
-[      10 :  6]  LOAD.I   0
-[      11 :  9]  STORE.I  [I%]
-[      12 :  6]  LOAD.I   0
-[      13 :  9]  STORE.I  [numCalls%]
-[      14 :  6]  LOAD.I   0
-[      15 :  9]  STORE.I  [numResources%]
-[      16 :  5]  LOAD.F   6.36745e+06
-[      17 :  8]  STORE.F  [earthRadius]
-[      18 : 8B]  PI
-[      19 :  5]  LOAD.F   180
-[      1A : 3E]  DIV.F
-[      1B :  8]  STORE.F  [convertRad]
-[      1C :  5]  LOAD.F   180
-[      1D : 8B]  PI
-[      1E : 3E]  DIV.F
-[      1F :  8]  STORE.F  [convertDeg]
-[      20 : 32]  JUMP     0x34
-[      21 :  6]  LOAD.I   [numCalls%]
-[      22 :  6]  LOAD.I   0
-[      23 : 13]  LOAD.SA  [line$]
-[      24 : 10]  STOR.SAF [callId$]
-[      25 :  6]  LOAD.I   [numCalls%]
-[      26 :  6]  LOAD.I   1
-[      27 : 13]  LOAD.SA  [line$]
-[      28 : 93]  VAL
-[      29 :  F]  STOR.FAF [callX]
-[      2A :  6]  LOAD.I   [numCalls%]
-[      2B :  6]  LOAD.I   2
-[      2C : 13]  LOAD.SA  [line$]
-[      2D : 93]  VAL
-[      2E :  F]  STOR.FAF [callY]
-[      2F :  6]  LOAD.I   [numCalls%]
-[      30 :  6]  LOAD.I   1
-[      31 : 3C]  ADD.I
-[      32 :  9]  STORE.I  [numCalls%]
-[      33 : 36]  RETURN
-[      34 : 32]  JUMP     0x48
-[      35 :  6]  LOAD.I   [numResources%]
-[      36 :  6]  LOAD.I   0
-[      37 : 13]  LOAD.SA  [line$]
-[      38 : 10]  STOR.SAF [resourceId$]
-[      39 :  6]  LOAD.I   [numResources%]
-[      3A :  6]  LOAD.I   1
-[      3B : 13]  LOAD.SA  [line$]
-[      3C : 93]  VAL
-[      3D :  F]  STOR.FAF [resourceX]
-[      3E :  6]  LOAD.I   [numResources%]
-[      3F :  6]  LOAD.I   2
-[      40 : 13]  LOAD.SA  [line$]
-[      41 : 93]  VAL
-[      42 :  F]  STOR.FAF [resourceY]
-[      43 :  6]  LOAD.I   [numResources%]
-[      44 :  6]  LOAD.I   1
-[      45 : 3C]  ADD.I
-[      46 :  9]  STORE.I  [numResources%]
-[      47 : 36]  RETURN
-[      48 : 32]  JUMP     0x68
-[      49 :  6]  LOAD.I   [I%]
-[      4A :  6]  LOAD.I   3
-[      4B : 4B]  CMP.E.I
-[      4C : 33]  JMP.NE   0x51
-[      4D :  6]  LOAD.I   0
-[      4E : 35]  CALL     0x21
-[      4F :  0]  NOP
-[      50 : 32]  JUMP     0x51
-[      51 :  6]  LOAD.I   [I%]
-[      52 :  6]  LOAD.I   2
-[      53 : 4B]  CMP.E.I
-[      54 : 33]  JMP.NE   0x59
-[      55 :  6]  LOAD.I   0
-[      56 : 35]  CALL     0x35
-[      57 :  0]  NOP
-[      58 : 32]  JUMP     0x59
-[      59 :  6]  LOAD.I   0
-[      5A :  9]  STORE.I  [I%]
-[      5B :  6]  LOAD.I   0
-[      5C :  7]  LOAD.S   ''
-[      5D : 10]  STOR.SAF [line$]
-[      5E :  6]  LOAD.I   1
-[      5F :  7]  LOAD.S   ''
-[      60 : 10]  STOR.SAF [line$]
-[      61 :  6]  LOAD.I   2
-[      62 :  7]  LOAD.S   ''
-[      63 : 10]  STOR.SAF [line$]
-[      64 :  6]  LOAD.I   3
-[      65 :  7]  LOAD.S   ''
-[      66 : 10]  STOR.SAF [line$]
-[      67 : 36]  RETURN
-[      68 : 32]  JUMP     0xA5
-[      69 : 97]  TIME
-[      6A :  9]  STORE.I  [Local variable: 0]
-[      6B :  7]  LOAD.S   'DATA'
-[      6C : 63]  OPENIN#
-[      6D :  9]  STORE.I  [channel%]
-[      6E :  6]  LOAD.I   0
-[      6F :  9]  STORE.I  [I%]
-[      70 : 30]  REPEAT
-[      71 :  6]  LOAD.I   [channel%]
-[      72 : 67]  BGET#
-[      73 : 28]  I.TO.F
-[      74 :  8]  STORE.F  [a]
-[      75 :  5]  LOAD.F   [a]
-[      76 :  7]  LOAD.S   ','
-[      77 : 8C]  ASC
-[      78 : 2B]  F.TO.I2
-[      79 : 4B]  CMP.E.I
-[      7A : 33]  JMP.NE   0x80
-[      7B :  6]  LOAD.I   [I%]
-[      7C :  6]  LOAD.I   1
-[      7D : 3C]  ADD.I
-[      7E :  9]  STORE.I  [I%]
-[      7F : 32]  JUMP     0x88
-[      80 :  6]  LOAD.I   [I%]
-[      81 :  6]  LOAD.I   [I%]
-[      82 : 13]  LOAD.SA  [line$]
-[      83 :  5]  LOAD.F   [a]
-[      84 : 2A]  F.TO.I
-[      85 : 8D]  CHR$
-[      86 : 3D]  ADD.S
-[      87 : 10]  STOR.SAF [line$]
-[      88 :  5]  LOAD.F   [a]
-[      89 :  5]  LOAD.F   10
-[      8A : 4A]  CMP.E.F
-[      8B : 33]  JMP.NE   0x90
-[      8C :  6]  LOAD.I   0
-[      8D : 35]  CALL     0x49
-[      8E :  0]  NOP
-[      8F : 32]  JUMP     0x90
-[      90 :  6]  LOAD.I   [channel%]
-[      91 : 68]  EOF#
-[      92 : 31]  UNTIL
-[      93 :  6]  LOAD.I   [channel%]
-[      94 : 65]  CLOSE#
-[      95 : 44]  PRINT.INIT
-[      96 :  7]  LOAD.S   'Imported in '
-[      97 : 47]  PRINT.S
-[      98 : 44]  PRINT.INIT
-[      99 : 97]  TIME
-[      9A :  6]  LOAD.I   [Local variable: 0]
-[      9B : 43]  SUB.I
-[      9C :  5]  LOAD.F   100
-[      9D : 29]  I.TO.F2
-[      9E : 3E]  DIV.F
-[      9F : 46]  PRINT.F
-[      A0 : 44]  PRINT.INIT
-[      A1 :  7]  LOAD.S   ' seconds'
-[      A2 : 47]  PRINT.S
-[      A3 : 48]  PRINT.NL
-[      A4 : 36]  RETURN
-[      A5 : 32]  JUMP     0xC6
-[      A6 : 1E]  UNPCK.F  [Local variable: 1]
-[      A7 : 1E]  UNPCK.F  [Local variable: 0]
-[      A8 :  5]  LOAD.F   [Local variable: 1]
-[      A9 :  5]  LOAD.F   0
-[      AA : 56]  CMP.G.F
-[      AB : 33]  JMP.NE   0xB2
-[      AC :  5]  LOAD.F   [Local variable: 0]
-[      AD :  5]  LOAD.F   [Local variable: 1]
-[      AE : 3E]  DIV.F
-[      AF : 80]  ATAN
-[      B0 : 36]  RETURN
-[      B1 : 32]  JUMP     0xBE
-[      B2 :  5]  LOAD.F   [Local variable: 0]
-[      B3 :  5]  LOAD.F   0
-[      B4 : 56]  CMP.G.F
-[      B5 : 33]  JMP.NE   0xBE
-[      B6 :  5]  LOAD.F   [Local variable: 0]
-[      B7 :  5]  LOAD.F   [Local variable: 1]
-[      B8 : 3E]  DIV.F
-[      B9 : 80]  ATAN
-[      BA : 8B]  PI
-[      BB : 3B]  ADD.F
-[      BC : 36]  RETURN
-[      BD : 32]  JUMP     0xBE
-[      BE :  5]  LOAD.F   [Local variable: 0]
-[      BF :  5]  LOAD.F   [Local variable: 1]
-[      C0 : 3E]  DIV.F
-[      C1 : 80]  ATAN
-[      C2 : 8B]  PI
-[      C3 : 42]  SUB.F
-[      C4 : 36]  RETURN
-[      C5 : 36]  RETURN
-[      C6 : 32]  JUMP     0x10E
-[      C7 : 1E]  UNPCK.F  [Local variable: 3]
-[      C8 : 1E]  UNPCK.F  [Local variable: 2]
-[      C9 : 1E]  UNPCK.F  [Local variable: 1]
-[      CA : 1E]  UNPCK.F  [Local variable: 0]
-[      CB :  5]  LOAD.F   [Local variable: 0]
-[      CC :  5]  LOAD.F   [convertRad]
-[      CD : 40]  MUL.F
-[      CE :  8]  STORE.F  [Local variable: 0]
-[      CF :  5]  LOAD.F   [Local variable: 1]
-[      D0 :  5]  LOAD.F   [convertRad]
-[      D1 : 40]  MUL.F
-[      D2 :  8]  STORE.F  [Local variable: 1]
-[      D3 :  5]  LOAD.F   [Local variable: 2]
-[      D4 :  5]  LOAD.F   [convertRad]
-[      D5 : 40]  MUL.F
-[      D6 :  8]  STORE.F  [Local variable: 2]
-[      D7 :  5]  LOAD.F   [Local variable: 3]
-[      D8 :  5]  LOAD.F   [convertRad]
-[      D9 : 40]  MUL.F
-[      DA :  8]  STORE.F  [Local variable: 3]
-[      DB :  5]  LOAD.F   [Local variable: 3]
-[      DC :  5]  LOAD.F   [Local variable: 1]
-[      DD : 42]  SUB.F
-[      DE :  8]  STORE.F  [Local variable: 4]
-[      DF :  5]  LOAD.F   [Local variable: 2]
-[      E0 :  5]  LOAD.F   [Local variable: 0]
-[      E1 : 42]  SUB.F
-[      E2 :  8]  STORE.F  [Local variable: 5]
-[      E3 :  5]  LOAD.F   [Local variable: 5]
-[      E4 :  5]  LOAD.F   0.5
-[      E5 : 40]  MUL.F
-[      E6 : 83]  SIN
-[      E7 :  8]  STORE.F  [Local variable: 6]
-[      E8 :  5]  LOAD.F   [Local variable: 4]
-[      E9 :  5]  LOAD.F   0.5
-[      EA : 40]  MUL.F
-[      EB : 83]  SIN
-[      EC :  8]  STORE.F  [Local variable: 7]
-[      ED :  5]  LOAD.F   [Local variable: 6]
-[      EE :  5]  LOAD.F   [Local variable: 6]
-[      EF : 40]  MUL.F
-[      F0 :  5]  LOAD.F   [Local variable: 0]
-[      F1 : 82]  COS
-[      F2 :  5]  LOAD.F   [Local variable: 2]
-[      F3 : 82]  COS
-[      F4 : 40]  MUL.F
-[      F5 :  5]  LOAD.F   [Local variable: 7]
-[      F6 :  5]  LOAD.F   [Local variable: 7]
-[      F7 : 40]  MUL.F
-[      F8 : 40]  MUL.F
-[      F9 : 3B]  ADD.F
-[      FA :  8]  STORE.F  [Local variable: 8]
-[      FB :  5]  LOAD.F   [Local variable: 8]
-[      FC : 7C]  SQRT
-[      FD :  5]  LOAD.F   1
-[      FE :  5]  LOAD.F   [Local variable: 8]
-[      FF : 42]  SUB.F
-[     100 : 7C]  SQRT
-[     101 :  6]  LOAD.I   2
-[     102 : 35]  CALL     0xA6
-[     103 :  0]  NOP
-[     104 :  8]  STORE.F  [Local variable: 9]
-[     105 :  5]  LOAD.F   [earthRadius]
-[     106 :  5]  LOAD.F   [Local variable: 9]
-[     107 :  5]  LOAD.F   [Local variable: 9]
-[     108 : 3B]  ADD.F
-[     109 : 40]  MUL.F
-[     10A :  8]  STORE.F  [Local variable: 10]
-[     10B :  5]  LOAD.F   [Local variable: 10]
-[     10C : 36]  RETURN
-[     10D : 36]  RETURN
-[     10E : 32]  JUMP     0x123
-[     10F :  6]  LOAD.I   0
-[     110 :  9]  STORE.I  [Local variable: 0]
-[     111 :  6]  LOAD.I   3
-[     112 : 15]  DIM.I    [Local variable: 0]
-[     113 :  6]  LOAD.I   499
-[     114 :  6]  LOAD.I   [Local variable: 0]
-[     115 : 43]  SUB.I
-[     116 :  6]  LOAD.I   0
-[     117 :  B]  STORE.IA [Local variable: 0]
-[     118 :  6]  LOAD.I   1
-[     119 :  6]  LOAD.I   1
-[     11A :  B]  STORE.IA [Local variable: 0]
-[     11B :  6]  LOAD.I   286
-[     11C :  6]  LOAD.I   2
-[     11D :  B]  STORE.IA [Local variable: 0]
-[     11E :  6]  LOAD.I   [Local variable: 0]
-[     11F :  6]  LOAD.I   0
-[     120 :  E]  STOR.IAF [used%]
-[     121 : 2E]  NEXT.I   [Local variable: 0]
-[     122 : 36]  RETURN
-[     123 : 32]  JUMP     0x1AE
-[     124 :  6]  LOAD.I   0
-[     125 :  9]  STORE.I  [Local variable: 0]
-[     126 :  6]  LOAD.I   3
-[     127 : 15]  DIM.I    [Local variable: 0]
-[     128 :  6]  LOAD.I   99
-[     129 :  6]  LOAD.I   [Local variable: 0]
-[     12A : 43]  SUB.I
-[     12B :  6]  LOAD.I   0
-[     12C :  B]  STORE.IA [Local variable: 0]
-[     12D :  6]  LOAD.I   1
-[     12E :  6]  LOAD.I   1
-[     12F :  B]  STORE.IA [Local variable: 0]
-[     130 :  6]  LOAD.I   307
-[     131 :  6]  LOAD.I   2
-[     132 :  B]  STORE.IA [Local variable: 0]
-[     133 :  5]  LOAD.F   0
-[     134 :  8]  STORE.F  [total]
-[     135 :  6]  LOAD.I   1
-[     136 : 35]  CALL     0x10F
-[     137 :  0]  NOP
-[     138 : 44]  PRINT.INIT
-[     139 :  6]  LOAD.I   [Local variable: 0]
-[     13A : 45]  PRINT.I
-[     13B : 44]  PRINT.INIT
-[     13C :  7]  LOAD.S   ': '
-[     13D : 47]  PRINT.S
-[     13E :  6]  LOAD.I   0
-[     13F :  9]  STORE.I  [Local variable: 1]
-[     140 :  6]  LOAD.I   3
-[     141 : 15]  DIM.I    [Local variable: 1]
-[     142 :  6]  LOAD.I   [numResources%]
-[     143 :  6]  LOAD.I   1
-[     144 : 43]  SUB.I
-[     145 :  6]  LOAD.I   [Local variable: 1]
-[     146 : 43]  SUB.I
-[     147 :  6]  LOAD.I   0
-[     148 :  B]  STORE.IA [Local variable: 1]
-[     149 :  6]  LOAD.I   1
-[     14A :  6]  LOAD.I   1
-[     14B :  B]  STORE.IA [Local variable: 1]
-[     14C :  6]  LOAD.I   335
-[     14D :  6]  LOAD.I   2
-[     14E :  B]  STORE.IA [Local variable: 1]
-[     14F :  6]  LOAD.I   0
-[     150 :  9]  STORE.I  [Local variable: 2]
-[     151 :  6]  LOAD.I   3
-[     152 : 15]  DIM.I    [Local variable: 2]
-[     153 :  6]  LOAD.I   49
-[     154 :  6]  LOAD.I   [Local variable: 2]
-[     155 : 43]  SUB.I
-[     156 :  6]  LOAD.I   0
-[     157 :  B]  STORE.IA [Local variable: 2]
-[     158 :  6]  LOAD.I   1
-[     159 :  6]  LOAD.I   1
-[     15A :  B]  STORE.IA [Local variable: 2]
-[     15B :  6]  LOAD.I   350
-[     15C :  6]  LOAD.I   2
-[     15D :  B]  STORE.IA [Local variable: 2]
-[     15E :  5]  LOAD.F   1e+08
-[     15F :  8]  STORE.F  [O]
-[     160 :  6]  LOAD.I   -1
-[     161 :  9]  STORE.I  [L%]
-[     162 :  6]  LOAD.I   0
-[     163 :  9]  STORE.I  [Local variable: 3]
-[     164 :  6]  LOAD.I   3
-[     165 : 15]  DIM.I    [Local variable: 3]
-[     166 :  6]  LOAD.I   [numCalls%]
-[     167 :  6]  LOAD.I   1
-[     168 : 43]  SUB.I
-[     169 :  6]  LOAD.I   [Local variable: 3]
-[     16A : 43]  SUB.I
-[     16B :  6]  LOAD.I   0
-[     16C :  B]  STORE.IA [Local variable: 3]
-[     16D :  6]  LOAD.I   1
-[     16E :  6]  LOAD.I   1
-[     16F :  B]  STORE.IA [Local variable: 3]
-[     170 :  6]  LOAD.I   371
-[     171 :  6]  LOAD.I   2
-[     172 :  B]  STORE.IA [Local variable: 3]
-[     173 :  6]  LOAD.I   [Local variable: 3]
-[     174 : 11]  LOAD.IA  [used%]
-[     175 :  6]  LOAD.I   0
-[     176 : 4B]  CMP.E.I
-[     177 : 33]  JMP.NE   0x194
-[     178 :  6]  LOAD.I   [Local variable: 1]
-[     179 : 12]  LOAD.FA  [resourceX]
-[     17A :  6]  LOAD.I   [Local variable: 1]
-[     17B : 28]  I.TO.F
-[     17C : 2A]  F.TO.I
-[     17D : 12]  LOAD.FA  [resourceY]
-[     17E :  6]  LOAD.I   [Local variable: 3]
-[     17F : 28]  I.TO.F
-[     180 : 2A]  F.TO.I
-[     181 : 12]  LOAD.FA  [callX]
-[     182 :  6]  LOAD.I   [Local variable: 3]
-[     183 : 28]  I.TO.F
-[     184 : 2A]  F.TO.I
-[     185 : 12]  LOAD.FA  [callY]
-[     186 :  6]  LOAD.I   15
-[     187 : 35]  CALL     0xC7
-[     188 :  0]  NOP
-[     189 :  8]  STORE.F  [D]
-[     18A :  5]  LOAD.F   [D]
-[     18B :  5]  LOAD.F   [O]
-[     18C : 59]  CMP.L.F
-[     18D : 33]  JMP.NE   0x193
-[     18E :  5]  LOAD.F   [D]
-[     18F :  8]  STORE.F  [O]
-[     190 :  6]  LOAD.I   [Local variable: 3]
-[     191 :  9]  STORE.I  [L%]
-[     192 : 32]  JUMP     0x193
-[     193 : 32]  JUMP     0x194
-[     194 : 2E]  NEXT.I   [Local variable: 3]
-[     195 :  6]  LOAD.I   [L%]
-[     196 :  6]  LOAD.I   -1
-[     197 : 4B]  CMP.E.I
-[     198 : 33]  JMP.NE   0x19F
-[     199 : 44]  PRINT.INIT
-[     19A :  7]  LOAD.S   'Not found'
-[     19B : 47]  PRINT.S
-[     19C : 48]  PRINT.NL
-[     19D :  3]  HALT
-[     19E : 32]  JUMP     0x19F
-[     19F :  6]  LOAD.I   [L%]
-[     1A0 :  6]  LOAD.I   1
-[     1A1 :  E]  STOR.IAF [used%]
-[     1A2 :  5]  LOAD.F   [total]
-[     1A3 :  5]  LOAD.F   [O]
-[     1A4 : 3B]  ADD.F
-[     1A5 :  8]  STORE.F  [total]
-[     1A6 : 2E]  NEXT.I   [Local variable: 2]
-[     1A7 : 2E]  NEXT.I   [Local variable: 1]
-[     1A8 : 44]  PRINT.INIT
-[     1A9 :  5]  LOAD.F   [total]
-[     1AA : 46]  PRINT.F
-[     1AB : 48]  PRINT.NL
-[     1AC : 2E]  NEXT.I   [Local variable: 0]
-[     1AD : 36]  RETURN
-[     1AE :  6]  LOAD.I   1
-[     1AF : 35]  CALL     0x69
-[     1B0 :  0]  NOP
-[     1B1 :  6]  LOAD.I   4
-[     1B2 : 35]  CALL     0x124
-[     1B3 :  0]  NOP
-[     1B4 :  3]  HALT
+[       1 :        0 :  5]  CONST.I  4
+[       1 :        1 :  5]  CONST.I  1
+[       1 :        2 : 17]  DIM.S    [line$]
+[       1 :        3 :  5]  CONST.I  500
+[       1 :        4 :  5]  CONST.I  1
+[       1 :        5 : 16]  DIM.I    [used%]
+[       1 :        6 :  5]  CONST.I  500
+[       1 :        7 :  5]  CONST.I  1
+[       1 :        8 : 17]  DIM.S    [callId$]
+[       1 :        9 :  5]  CONST.I  50
+[       1 :        A :  5]  CONST.I  1
+[       1 :        B : 17]  DIM.S    [resourceId$]
+[       1 :        C :  5]  CONST.I  50
+[       1 :        D :  5]  CONST.I  1
+[       1 :        E : 15]  DIM.F    [resourceX]
+[       1 :        F :  5]  CONST.I  50
+[       1 :       10 :  5]  CONST.I  1
+[       1 :       11 : 15]  DIM.F    [resourceY]
+[       1 :       12 :  5]  CONST.I  500
+[       1 :       13 :  5]  CONST.I  1
+[       1 :       14 : 15]  DIM.F    [callX]
+[       1 :       15 :  5]  CONST.I  500
+[       1 :       16 :  5]  CONST.I  1
+[       1 :       17 : 15]  DIM.F    [callY]
+[       2 :       18 :  5]  CONST.I  0
+[       2 :       19 :  A]  STORE.I  [I%]
+[       2 :       1A :  5]  CONST.I  0
+[       2 :       1B :  A]  STORE.I  [numCalls%]
+[       2 :       1C :  5]  CONST.I  0
+[       2 :       1D :  A]  STORE.I  [numResources%]
+[       3 :       1E :  6]  LOAD.F   6.36745e+06
+[       3 :       1F :  9]  STORE.F  [earthRadius]
+[       3 :       20 : A0]  PI
+[       3 :       21 :  6]  LOAD.F   180
+[       3 :       22 : 4A]  DIV.F
+[       3 :       23 :  9]  STORE.F  [convertRad]
+[       3 :       24 :  6]  LOAD.F   180
+[       3 :       25 : A0]  PI
+[       3 :       26 : 4A]  DIV.F
+[       3 :       27 :  9]  STORE.F  [convertDeg]
+[      10 :       28 : 3B]  JUMP     0x42
+[       6 :       29 :  7]  LOAD.I   [numCalls%]
+[       6 :       2A :  5]  CONST.I  1
+[       6 :       2B :  5]  CONST.I  0
+[       6 :       2C :  5]  CONST.I  1
+[       6 :       2D : 14]  LOAD.SA  [line$]
+[       6 :       2E : 11]  STOR.SAF [callId$]
+[       7 :       2F :  7]  LOAD.I   [numCalls%]
+[       7 :       30 :  5]  CONST.I  1
+[       7 :       31 :  5]  CONST.I  1
+[       7 :       32 :  5]  CONST.I  1
+[       7 :       33 : 14]  LOAD.SA  [line$]
+[       7 :       34 : A8]  VAL
+[       7 :       35 : 10]  STOR.FAF [callX]
+[       8 :       36 :  7]  LOAD.I   [numCalls%]
+[       8 :       37 :  5]  CONST.I  1
+[       8 :       38 :  5]  CONST.I  2
+[       8 :       39 :  5]  CONST.I  1
+[       8 :       3A : 14]  LOAD.SA  [line$]
+[       8 :       3B : A8]  VAL
+[       8 :       3C : 10]  STOR.FAF [callY]
+[       9 :       3D :  7]  LOAD.I   [numCalls%]
+[       9 :       3E :  5]  CONST.I  1
+[       9 :       3F : 48]  ADD.I
+[       9 :       40 :  A]  STORE.I  [numCalls%]
+[       9 :       41 : 3F]  RETURN
+[      17 :       42 : 3B]  JUMP     0x5C
+[      13 :       43 :  7]  LOAD.I   [numResources%]
+[      13 :       44 :  5]  CONST.I  1
+[      13 :       45 :  5]  CONST.I  0
+[      13 :       46 :  5]  CONST.I  1
+[      13 :       47 : 14]  LOAD.SA  [line$]
+[      13 :       48 : 11]  STOR.SAF [resourceId$]
+[      14 :       49 :  7]  LOAD.I   [numResources%]
+[      14 :       4A :  5]  CONST.I  1
+[      14 :       4B :  5]  CONST.I  1
+[      14 :       4C :  5]  CONST.I  1
+[      14 :       4D : 14]  LOAD.SA  [line$]
+[      14 :       4E : A8]  VAL
+[      14 :       4F : 10]  STOR.FAF [resourceX]
+[      15 :       50 :  7]  LOAD.I   [numResources%]
+[      15 :       51 :  5]  CONST.I  1
+[      15 :       52 :  5]  CONST.I  2
+[      15 :       53 :  5]  CONST.I  1
+[      15 :       54 : 14]  LOAD.SA  [line$]
+[      15 :       55 : A8]  VAL
+[      15 :       56 : 10]  STOR.FAF [resourceY]
+[      16 :       57 :  7]  LOAD.I   [numResources%]
+[      16 :       58 :  5]  CONST.I  1
+[      16 :       59 : 48]  ADD.I
+[      16 :       5A :  A]  STORE.I  [numResources%]
+[      16 :       5B : 3F]  RETURN
+[      24 :       5C : 3B]  JUMP     0x80
+[      20 :       5D :  7]  LOAD.I   [I%]
+[      20 :       5E :  5]  CONST.I  3
+[      20 :       5F : 56]  CMP.E.I
+[      20 :       60 : 3C]  JMP.NE   0x65
+[      20 :       61 :  5]  CONST.I  0
+[      20 :       62 : 3E]  CALL     0x29
+[      20 :       63 :  0]  NOP
+[      20 :       64 : 3B]  JUMP     0x65
+[      21 :       65 :  7]  LOAD.I   [I%]
+[      21 :       66 :  5]  CONST.I  2
+[      21 :       67 : 56]  CMP.E.I
+[      21 :       68 : 3C]  JMP.NE   0x6D
+[      21 :       69 :  5]  CONST.I  1
+[      21 :       6A : 3E]  CALL     0x43
+[      21 :       6B :  0]  NOP
+[      21 :       6C : 3B]  JUMP     0x6D
+[      22 :       6D :  5]  CONST.I  0
+[      22 :       6E :  A]  STORE.I  [I%]
+[      23 :       6F :  5]  CONST.I  0
+[      23 :       70 :  5]  CONST.I  1
+[      23 :       71 :  8]  LOAD.S   ''
+[      23 :       72 : 11]  STOR.SAF [line$]
+[      23 :       73 :  5]  CONST.I  1
+[      23 :       74 :  5]  CONST.I  1
+[      23 :       75 :  8]  LOAD.S   ''
+[      23 :       76 : 11]  STOR.SAF [line$]
+[      23 :       77 :  5]  CONST.I  2
+[      23 :       78 :  5]  CONST.I  1
+[      23 :       79 :  8]  LOAD.S   ''
+[      23 :       7A : 11]  STOR.SAF [line$]
+[      23 :       7B :  5]  CONST.I  3
+[      23 :       7C :  5]  CONST.I  1
+[      23 :       7D :  8]  LOAD.S   ''
+[      23 :       7E : 11]  STOR.SAF [line$]
+[      23 :       7F : 3F]  RETURN
+[      29 :       80 : 3B]  JUMP     0xA1
+[      29 :       81 : 25]  UNPCK.F  [Local variable: x (1)]
+[      29 :       82 : 25]  UNPCK.F  [Local variable: y (0)]
+[      27 :       83 :  6]  LOAD.F   [Local variable: x (1)]
+[      27 :       84 :  6]  LOAD.F   0
+[      27 :       85 : 61]  CMP.G.F
+[      27 :       86 : 3C]  JMP.NE   0x8D
+[      27 :       87 :  6]  LOAD.F   [Local variable: y (0)]
+[      27 :       88 :  6]  LOAD.F   [Local variable: x (1)]
+[      27 :       89 : 4A]  DIV.F
+[      27 :       8A : 95]  ATAN
+[      27 :       8B : 3F]  RETURN
+[      27 :       8C : 3B]  JUMP     0x99
+[      27 :       8D :  6]  LOAD.F   [Local variable: y (0)]
+[      27 :       8E :  6]  LOAD.F   0
+[      27 :       8F : 61]  CMP.G.F
+[      27 :       90 : 3C]  JMP.NE   0x99
+[      27 :       91 :  6]  LOAD.F   [Local variable: y (0)]
+[      27 :       92 :  6]  LOAD.F   [Local variable: x (1)]
+[      27 :       93 : 4A]  DIV.F
+[      27 :       94 : 95]  ATAN
+[      27 :       95 : A0]  PI
+[      27 :       96 : 47]  ADD.F
+[      27 :       97 : 3F]  RETURN
+[      27 :       98 : 3B]  JUMP     0x99
+[      28 :       99 :  6]  LOAD.F   [Local variable: y (0)]
+[      28 :       9A :  6]  LOAD.F   [Local variable: x (1)]
+[      28 :       9B : 4A]  DIV.F
+[      28 :       9C : 95]  ATAN
+[      28 :       9D : A0]  PI
+[      28 :       9E : 4E]  SUB.F
+[      28 :       9F : 3F]  RETURN
+[      28 :       A0 : 3F]  RETURN
+[      44 :       A1 : 3B]  JUMP     0xE9
+[      44 :       A2 : 25]  UNPCK.F  [Local variable: lo2 (3)]
+[      44 :       A3 : 25]  UNPCK.F  [Local variable: la2 (2)]
+[      44 :       A4 : 25]  UNPCK.F  [Local variable: lo1 (1)]
+[      44 :       A5 : 25]  UNPCK.F  [Local variable: la1 (0)]
+[      32 :       A6 :  6]  LOAD.F   [Local variable: la1 (0)]
+[      33 :       A7 :  6]  LOAD.F   [convertRad]
+[      33 :       A8 : 4C]  MUL.F
+[      33 :       A9 :  9]  STORE.F  [Local variable: startLat (4)]
+[      33 :       AA :  6]  LOAD.F   [Local variable: lo1 (1)]
+[      34 :       AB :  6]  LOAD.F   [convertRad]
+[      34 :       AC : 4C]  MUL.F
+[      34 :       AD :  9]  STORE.F  [Local variable: startLon (5)]
+[      34 :       AE :  6]  LOAD.F   [Local variable: la2 (2)]
+[      35 :       AF :  6]  LOAD.F   [convertRad]
+[      35 :       B0 : 4C]  MUL.F
+[      35 :       B1 :  9]  STORE.F  [Local variable: endLat (6)]
+[      35 :       B2 :  6]  LOAD.F   [Local variable: lo2 (3)]
+[      36 :       B3 :  6]  LOAD.F   [convertRad]
+[      36 :       B4 : 4C]  MUL.F
+[      36 :       B5 :  9]  STORE.F  [Local variable: endLon (7)]
+[      36 :       B6 :  6]  LOAD.F   [Local variable: endLon (7)]
+[      37 :       B7 :  6]  LOAD.F   [Local variable: startLon (5)]
+[      37 :       B8 : 4E]  SUB.F
+[      37 :       B9 :  9]  STORE.F  [Local variable: lon (8)]
+[      37 :       BA :  6]  LOAD.F   [Local variable: endLat (6)]
+[      38 :       BB :  6]  LOAD.F   [Local variable: startLat (4)]
+[      38 :       BC : 4E]  SUB.F
+[      38 :       BD :  9]  STORE.F  [Local variable: lat (9)]
+[      38 :       BE :  6]  LOAD.F   [Local variable: lat (9)]
+[      38 :       BF :  6]  LOAD.F   0.5
+[      38 :       C0 : 4C]  MUL.F
+[      38 :       C1 : 98]  SIN
+[      38 :       C2 :  9]  STORE.F  [Local variable: sinHLat (10)]
+[      39 :       C3 :  6]  LOAD.F   [Local variable: lon (8)]
+[      39 :       C4 :  6]  LOAD.F   0.5
+[      39 :       C5 : 4C]  MUL.F
+[      39 :       C6 : 98]  SIN
+[      39 :       C7 :  9]  STORE.F  [Local variable: sinHLon (11)]
+[      40 :       C8 :  6]  LOAD.F   [Local variable: sinHLat (10)]
+[      40 :       C9 :  6]  LOAD.F   [Local variable: sinHLat (10)]
+[      40 :       CA : 4C]  MUL.F
+[      40 :       CB :  6]  LOAD.F   [Local variable: startLat (4)]
+[      40 :       CC : 97]  COS
+[      40 :       CD :  6]  LOAD.F   [Local variable: endLat (6)]
+[      40 :       CE : 97]  COS
+[      40 :       CF : 4C]  MUL.F
+[      40 :       D0 :  6]  LOAD.F   [Local variable: sinHLon (11)]
+[      40 :       D1 :  6]  LOAD.F   [Local variable: sinHLon (11)]
+[      40 :       D2 : 4C]  MUL.F
+[      40 :       D3 : 4C]  MUL.F
+[      40 :       D4 : 47]  ADD.F
+[      40 :       D5 :  9]  STORE.F  [Local variable: a (12)]
+[      41 :       D6 :  6]  LOAD.F   [Local variable: a (12)]
+[      41 :       D7 : 91]  SQRT
+[      41 :       D8 :  6]  LOAD.F   1
+[      41 :       D9 :  6]  LOAD.F   [Local variable: a (12)]
+[      41 :       DA : 4E]  SUB.F
+[      41 :       DB : 91]  SQRT
+[      41 :       DC :  5]  CONST.I  3
+[      41 :       DD : 3E]  CALL     0x81
+[      41 :       DE :  0]  NOP
+[      41 :       DF :  9]  STORE.F  [Local variable: c (13)]
+[      42 :       E0 :  6]  LOAD.F   [earthRadius]
+[      42 :       E1 :  6]  LOAD.F   [Local variable: c (13)]
+[      42 :       E2 :  6]  LOAD.F   [Local variable: c (13)]
+[      42 :       E3 : 47]  ADD.F
+[      42 :       E4 : 4C]  MUL.F
+[      42 :       E5 :  9]  STORE.F  [Local variable: d (14)]
+[      44 :       E6 :  6]  LOAD.F   [Local variable: d (14)]
+[      44 :       E7 : 3F]  RETURN
+[      44 :       E8 : 3F]  RETURN
+[      50 :       E9 : 3B]  JUMP     0xF8
+[      47 :       EA :  5]  CONST.I  0
+[      47 :       EB :  A]  STORE.I  [Local variable: A% (0)]
+[      47 :       EC :  5]  CONST.I  499
+[      47 :       ED :  7]  LOAD.I   [Local variable: A% (0)]
+[      47 :       EE : 4F]  SUB.I
+[      47 :       EF :  5]  CONST.I  1
+[      47 :       F0 :  5]  CONST.I  242
+[      47 :       F1 : 35]  FOR.I    [Local variable: A% (0)]
+[      48 :       F2 :  7]  LOAD.I   [Local variable: A% (0)]
+[      48 :       F3 :  5]  CONST.I  1
+[      48 :       F4 :  5]  CONST.I  0
+[      48 :       F5 :  F]  STOR.IAF [used%]
+[      50 :       F6 : 37]  NEXT.I   [Local variable: A% (0)]
+[      50 :       F7 : 3F]  RETURN
+[      63 :       F8 : 3B]  JUMP     0x131
+[      53 :       F9 : AC]  TIME
+[      53 :       FA :  A]  STORE.I  [Local variable: T% (0)]
+[      54 :       FB :  8]  LOAD.S   'DATA'
+[      54 :       FC : 6E]  OPENIN#
+[      54 :       FD :  A]  STORE.I  [channel%]
+[      55 :       FE :  5]  CONST.I  0
+[      55 :       FF :  A]  STORE.I  [I%]
+[      56 :      100 : 39]  REPEAT
+[      58 :      101 :  7]  LOAD.I   [channel%]
+[      58 :      102 : 72]  BGET#
+[      58 :      103 :  A]  STORE.I  [a%]
+[      58 :      104 :  7]  LOAD.I   [a%]
+[      58 :      105 :  8]  LOAD.S   ','
+[      58 :      106 : A1]  ASC
+[      58 :      107 : 56]  CMP.E.I
+[      58 :      108 : 3C]  JMP.NE   0x10E
+[      58 :      109 :  7]  LOAD.I   [I%]
+[      58 :      10A :  5]  CONST.I  1
+[      58 :      10B : 48]  ADD.I
+[      58 :      10C :  A]  STORE.I  [I%]
+[      58 :      10D : 3B]  JUMP     0x117
+[      58 :      10E :  7]  LOAD.I   [I%]
+[      58 :      10F :  5]  CONST.I  1
+[      58 :      110 :  7]  LOAD.I   [I%]
+[      58 :      111 :  5]  CONST.I  1
+[      58 :      112 : 14]  LOAD.SA  [line$]
+[      58 :      113 :  7]  LOAD.I   [a%]
+[      58 :      114 : A2]  CHR$
+[      58 :      115 : 49]  ADD.S
+[      58 :      116 : 11]  STOR.SAF [line$]
+[      59 :      117 :  7]  LOAD.I   [a%]
+[      59 :      118 :  5]  CONST.I  10
+[      59 :      119 : 56]  CMP.E.I
+[      59 :      11A : 3C]  JMP.NE   0x11F
+[      59 :      11B :  5]  CONST.I  2
+[      59 :      11C : 3E]  CALL     0x5D
+[      59 :      11D :  0]  NOP
+[      59 :      11E : 3B]  JUMP     0x11F
+[      61 :      11F :  7]  LOAD.I   [channel%]
+[      61 :      120 : 73]  EOF#
+[      61 :      121 : 3A]  UNTIL
+[      62 :      122 :  7]  LOAD.I   [channel%]
+[      62 :      123 : 70]  CLOSE#
+[      62 :      124 :  8]  LOAD.S   'Imported in '
+[      62 :      125 : 52]  PRINT.S
+[      62 :      126 : AC]  TIME
+[      62 :      127 :  7]  LOAD.I   [Local variable: T% (0)]
+[      62 :      128 : 4F]  SUB.I
+[      62 :      129 :  6]  LOAD.F   100
+[      62 :      12A : 30]  I.TO.F2
+[      62 :      12B : 4A]  DIV.F
+[      62 :      12C : 51]  PRINT.F
+[      62 :      12D :  8]  LOAD.S   ' seconds'
+[      62 :      12E : 52]  PRINT.S
+[      62 :      12F : 53]  PRINT.NL
+[      62 :      130 : 3F]  RETURN
+[      93 :      131 : 3B]  JUMP     0x1A2
+[      66 :      132 :  5]  CONST.I  0
+[      66 :      133 :  A]  STORE.I  [Local variable: K% (0)]
+[      66 :      134 :  5]  CONST.I  99
+[      66 :      135 :  7]  LOAD.I   [Local variable: K% (0)]
+[      66 :      136 : 4F]  SUB.I
+[      66 :      137 :  5]  CONST.I  1
+[      66 :      138 :  5]  CONST.I  314
+[      66 :      139 : 35]  FOR.I    [Local variable: K% (0)]
+[      67 :      13A :  6]  LOAD.F   0
+[      67 :      13B :  9]  STORE.F  [total]
+[      68 :      13C :  5]  CONST.I  5
+[      68 :      13D : 3E]  CALL     0xEA
+[      68 :      13E :  0]  NOP
+[      69 :      13F :  7]  LOAD.I   [Local variable: K% (0)]
+[      69 :      140 : 50]  PRINT.I
+[      69 :      141 :  8]  LOAD.S   ': '
+[      69 :      142 : 52]  PRINT.S
+[      70 :      143 :  5]  CONST.I  0
+[      70 :      144 :  A]  STORE.I  [Local variable: C% (1)]
+[      70 :      145 :  7]  LOAD.I   [numResources%]
+[      70 :      146 :  5]  CONST.I  1
+[      70 :      147 : 4F]  SUB.I
+[      70 :      148 :  7]  LOAD.I   [Local variable: C% (1)]
+[      70 :      149 : 4F]  SUB.I
+[      70 :      14A :  5]  CONST.I  1
+[      70 :      14B :  5]  CONST.I  333
+[      70 :      14C : 35]  FOR.I    [Local variable: C% (1)]
+[      71 :      14D :  5]  CONST.I  0
+[      71 :      14E :  A]  STORE.I  [Local variable: D% (2)]
+[      71 :      14F :  5]  CONST.I  49
+[      71 :      150 :  7]  LOAD.I   [Local variable: D% (2)]
+[      71 :      151 : 4F]  SUB.I
+[      71 :      152 :  5]  CONST.I  1
+[      71 :      153 :  5]  CONST.I  341
+[      71 :      154 : 35]  FOR.I    [Local variable: D% (2)]
+[      72 :      155 :  6]  LOAD.F   1e+08
+[      72 :      156 :  9]  STORE.F  [O]
+[      73 :      157 :  5]  CONST.I  4294967295
+[      73 :      158 :  A]  STORE.I  [L%]
+[      74 :      159 :  5]  CONST.I  0
+[      74 :      15A :  A]  STORE.I  [Local variable: A% (3)]
+[      74 :      15B :  7]  LOAD.I   [numCalls%]
+[      74 :      15C :  5]  CONST.I  1
+[      74 :      15D : 4F]  SUB.I
+[      74 :      15E :  7]  LOAD.I   [Local variable: A% (3)]
+[      74 :      15F : 4F]  SUB.I
+[      74 :      160 :  5]  CONST.I  1
+[      74 :      161 :  5]  CONST.I  355
+[      74 :      162 : 35]  FOR.I    [Local variable: A% (3)]
+[      75 :      163 :  7]  LOAD.I   [Local variable: A% (3)]
+[      75 :      164 :  5]  CONST.I  1
+[      75 :      165 : 12]  LOAD.IA  [used%]
+[      75 :      166 :  5]  CONST.I  0
+[      75 :      167 : 56]  CMP.E.I
+[      75 :      168 : 3C]  JMP.NE   0x189
+[      76 :      169 :  7]  LOAD.I   [Local variable: C% (1)]
+[      76 :      16A :  5]  CONST.I  1
+[      76 :      16B : 13]  LOAD.FA  [resourceX]
+[      76 :      16C :  7]  LOAD.I   [Local variable: C% (1)]
+[      76 :      16D : 2F]  I.TO.F
+[      76 :      16E : 31]  F.TO.I
+[      76 :      16F :  5]  CONST.I  1
+[      76 :      170 : 13]  LOAD.FA  [resourceY]
+[      76 :      171 :  7]  LOAD.I   [Local variable: A% (3)]
+[      76 :      172 : 2F]  I.TO.F
+[      76 :      173 : 31]  F.TO.I
+[      76 :      174 :  5]  CONST.I  1
+[      76 :      175 : 13]  LOAD.FA  [callX]
+[      76 :      176 :  7]  LOAD.I   [Local variable: A% (3)]
+[      76 :      177 : 2F]  I.TO.F
+[      76 :      178 : 31]  F.TO.I
+[      76 :      179 :  5]  CONST.I  1
+[      76 :      17A : 13]  LOAD.FA  [callY]
+[      76 :      17B :  5]  CONST.I  4
+[      76 :      17C : 3E]  CALL     0xA2
+[      76 :      17D :  0]  NOP
+[      76 :      17E :  9]  STORE.F  [D]
+[      77 :      17F :  6]  LOAD.F   [D]
+[      78 :      180 :  6]  LOAD.F   [O]
+[      78 :      181 : 64]  CMP.L.F
+[      78 :      182 : 3C]  JMP.NE   0x188
+[      79 :      183 :  6]  LOAD.F   [D]
+[      79 :      184 :  9]  STORE.F  [O]
+[      80 :      185 :  7]  LOAD.I   [Local variable: A% (3)]
+[      80 :      186 :  A]  STORE.I  [L%]
+[      80 :      187 : 3B]  JUMP     0x188
+[      80 :      188 : 3B]  JUMP     0x189
+[      83 :      189 : 37]  NEXT.I   [Local variable: A% (3)]
+[      83 :      18A :  7]  LOAD.I   [L%]
+[      83 :      18B :  5]  CONST.I  4294967295
+[      83 :      18C : 56]  CMP.E.I
+[      83 :      18D : 3C]  JMP.NE   0x193
+[      84 :      18E :  8]  LOAD.S   'Not found'
+[      84 :      18F : 52]  PRINT.S
+[      84 :      190 : 53]  PRINT.NL
+[      85 :      191 :  3]  HALT
+[      85 :      192 : 3B]  JUMP     0x193
+[      87 :      193 :  7]  LOAD.I   [L%]
+[      87 :      194 :  5]  CONST.I  1
+[      87 :      195 :  5]  CONST.I  1
+[      87 :      196 :  F]  STOR.IAF [used%]
+[      88 :      197 :  6]  LOAD.F   [total]
+[      89 :      198 :  6]  LOAD.F   [O]
+[      89 :      199 : 47]  ADD.F
+[      89 :      19A :  9]  STORE.F  [total]
+[      90 :      19B : 37]  NEXT.I   [Local variable: D% (2)]
+[      91 :      19C : 37]  NEXT.I   [Local variable: C% (1)]
+[      92 :      19D :  6]  LOAD.F   [total]
+[      92 :      19E : 51]  PRINT.F
+[      92 :      19F : 53]  PRINT.NL
+[      93 :      1A0 : 37]  NEXT.I   [Local variable: K% (0)]
+[      93 :      1A1 : 3F]  RETURN
+[      95 :      1A2 :  5]  CONST.I  6
+[      95 :      1A3 : 3E]  CALL     0xF9
+[      95 :      1A4 :  0]  NOP
+[      96 :      1A5 :  5]  CONST.I  7
+[      96 :      1A6 : 3E]  CALL     0x132
+[      96 :      1A7 :  0]  NOP
+[       0 :      1A8 :  3]  HALT

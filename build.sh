@@ -55,6 +55,11 @@ dotnet build --configuration Release
 cd ..
 cd ..
 
+# Fortran
+cd Fortran
+gfortran -Ofast greedy.f90
+cd ..
+
 # Go
 cd Go
 go build
@@ -85,6 +90,12 @@ cd OCaml
 ocamlopt -O3 str.cmxa main.ml -o main
 cd ..
 
+# PiBasic
+cd PiBasic
+~/repos/personal/PiBasic/V2/pibasic greedy.bas compile
+clang++ -O3 -std=c++14 output.cpp ~/repos/personal/PiBasic/V2/src/engine/*cpp ~/repos/personal/PiBasic/V2/src/graphics/*.cpp -lSDL2 -I. -I/usr/include/SDL2 -o greedy
+cd ..
+
 # Python
 cd Python
 python3 setup.py build_ext --inplace
@@ -106,7 +117,3 @@ cd Scala
 sbt assembly
 cd ..
 
-# Fortran
-cd Fortran
-gfortran -Ofast greedy.f90
-cd ..

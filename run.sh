@@ -207,10 +207,14 @@ cd ..
 # Pibasic
 cd PiBasic
 echo "PiBasic"
-echo "    PiBasic: " > ../Timings/PiBasic.txt
-/usr/bin/time -v ~/repos/personal/PiBasic/V2/pibasic greedy.bas 2>> ../Timings/PiBasic.txt 1>> /dev/null
-wc greedy.bas >> ../Timings/PiBasic.txt
-echo "4 5" >> ../Timings/PiBasic.txt
+echo "  PiBasic-I: " > ../Timings/PiBasicInterpreted.txt
+/usr/bin/time -v ~/repos/personal/PiBasic/V2/pibasic greedy.bas 2>> ../Timings/PiBasicInterpreted.txt 1>> /dev/null
+wc greedy.bas >> ../Timings/PiBasicInterpreted.txt
+echo "4 5" >> ../Timings/PiBasicInterpreted.txt
+echo "  PiBasic-C: " > ../Timings/PiBasicCompiled.txt
+/usr/bin/time -v ./greedy  2>> ../Timings/PiBasicCompiled.txt 1>> /dev/null
+wc greedy.bas >> ../Timings/PiBasicCompiled.txt
+echo "4 5" >> ../Timings/PiBasicCompiled.txt
 cd ..
 
 # Ruby
